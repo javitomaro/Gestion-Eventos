@@ -11,7 +11,7 @@ namespace GestionEventos.Model
 {
     using System;
     using System.Collections.Generic;
-    
+    //pos vale lmkpm
     public partial class flyer
     {
         public int id { get; set; }
