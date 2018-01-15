@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GestionEventos.ViewModel
 {
-    class EventosViewModel : INotifyPropertyChanged
+    class InicioViewModel : INotifyPropertyChanged
     {
         gestioneventosEntities ctx = new gestioneventosEntities();
         private List<evento> _eventos;
