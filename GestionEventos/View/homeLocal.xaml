@@ -17,6 +17,8 @@
         <ViewModel:homeLocalViewModel/>
     </Window.DataContext>
     <Grid Margin="0,0,0,-2">
-        <Viewbox HorizontalAlignment="Left" Height="230" Margin="43,134,0,0" VerticalAlignment="Top" Width="412"/>
+        <ScrollViewer HorizontalAlignment="Left" Height="142" Margin="56,184,0,0" VerticalAlignment="Top" Width="472">
+            <Image x:Name="image" Height="100" Width="100"/>            
+        </ScrollViewer>
     </Grid>
 </Window>
