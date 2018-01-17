@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GestionEventos.View;
 
 namespace GestionEventos
 {
@@ -23,6 +24,24 @@ namespace GestionEventos
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.textBox.Text.Equals("admin"))
+            {
+                //AQUI SE TIENE QUE LLAMAR A LA VISTA DE homeAdmin
+                this.Close();
+            }
+            else {
+                homeLocal hl = new homeLocal();
+                hl.Show();
+            }
+        }
+
+        private void button_Copy1_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
