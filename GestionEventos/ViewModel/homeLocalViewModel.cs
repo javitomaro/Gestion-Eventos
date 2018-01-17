@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Windows.Input;
 using MvvmDialogs.ViewModels;
-
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight;
 
 namespace GestionEventos.ViewModel
 {
