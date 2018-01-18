@@ -22,6 +22,13 @@
     <Grid Margin="0,0,0,-2">
 
         <ScrollBar x:Name="scrollBar" HorizontalAlignment="Left" Margin="512,203,0,0" VerticalAlignment="Top" Height="264" Width="23"/>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="595,72,0,0" VerticalAlignment="Top" Width="100" Source="pack://application:,,,/Resources/exit.png"/>
+        <Button x:Name="button" HorizontalAlignment="Left" Margin="750,10,0,0" VerticalAlignment="Top" Width="32" Height="36" Command="{Binding CancelCommand, Mode=OneWay}" BorderBrush="{x:Null}" Foreground="{x:Null}" Cursor="Hand" ClickMode="Press" >
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/logout.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/logout.png"/>
+            </Button.Background>            
+        </Button>
     </Grid>
 </Window>

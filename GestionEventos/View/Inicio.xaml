@@ -18,9 +18,9 @@
     <Grid>
         <Label x:Name="label" Content="USER" HorizontalAlignment="Left" Margin="52,41,0,0" VerticalAlignment="Top" FontFamily="Open Sans" FontSize="14" FontWeight="Bold" Foreground="#FFF9F9F9"/>
         <Label x:Name="label_Copy" Content="PASSWORD&#xA;" HorizontalAlignment="Left" Margin="14,91,0,0" VerticalAlignment="Top" FontFamily="Open Sans" FontSize="14" FontWeight="Bold" Foreground="White"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="22" Margin="102,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" BorderBrush="#FF96A01E" BorderThickness="2" Background="#FFCDCDCD" FontFamily="Open Sans" Cursor="IBeam" Text="admin"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="22" Margin="102,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" BorderBrush="#FF96A01E" BorderThickness="2" Background="#FFCDCDCD" FontFamily="Open Sans" Cursor="IBeam"/>
         <PasswordBox x:Name="passBox1" HorizontalAlignment="Left" Height="22" Margin="102,91,0,0" VerticalAlignment="Top" Width="260" Background="#FFCDCDCD" BorderBrush="#FF96A01E" BorderThickness="2" FontFamily="Open Sans" Cursor="IBeam"/>
-        <Button x:Name="button" Content="LOG IN"  HorizontalAlignment="Left" Margin="163,138,0,0" VerticalAlignment="Top" Width="96" FontFamily="Open Sans" FontWeight="Bold" TextOptions.TextHintingMode="Animated" Foreground="#FF090A0A" Cursor="Hand" Height="32" FontSize="14" Background="#FF2C8AC5" BorderBrush="{x:Null}" Click="button_Click" />
+        <Button x:Name="button" Content="LOG IN"  HorizontalAlignment="Left" Margin="163,138,0,0" VerticalAlignment="Top" Width="96" FontFamily="Open Sans" FontWeight="Bold" TextOptions.TextHintingMode="Animated" Foreground="#FF090A0A" Cursor="Hand" Height="32" FontSize="14" Background="#FF727376" BorderBrush="{x:Null}" Command="{Binding LogInCommand}" />
         <Button x:Name="button_Copy1" Content="EXIT" HorizontalAlignment="Left" Margin="163,196,0,0" VerticalAlignment="Top" Width="96" FontFamily="Open Sans" FontWeight="Bold" TextOptions.TextHintingMode="Animated" Background="#FFE24B4B" Foreground="#FF090A0A" Cursor="Hand" Height="34" FontSize="14" BorderBrush="{x:Null}" Click="button_Copy1_Click"/>
     </Grid>
 </Window>
