@@ -180,28 +180,28 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\login.png" />
+    <Resource Include="Resources\login.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\logout.png" />
+    <Resource Include="Resources\logout.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\newuser.png" />
+    <Resource Include="Resources\newuser.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\exit.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\fondo3.jpg" />
+    <Resource Include="Resources\fondo3.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\fondo4.jpg" />
+    <Resource Include="Resources\fondo4.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\fondo.jpg" />
+    <Resource Include="Resources\fondo.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\fondo2.jpg" />
+    <Resource Include="Resources\fondo2.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model\Model1.Context.tt">
@@ -217,13 +217,13 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="Resources\crear.png" />
+    <Resource Include="Resources\crear.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\edit.png" />
+    <Resource Include="Resources\edit.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\info.png" />
+    <Resource Include="Resources\info.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
