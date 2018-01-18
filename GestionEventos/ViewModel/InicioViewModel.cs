@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
-using GestionEventos.Model;
+//using GestionEventos.Model;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
@@ -16,7 +16,7 @@ namespace GestionEventos.ViewModel
 {
     class InicioViewModel : INotifyPropertyChanged
     {
-        gestioneventosEntities ctx = new gestioneventosEntities();
+        //gestioneventosEntities ctx = new gestioneventosEntities();
         //private List<evento> _eventos;
         //private List<local> _locales;
         //private List<cliente> _clientes;
