@@ -22,6 +22,6 @@
     <Grid Margin="0,0,0,-2">
 
         <ScrollBar x:Name="scrollBar" HorizontalAlignment="Left" Margin="512,203,0,0" VerticalAlignment="Top" Height="264" Width="23"/>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="595,72,0,0" VerticalAlignment="Top" Width="100" Source="pack://siteoforigin:,,,/Resources/exit.png"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="595,72,0,0" VerticalAlignment="Top" Width="100" Source="pack://application:,,,/Resources/exit.png"/>
     </Grid>
 </Window>
