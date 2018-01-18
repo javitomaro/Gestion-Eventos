@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestionEventos.ViewModel
 {
-    class editarPerfilLocalViewModel
+    class CrudEventoCrudEventoViewModel
     {
     }
 }

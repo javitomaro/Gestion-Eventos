@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace GestionEventos.View
 {
     /// <summary>
-    /// Interaction logic for editarPerfilLocal.xaml
+    /// Interaction logic for CrudEvento.xaml
     /// </summary>
-    public partial class editarPerfilLocal : Window
+    public partial class CrudEvento : Window
     {
-        public editarPerfilLocal()
+        public CrudEvento()
         {
             InitializeComponent();
         }
