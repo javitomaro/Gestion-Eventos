@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="83646dad9509462c984eb65a7fd56c25" Name="Diagram1">
+        <EntityTypeShape EntityType="eventosModel.Cliente" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="eventosModel.Direccion" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="eventosModel.Estilo" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eventosModel.Evento" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eventosModel.Flyer" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="eventosModel.Local" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eventosModel.Rol" Width="1.5" PointX="1.5" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="eventosModel.TipoEvento" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="eventosModel.TipoLocal" Width="1.5" PointX="3.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="eventosModel.Usuario" Width="1.5" PointX="3.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="eventosModel.ListaEvento" Width="1.5" PointX="8.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eventosModel.ListaFavoritos" Width="1.5" PointX="8.25" PointY="3.125" IsExpanded="true" />
+        <AssociationConnector Association="eventosModel.FK__Cliente__IdUsuar__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__Cliente__IdUsuar__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__ListaEven__IdCli__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__ListaEven__IdCli__73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__ListaFavo__IdCli__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__ListaFavo__IdCli__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__Evento__IdDirecc__7B5B524B" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__Local__IdDirecci__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__Local__IdDirecci__778AC167" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__Evento__IdEstilo__7D439ABD" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__Evento__IdLocal__7E37BEF6" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__Evento__IdTipoEv__7C4F7684" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__Flyer__IdEvento__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__Flyer__IdEvento__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__ListaEven__IdEve__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__ListaEven__IdEve__74AE54BC" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__ListaFavo__IdLoc__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__ListaFavo__IdLoc__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__Local__IdTipoLoc__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__Local__IdTipoLoc__787EE5A0" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__Local__IdUsuario__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__Local__IdUsuario__797309D9" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__Usuario__IdRol__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="eventosModel.FK__Usuario__IdRol__7A672E12" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

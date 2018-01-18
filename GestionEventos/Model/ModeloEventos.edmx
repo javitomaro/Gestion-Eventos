@@ -1,0 +1,1222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="eventosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefono" Type="int" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Direccion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Calle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Población" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodigoPostal" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estilo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDireccion" Type="int" Nullable="false" />
+          <Property Name="IdTipoEvento" Type="int" Nullable="false" />
+          <Property Name="IdEstilo" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Aforo" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdLocal" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Flyer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="IdEvento" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Flyer" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'eventos.dbo.ListaEvento' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ListaEvento">
+          <Key>
+            <PropertyRef Name="IdEvento" />
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdEvento" Type="int" Nullable="false" />
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'eventos.dbo.ListaFavoritos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ListaFavoritos">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+            <PropertyRef Name="IdLocal" />
+          </Key>
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+          <Property Name="IdLocal" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Local">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="IdTipoLocal" Type="int" Nullable="false" />
+          <Property Name="IdDireccion" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TipoEvento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoLocal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdRol" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Cliente__IdUsuar__5CD6CB2B">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cliente__IdUsuar__71D1E811">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Evento__IdDirecc__7B5B524B">
+          <End Role="Direccion" Type="Self.Direccion" Multiplicity="1" />
+          <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Direccion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="IdDireccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Evento__IdEstilo__7D439ABD">
+          <End Role="Estilo" Type="Self.Estilo" Multiplicity="1" />
+          <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estilo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="IdEstilo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Evento__IdLocal__7E37BEF6">
+          <End Role="Local" Type="Self.Local" Multiplicity="1" />
+          <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="IdLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Evento__IdTipoEv__7C4F7684">
+          <End Role="TipoEvento" Type="Self.TipoEvento" Multiplicity="1" />
+          <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoEvento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="IdTipoEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flyer__IdEvento__5DCAEF64">
+          <End Role="Evento" Type="Self.Evento" Multiplicity="1" />
+          <End Role="Flyer" Type="Self.Flyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Flyer">
+              <PropertyRef Name="IdEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flyer__IdEvento__72C60C4A">
+          <End Role="Evento" Type="Self.Evento" Multiplicity="1" />
+          <End Role="Flyer" Type="Self.Flyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Flyer">
+              <PropertyRef Name="IdEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ListaEven__IdCli__5EBF139D">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="ListaEvento" Type="Self.ListaEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="ListaEvento">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ListaEven__IdCli__73BA3083">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="ListaEvento" Type="Self.ListaEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="ListaEvento">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ListaEven__IdEve__5FB337D6">
+          <End Role="Evento" Type="Self.Evento" Multiplicity="1" />
+          <End Role="ListaEvento" Type="Self.ListaEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListaEvento">
+              <PropertyRef Name="IdEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ListaEven__IdEve__74AE54BC">
+          <End Role="Evento" Type="Self.Evento" Multiplicity="1" />
+          <End Role="ListaEvento" Type="Self.ListaEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListaEvento">
+              <PropertyRef Name="IdEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ListaFavo__IdCli__60A75C0F">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="ListaFavoritos" Type="Self.ListaFavoritos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="ListaFavoritos">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ListaFavo__IdCli__75A278F5">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="ListaFavoritos" Type="Self.ListaFavoritos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="ListaFavoritos">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ListaFavo__IdLoc__619B8048">
+          <End Role="Local" Type="Self.Local" Multiplicity="1" />
+          <End Role="ListaFavoritos" Type="Self.ListaFavoritos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListaFavoritos">
+              <PropertyRef Name="IdLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ListaFavo__IdLoc__76969D2E">
+          <End Role="Local" Type="Self.Local" Multiplicity="1" />
+          <End Role="ListaFavoritos" Type="Self.ListaFavoritos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListaFavoritos">
+              <PropertyRef Name="IdLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Local__IdDirecci__628FA481">
+          <End Role="Direccion" Type="Self.Direccion" Multiplicity="1" />
+          <End Role="Local" Type="Self.Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Direccion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Local">
+              <PropertyRef Name="IdDireccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Local__IdDirecci__778AC167">
+          <End Role="Direccion" Type="Self.Direccion" Multiplicity="1" />
+          <End Role="Local" Type="Self.Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Direccion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Local">
+              <PropertyRef Name="IdDireccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Local__IdTipoLoc__6383C8BA">
+          <End Role="TipoLocal" Type="Self.TipoLocal" Multiplicity="1" />
+          <End Role="Local" Type="Self.Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoLocal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Local">
+              <PropertyRef Name="IdTipoLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Local__IdTipoLoc__787EE5A0">
+          <End Role="TipoLocal" Type="Self.TipoLocal" Multiplicity="1" />
+          <End Role="Local" Type="Self.Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoLocal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Local">
+              <PropertyRef Name="IdTipoLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Local__IdUsuario__6477ECF3">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Local" Type="Self.Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Local">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Local__IdUsuario__797309D9">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Local" Type="Self.Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Local">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__IdRol__656C112C">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__IdRol__7A672E12">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="eventosModelStoreContainer">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Direccion" EntityType="Self.Direccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estilo" EntityType="Self.Estilo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Evento" EntityType="Self.Evento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Flyer" EntityType="Self.Flyer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Local" EntityType="Self.Local" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoEvento" EntityType="Self.TipoEvento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoLocal" EntityType="Self.TipoLocal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListaEvento" EntityType="Self.ListaEvento" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[ListaEvento].[IdEvento] AS [IdEvento], 
+[ListaEvento].[IdCliente] AS [IdCliente]
+FROM [dbo].[ListaEvento] AS [ListaEvento]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ListaFavoritos" EntityType="Self.ListaFavoritos" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[ListaFavoritos].[IdCliente] AS [IdCliente], 
+[ListaFavoritos].[IdLocal] AS [IdLocal]
+FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Cliente__IdUsuar__5CD6CB2B" Association="Self.FK__Cliente__IdUsuar__5CD6CB2B">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cliente__IdUsuar__71D1E811" Association="Self.FK__Cliente__IdUsuar__71D1E811">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Evento__IdDirecc__7B5B524B" Association="Self.FK__Evento__IdDirecc__7B5B524B">
+            <End Role="Direccion" EntitySet="Direccion" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Evento__IdEstilo__7D439ABD" Association="Self.FK__Evento__IdEstilo__7D439ABD">
+            <End Role="Estilo" EntitySet="Estilo" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Evento__IdLocal__7E37BEF6" Association="Self.FK__Evento__IdLocal__7E37BEF6">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Evento__IdTipoEv__7C4F7684" Association="Self.FK__Evento__IdTipoEv__7C4F7684">
+            <End Role="TipoEvento" EntitySet="TipoEvento" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flyer__IdEvento__5DCAEF64" Association="Self.FK__Flyer__IdEvento__5DCAEF64">
+            <End Role="Evento" EntitySet="Evento" />
+            <End Role="Flyer" EntitySet="Flyer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flyer__IdEvento__72C60C4A" Association="Self.FK__Flyer__IdEvento__72C60C4A">
+            <End Role="Evento" EntitySet="Evento" />
+            <End Role="Flyer" EntitySet="Flyer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ListaEven__IdCli__5EBF139D" Association="Self.FK__ListaEven__IdCli__5EBF139D">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="ListaEvento" EntitySet="ListaEvento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ListaEven__IdCli__73BA3083" Association="Self.FK__ListaEven__IdCli__73BA3083">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="ListaEvento" EntitySet="ListaEvento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ListaEven__IdEve__5FB337D6" Association="Self.FK__ListaEven__IdEve__5FB337D6">
+            <End Role="Evento" EntitySet="Evento" />
+            <End Role="ListaEvento" EntitySet="ListaEvento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ListaEven__IdEve__74AE54BC" Association="Self.FK__ListaEven__IdEve__74AE54BC">
+            <End Role="Evento" EntitySet="Evento" />
+            <End Role="ListaEvento" EntitySet="ListaEvento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ListaFavo__IdCli__60A75C0F" Association="Self.FK__ListaFavo__IdCli__60A75C0F">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="ListaFavoritos" EntitySet="ListaFavoritos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ListaFavo__IdCli__75A278F5" Association="Self.FK__ListaFavo__IdCli__75A278F5">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="ListaFavoritos" EntitySet="ListaFavoritos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ListaFavo__IdLoc__619B8048" Association="Self.FK__ListaFavo__IdLoc__619B8048">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="ListaFavoritos" EntitySet="ListaFavoritos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ListaFavo__IdLoc__76969D2E" Association="Self.FK__ListaFavo__IdLoc__76969D2E">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="ListaFavoritos" EntitySet="ListaFavoritos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Local__IdDirecci__628FA481" Association="Self.FK__Local__IdDirecci__628FA481">
+            <End Role="Direccion" EntitySet="Direccion" />
+            <End Role="Local" EntitySet="Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Local__IdDirecci__778AC167" Association="Self.FK__Local__IdDirecci__778AC167">
+            <End Role="Direccion" EntitySet="Direccion" />
+            <End Role="Local" EntitySet="Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Local__IdTipoLoc__6383C8BA" Association="Self.FK__Local__IdTipoLoc__6383C8BA">
+            <End Role="TipoLocal" EntitySet="TipoLocal" />
+            <End Role="Local" EntitySet="Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Local__IdTipoLoc__787EE5A0" Association="Self.FK__Local__IdTipoLoc__787EE5A0">
+            <End Role="TipoLocal" EntitySet="TipoLocal" />
+            <End Role="Local" EntitySet="Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Local__IdUsuario__6477ECF3" Association="Self.FK__Local__IdUsuario__6477ECF3">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Local" EntitySet="Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Local__IdUsuario__797309D9" Association="Self.FK__Local__IdUsuario__797309D9">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Local" EntitySet="Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__IdRol__656C112C" Association="Self.FK__Usuario__IdRol__656C112C">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__IdRol__7A672E12" Association="Self.FK__Usuario__IdRol__7A672E12">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="eventosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Cliente__IdUsuar__5CD6CB2B" FromRole="Cliente" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Cliente__IdUsuar__71D1E811" FromRole="Cliente" ToRole="Usuario" />
+          <NavigationProperty Name="ListaEvento" Relationship="Self.FK__ListaEven__IdCli__5EBF139D" FromRole="Cliente" ToRole="ListaEvento" />
+          <NavigationProperty Name="ListaEvento1" Relationship="Self.FK__ListaEven__IdCli__73BA3083" FromRole="Cliente" ToRole="ListaEvento" />
+          <NavigationProperty Name="ListaFavoritos" Relationship="Self.FK__ListaFavo__IdCli__60A75C0F" FromRole="Cliente" ToRole="ListaFavoritos" />
+          <NavigationProperty Name="ListaFavoritos1" Relationship="Self.FK__ListaFavo__IdCli__75A278F5" FromRole="Cliente" ToRole="ListaFavoritos" />
+        </EntityType>
+        <EntityType Name="Direccion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Calle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Población" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodigoPostal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Evento" Relationship="Self.FK__Evento__IdDirecc__7B5B524B" FromRole="Direccion" ToRole="Evento" />
+          <NavigationProperty Name="Local" Relationship="Self.FK__Local__IdDirecci__628FA481" FromRole="Direccion" ToRole="Local" />
+          <NavigationProperty Name="Local1" Relationship="Self.FK__Local__IdDirecci__778AC167" FromRole="Direccion" ToRole="Local" />
+        </EntityType>
+        <EntityType Name="Estilo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Evento" Relationship="Self.FK__Evento__IdEstilo__7D439ABD" FromRole="Estilo" ToRole="Evento" />
+        </EntityType>
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDireccion" Type="Int32" Nullable="false" />
+          <Property Name="IdTipoEvento" Type="Int32" Nullable="false" />
+          <Property Name="IdEstilo" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Aforo" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdLocal" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Direccion" Relationship="Self.FK__Evento__IdDirecc__7B5B524B" FromRole="Evento" ToRole="Direccion" />
+          <NavigationProperty Name="Estilo" Relationship="Self.FK__Evento__IdEstilo__7D439ABD" FromRole="Evento" ToRole="Estilo" />
+          <NavigationProperty Name="Local" Relationship="Self.FK__Evento__IdLocal__7E37BEF6" FromRole="Evento" ToRole="Local" />
+          <NavigationProperty Name="TipoEvento" Relationship="Self.FK__Evento__IdTipoEv__7C4F7684" FromRole="Evento" ToRole="TipoEvento" />
+          <NavigationProperty Name="Flyer" Relationship="Self.FK__Flyer__IdEvento__5DCAEF64" FromRole="Evento" ToRole="Flyer" />
+          <NavigationProperty Name="Flyer1" Relationship="Self.FK__Flyer__IdEvento__72C60C4A" FromRole="Evento" ToRole="Flyer" />
+          <NavigationProperty Name="ListaEvento" Relationship="Self.FK__ListaEven__IdEve__5FB337D6" FromRole="Evento" ToRole="ListaEvento" />
+          <NavigationProperty Name="ListaEvento1" Relationship="Self.FK__ListaEven__IdEve__74AE54BC" FromRole="Evento" ToRole="ListaEvento" />
+        </EntityType>
+        <EntityType Name="Flyer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="IdEvento" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Flyer1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Evento" Relationship="Self.FK__Flyer__IdEvento__5DCAEF64" FromRole="Flyer" ToRole="Evento" />
+          <NavigationProperty Name="Evento1" Relationship="Self.FK__Flyer__IdEvento__72C60C4A" FromRole="Flyer" ToRole="Evento" />
+        </EntityType>
+        <EntityType Name="Local">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="IdTipoLocal" Type="Int32" Nullable="false" />
+          <Property Name="IdDireccion" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Direccion" Relationship="Self.FK__Local__IdDirecci__628FA481" FromRole="Local" ToRole="Direccion" />
+          <NavigationProperty Name="Direccion1" Relationship="Self.FK__Local__IdDirecci__778AC167" FromRole="Local" ToRole="Direccion" />
+          <NavigationProperty Name="Evento" Relationship="Self.FK__Evento__IdLocal__7E37BEF6" FromRole="Local" ToRole="Evento" />
+          <NavigationProperty Name="ListaFavoritos" Relationship="Self.FK__ListaFavo__IdLoc__619B8048" FromRole="Local" ToRole="ListaFavoritos" />
+          <NavigationProperty Name="ListaFavoritos1" Relationship="Self.FK__ListaFavo__IdLoc__76969D2E" FromRole="Local" ToRole="ListaFavoritos" />
+          <NavigationProperty Name="TipoLocal" Relationship="Self.FK__Local__IdTipoLoc__6383C8BA" FromRole="Local" ToRole="TipoLocal" />
+          <NavigationProperty Name="TipoLocal1" Relationship="Self.FK__Local__IdTipoLoc__787EE5A0" FromRole="Local" ToRole="TipoLocal" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Local__IdUsuario__6477ECF3" FromRole="Local" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Local__IdUsuario__797309D9" FromRole="Local" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__IdRol__656C112C" FromRole="Rol" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Usuario__IdRol__7A672E12" FromRole="Rol" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="TipoEvento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Evento" Relationship="Self.FK__Evento__IdTipoEv__7C4F7684" FromRole="TipoEvento" ToRole="Evento" />
+        </EntityType>
+        <EntityType Name="TipoLocal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Local" Relationship="Self.FK__Local__IdTipoLoc__6383C8BA" FromRole="TipoLocal" ToRole="Local" />
+          <NavigationProperty Name="Local1" Relationship="Self.FK__Local__IdTipoLoc__787EE5A0" FromRole="TipoLocal" ToRole="Local" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdRol" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__IdUsuar__5CD6CB2B" FromRole="Usuario" ToRole="Cliente" />
+          <NavigationProperty Name="Cliente1" Relationship="Self.FK__Cliente__IdUsuar__71D1E811" FromRole="Usuario" ToRole="Cliente" />
+          <NavigationProperty Name="Local" Relationship="Self.FK__Local__IdUsuario__6477ECF3" FromRole="Usuario" ToRole="Local" />
+          <NavigationProperty Name="Local1" Relationship="Self.FK__Local__IdUsuario__797309D9" FromRole="Usuario" ToRole="Local" />
+          <NavigationProperty Name="Rol" Relationship="Self.FK__Usuario__IdRol__656C112C" FromRole="Usuario" ToRole="Rol" />
+          <NavigationProperty Name="Rol1" Relationship="Self.FK__Usuario__IdRol__7A672E12" FromRole="Usuario" ToRole="Rol" />
+        </EntityType>
+        <EntityType Name="ListaEvento">
+          <Key>
+            <PropertyRef Name="IdEvento" />
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdEvento" Type="Int32" Nullable="false" />
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__ListaEven__IdCli__5EBF139D" FromRole="ListaEvento" ToRole="Cliente" />
+          <NavigationProperty Name="Cliente1" Relationship="Self.FK__ListaEven__IdCli__73BA3083" FromRole="ListaEvento" ToRole="Cliente" />
+          <NavigationProperty Name="Evento" Relationship="Self.FK__ListaEven__IdEve__5FB337D6" FromRole="ListaEvento" ToRole="Evento" />
+          <NavigationProperty Name="Evento1" Relationship="Self.FK__ListaEven__IdEve__74AE54BC" FromRole="ListaEvento" ToRole="Evento" />
+        </EntityType>
+        <EntityType Name="ListaFavoritos">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+            <PropertyRef Name="IdLocal" />
+          </Key>
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="IdLocal" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__ListaFavo__IdCli__60A75C0F" FromRole="ListaFavoritos" ToRole="Cliente" />
+          <NavigationProperty Name="Cliente1" Relationship="Self.FK__ListaFavo__IdCli__75A278F5" FromRole="ListaFavoritos" ToRole="Cliente" />
+          <NavigationProperty Name="Local" Relationship="Self.FK__ListaFavo__IdLoc__619B8048" FromRole="ListaFavoritos" ToRole="Local" />
+          <NavigationProperty Name="Local1" Relationship="Self.FK__ListaFavo__IdLoc__76969D2E" FromRole="ListaFavoritos" ToRole="Local" />
+        </EntityType>
+        <Association Name="FK__Cliente__IdUsuar__5CD6CB2B">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cliente__IdUsuar__71D1E811">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ListaEven__IdCli__5EBF139D">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="ListaEvento" Type="Self.ListaEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="ListaEvento">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ListaEven__IdCli__73BA3083">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="ListaEvento" Type="Self.ListaEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="ListaEvento">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ListaFavo__IdCli__60A75C0F">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="ListaFavoritos" Type="Self.ListaFavoritos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="ListaFavoritos">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ListaFavo__IdCli__75A278F5">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="ListaFavoritos" Type="Self.ListaFavoritos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="ListaFavoritos">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Evento__IdDirecc__7B5B524B">
+          <End Role="Direccion" Type="Self.Direccion" Multiplicity="1" />
+          <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Direccion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="IdDireccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Local__IdDirecci__628FA481">
+          <End Role="Direccion" Type="Self.Direccion" Multiplicity="1" />
+          <End Role="Local" Type="Self.Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Direccion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Local">
+              <PropertyRef Name="IdDireccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Local__IdDirecci__778AC167">
+          <End Role="Direccion" Type="Self.Direccion" Multiplicity="1" />
+          <End Role="Local" Type="Self.Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Direccion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Local">
+              <PropertyRef Name="IdDireccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Evento__IdEstilo__7D439ABD">
+          <End Role="Estilo" Type="Self.Estilo" Multiplicity="1" />
+          <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estilo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="IdEstilo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Evento__IdLocal__7E37BEF6">
+          <End Role="Local" Type="Self.Local" Multiplicity="1" />
+          <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="IdLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Evento__IdTipoEv__7C4F7684">
+          <End Role="TipoEvento" Type="Self.TipoEvento" Multiplicity="1" />
+          <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoEvento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="IdTipoEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flyer__IdEvento__5DCAEF64">
+          <End Role="Evento" Type="Self.Evento" Multiplicity="1" />
+          <End Role="Flyer" Type="Self.Flyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Flyer">
+              <PropertyRef Name="IdEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flyer__IdEvento__72C60C4A">
+          <End Role="Evento" Type="Self.Evento" Multiplicity="1" />
+          <End Role="Flyer" Type="Self.Flyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Flyer">
+              <PropertyRef Name="IdEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ListaEven__IdEve__5FB337D6">
+          <End Role="Evento" Type="Self.Evento" Multiplicity="1" />
+          <End Role="ListaEvento" Type="Self.ListaEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListaEvento">
+              <PropertyRef Name="IdEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ListaEven__IdEve__74AE54BC">
+          <End Role="Evento" Type="Self.Evento" Multiplicity="1" />
+          <End Role="ListaEvento" Type="Self.ListaEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListaEvento">
+              <PropertyRef Name="IdEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ListaFavo__IdLoc__619B8048">
+          <End Role="Local" Type="Self.Local" Multiplicity="1" />
+          <End Role="ListaFavoritos" Type="Self.ListaFavoritos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListaFavoritos">
+              <PropertyRef Name="IdLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ListaFavo__IdLoc__76969D2E">
+          <End Role="Local" Type="Self.Local" Multiplicity="1" />
+          <End Role="ListaFavoritos" Type="Self.ListaFavoritos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListaFavoritos">
+              <PropertyRef Name="IdLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Local__IdTipoLoc__6383C8BA">
+          <End Role="TipoLocal" Type="Self.TipoLocal" Multiplicity="1" />
+          <End Role="Local" Type="Self.Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoLocal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Local">
+              <PropertyRef Name="IdTipoLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Local__IdTipoLoc__787EE5A0">
+          <End Role="TipoLocal" Type="Self.TipoLocal" Multiplicity="1" />
+          <End Role="Local" Type="Self.Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoLocal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Local">
+              <PropertyRef Name="IdTipoLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Local__IdUsuario__6477ECF3">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Local" Type="Self.Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Local">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Local__IdUsuario__797309D9">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Local" Type="Self.Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Local">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__IdRol__656C112C">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__IdRol__7A672E12">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="eventosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Direccion" EntityType="Self.Direccion" />
+          <EntitySet Name="Estilo" EntityType="Self.Estilo" />
+          <EntitySet Name="Evento" EntityType="Self.Evento" />
+          <EntitySet Name="Flyer" EntityType="Self.Flyer" />
+          <EntitySet Name="Local" EntityType="Self.Local" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" />
+          <EntitySet Name="TipoEvento" EntityType="Self.TipoEvento" />
+          <EntitySet Name="TipoLocal" EntityType="Self.TipoLocal" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <EntitySet Name="ListaEvento" EntityType="Self.ListaEvento" />
+          <EntitySet Name="ListaFavoritos" EntityType="Self.ListaFavoritos" />
+          <AssociationSet Name="FK__Cliente__IdUsuar__5CD6CB2B" Association="Self.FK__Cliente__IdUsuar__5CD6CB2B">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cliente__IdUsuar__71D1E811" Association="Self.FK__Cliente__IdUsuar__71D1E811">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ListaEven__IdCli__5EBF139D" Association="Self.FK__ListaEven__IdCli__5EBF139D">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="ListaEvento" EntitySet="ListaEvento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ListaEven__IdCli__73BA3083" Association="Self.FK__ListaEven__IdCli__73BA3083">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="ListaEvento" EntitySet="ListaEvento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ListaFavo__IdCli__60A75C0F" Association="Self.FK__ListaFavo__IdCli__60A75C0F">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="ListaFavoritos" EntitySet="ListaFavoritos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ListaFavo__IdCli__75A278F5" Association="Self.FK__ListaFavo__IdCli__75A278F5">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="ListaFavoritos" EntitySet="ListaFavoritos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Evento__IdDirecc__7B5B524B" Association="Self.FK__Evento__IdDirecc__7B5B524B">
+            <End Role="Direccion" EntitySet="Direccion" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Local__IdDirecci__628FA481" Association="Self.FK__Local__IdDirecci__628FA481">
+            <End Role="Direccion" EntitySet="Direccion" />
+            <End Role="Local" EntitySet="Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Local__IdDirecci__778AC167" Association="Self.FK__Local__IdDirecci__778AC167">
+            <End Role="Direccion" EntitySet="Direccion" />
+            <End Role="Local" EntitySet="Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Evento__IdEstilo__7D439ABD" Association="Self.FK__Evento__IdEstilo__7D439ABD">
+            <End Role="Estilo" EntitySet="Estilo" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Evento__IdLocal__7E37BEF6" Association="Self.FK__Evento__IdLocal__7E37BEF6">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Evento__IdTipoEv__7C4F7684" Association="Self.FK__Evento__IdTipoEv__7C4F7684">
+            <End Role="TipoEvento" EntitySet="TipoEvento" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flyer__IdEvento__5DCAEF64" Association="Self.FK__Flyer__IdEvento__5DCAEF64">
+            <End Role="Evento" EntitySet="Evento" />
+            <End Role="Flyer" EntitySet="Flyer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flyer__IdEvento__72C60C4A" Association="Self.FK__Flyer__IdEvento__72C60C4A">
+            <End Role="Evento" EntitySet="Evento" />
+            <End Role="Flyer" EntitySet="Flyer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ListaEven__IdEve__5FB337D6" Association="Self.FK__ListaEven__IdEve__5FB337D6">
+            <End Role="Evento" EntitySet="Evento" />
+            <End Role="ListaEvento" EntitySet="ListaEvento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ListaEven__IdEve__74AE54BC" Association="Self.FK__ListaEven__IdEve__74AE54BC">
+            <End Role="Evento" EntitySet="Evento" />
+            <End Role="ListaEvento" EntitySet="ListaEvento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ListaFavo__IdLoc__619B8048" Association="Self.FK__ListaFavo__IdLoc__619B8048">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="ListaFavoritos" EntitySet="ListaFavoritos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ListaFavo__IdLoc__76969D2E" Association="Self.FK__ListaFavo__IdLoc__76969D2E">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="ListaFavoritos" EntitySet="ListaFavoritos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Local__IdTipoLoc__6383C8BA" Association="Self.FK__Local__IdTipoLoc__6383C8BA">
+            <End Role="TipoLocal" EntitySet="TipoLocal" />
+            <End Role="Local" EntitySet="Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Local__IdTipoLoc__787EE5A0" Association="Self.FK__Local__IdTipoLoc__787EE5A0">
+            <End Role="TipoLocal" EntitySet="TipoLocal" />
+            <End Role="Local" EntitySet="Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Local__IdUsuario__6477ECF3" Association="Self.FK__Local__IdUsuario__6477ECF3">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Local" EntitySet="Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Local__IdUsuario__797309D9" Association="Self.FK__Local__IdUsuario__797309D9">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Local" EntitySet="Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__IdRol__656C112C" Association="Self.FK__Usuario__IdRol__656C112C">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__IdRol__7A672E12" Association="Self.FK__Usuario__IdRol__7A672E12">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="eventosModelStoreContainer" CdmEntityContainer="eventosEntities">
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="eventosModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Direccion">
+            <EntityTypeMapping TypeName="eventosModel.Direccion">
+              <MappingFragment StoreEntitySet="Direccion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Calle" ColumnName="Calle" />
+                <ScalarProperty Name="Población" ColumnName="Población" />
+                <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estilo">
+            <EntityTypeMapping TypeName="eventosModel.Estilo">
+              <MappingFragment StoreEntitySet="Estilo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Evento">
+            <EntityTypeMapping TypeName="eventosModel.Evento">
+              <MappingFragment StoreEntitySet="Evento">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdDireccion" ColumnName="IdDireccion" />
+                <ScalarProperty Name="IdTipoEvento" ColumnName="IdTipoEvento" />
+                <ScalarProperty Name="IdEstilo" ColumnName="IdEstilo" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Aforo" ColumnName="Aforo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdLocal" ColumnName="IdLocal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flyer">
+            <EntityTypeMapping TypeName="eventosModel.Flyer">
+              <MappingFragment StoreEntitySet="Flyer">
+                <ScalarProperty Name="IdEvento" ColumnName="IdEvento" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Flyer1" ColumnName="Flyer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Local">
+            <EntityTypeMapping TypeName="eventosModel.Local">
+              <MappingFragment StoreEntitySet="Local">
+                <ScalarProperty Name="IdTipoLocal" ColumnName="IdTipoLocal" />
+                <ScalarProperty Name="IdDireccion" ColumnName="IdDireccion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol">
+            <EntityTypeMapping TypeName="eventosModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoEvento">
+            <EntityTypeMapping TypeName="eventosModel.TipoEvento">
+              <MappingFragment StoreEntitySet="TipoEvento">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoLocal">
+            <EntityTypeMapping TypeName="eventosModel.TipoLocal">
+              <MappingFragment StoreEntitySet="TipoLocal">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="eventosModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListaEvento">
+            <EntityTypeMapping TypeName="eventosModel.ListaEvento">
+              <MappingFragment StoreEntitySet="ListaEvento">
+                <ScalarProperty Name="IdEvento" ColumnName="IdEvento" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListaFavoritos">
+            <EntityTypeMapping TypeName="eventosModel.ListaFavoritos">
+              <MappingFragment StoreEntitySet="ListaFavoritos">
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="IdLocal" ColumnName="IdLocal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
