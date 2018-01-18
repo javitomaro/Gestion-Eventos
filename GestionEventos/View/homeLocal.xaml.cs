@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using GestionEventos.View;
 
 namespace GestionEventos.View
 {
@@ -22,6 +23,11 @@ namespace GestionEventos.View
         public homeLocal()
         {
             InitializeComponent();
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {            
+            this.Close();
         }
     }
 }
