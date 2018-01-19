@@ -32,9 +32,9 @@
                 </LinearGradientBrush>
             </Label.Foreground>
         </Label>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="22" Margin="144,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" BorderBrush="#FF96A01E" BorderThickness="2" Background="#FFCDCDCD" FontFamily="Open Sans" Cursor="IBeam"/>
-        <PasswordBox x:Name="passBox1" HorizontalAlignment="Left" Height="22" Margin="144,140,0,0" VerticalAlignment="Top" Width="260" Background="#FFCDCDCD" BorderBrush="#FF96A01E" BorderThickness="2" FontFamily="Open Sans" Cursor="IBeam"/>
-        <Button x:Name="button" Content=""  HorizontalAlignment="Left" Margin="379,10,0,0" VerticalAlignment="Top" Width="30" FontFamily="Open Sans" FontWeight="Bold" TextOptions.TextHintingMode="Animated" Foreground="#FF090A0A" Cursor="Hand" Height="30" FontSize="14" BorderBrush="{x:Null}" Command="{Binding LogInCommand}" Click="button_Click_1" >
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="22" Margin="144,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" BorderBrush="#FF96A01E" BorderThickness="2" Background="#FFCDCDCD" FontFamily="Open Sans" Cursor="IBeam" DataContext="{Binding SelectedUsuario.Usuario1}"/>
+        <PasswordBox x:Name="passBox1" HorizontalAlignment="Left" Height="22" Margin="144,140,0,0" VerticalAlignment="Top" Width="260" Background="#FFCDCDCD" BorderBrush="#FF96A01E" BorderThickness="2" FontFamily="Open Sans" Cursor="IBeam" DataContext="{Binding SelectedUsuario.Password}"/>
+        <Button x:Name="button" Content=""  HorizontalAlignment="Left" Margin="379,10,0,0" VerticalAlignment="Top" Width="30" FontFamily="Open Sans" FontWeight="Bold" TextOptions.TextHintingMode="Animated" Foreground="#FF090A0A" Cursor="Hand" Height="30" FontSize="14" BorderBrush="{x:Null}" Command="{Binding LogInCommand}">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="/GestionEventos;component/Resources/login.png"/>
             </Button.OpacityMask>

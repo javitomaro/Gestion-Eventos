@@ -25,29 +25,10 @@ namespace GestionEventos
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.textBox.Text.Equals("admin"))
-            {
-                //AQUI SE TIENE QUE LLAMAR A LA VISTA DE homeAdmin
-                this.Close();
-            }
-            else {
-                homeLocal hl = new homeLocal();
-                hl.Show();
-            }
-        }
-
+        }        
         private void button_Copy1_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        private void button_Click_1(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

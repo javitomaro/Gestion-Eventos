@@ -19,6 +19,7 @@ namespace GestionEventos.ViewModel
 {
     class InicioViewModel : INotifyPropertyChanged
     {
+        #region VIEWMODEL
         eventosEntities ctx = new eventosEntities();
         private List<Rol> _roles;
         private List<Usuario> _usuarios;
@@ -72,38 +73,11 @@ namespace GestionEventos.ViewModel
                 _selectedUsuario = value;        
                 NotifyPropertyChanged();
             }
-        }
-      
+        }      
         public InicioViewModel()
         {
 
         }
-
-        //private ObservableCollection<IDialogViewModel> _Dialogs = new ObservableCollection<IDialogViewModel>();
-        //public System.Collections.ObjectModel.ObservableCollection<IDialogViewModel> Dialogs { get { return _Dialogs; } }
-        //public void LogIn()
-        //{
-        //    this.Dialogs.Add(new homeLocalViewModel
-        //    {
-        //        Title = "Afegir Contacte",
-        //        OkText = "Ok",
-        //        TextEnabled = true,
-        //        OnOk = (sender) => { sender.Close(); },
-        //        OnCancel = (sender) => { sender.Close(); },
-        //        OnCloseRequest = (sender) => { sender.Close(); }
-        //    });
-        //}
-
-        public ICommand LogInCommand
-        {
-            get { return new RelayCommand(LogIn); }
-        }
-        public void LogIn()
-        {
-            homeLocal hl = new homeLocal();
-            
-        }
-
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
@@ -112,5 +86,26 @@ namespace GestionEventos.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+        #endregion
+        #region DIALOGS
+        private ObservableCollection<IDialogViewModel> _Dialogs = new ObservableCollection<IDialogViewModel>();
+        public System.Collections.ObjectModel.ObservableCollection<IDialogViewModel> Dialogs { get { return _Dialogs; } }
+        public void LogIn()
+        {
+            this.Dialogs.Add(new homeLocalViewModel {
+                OnOk = (sender) => { sender.Close(); },
+                OnCancel = (sender) => { sender.Close(); },
+                OnCloseRequest = (sender) => { sender.Close(); },
+                OnLogOut = (sender) => { sender.Close();  }
+            });            
+        }
+
+        public ICommand LogInCommand
+        {
+            get { return new RelayCommand(LogIn); }
+        }
+        #endregion
+
+
     }
 }

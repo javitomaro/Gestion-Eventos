@@ -6,31 +6,9 @@ using GalaSoft.MvvmLight;
 
 namespace GestionEventos.ViewModel
 {
-    class homeLocalViewModel : ViewModelBase, IUserDialogViewModel
+    class homeLocalViewModel : ViewModelBase , IDialogViewModel
     {
-        private string _okText;
-        private bool _textEnabled;
-        private string _title;
-
-        public string OkText
-        {
-            get { return _okText; }
-            set { _okText = value; }
-        }
-        public bool TextEnabled
-        {
-            get { return _textEnabled; }
-            set { _textEnabled = value; }
-        }
-        public string Title
-        {
-            get { return _title; }
-            set { _title = value; }
-        }     
-        public virtual bool IsModal { get { return true; } }
-        public virtual void RequestClose() { this.DialogClosing(this, null); }
-        public virtual event EventHandler DialogClosing;      
-        //public event PropertyChangedEventHandler PropertyChanged;           
+        //public event PropertyChangedEventHandler PropertyChanged;
 
         //private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         //{
@@ -39,6 +17,14 @@ namespace GestionEventos.ViewModel
         //        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         //    }
         //}
+
+
+
+        #region PRUEBA DIALOGO
+        public virtual bool IsModal { get { return true; } }
+        public virtual void RequestClose() { this.DialogClosing(this, null); }
+        public virtual event EventHandler DialogClosing;
+        
         public ICommand OkCommand { get { return new RelayCommand(Ok); } }
         protected virtual void Ok()
         {
@@ -62,9 +48,18 @@ namespace GestionEventos.ViewModel
             if (this.DialogClosing != null)
                 this.DialogClosing(this, new EventArgs());
         }
+        public ICommand LogOutCommand { get { return new RelayCommand(LogOut); } }
+        protected virtual void LogOut()
+        {
+            if (this.OnLogOut != null)
+                this.OnLogOut(this);
+            Close();
+        }
 
         public Action<homeLocalViewModel> OnOk { get; set; }
-        public Action<homeLocalViewModel> OnCancel { get; set; }       
+        public Action<homeLocalViewModel> OnCancel { get; set; }
         public Action<homeLocalViewModel> OnCloseRequest { get; set; }
+        public Action<homeLocalViewModel> OnLogOut { get; set; }
+        #endregion
     }
 }
