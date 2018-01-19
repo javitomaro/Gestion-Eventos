@@ -97,6 +97,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\detallesEvento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\editarPerfil.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -173,6 +177,9 @@
     <Compile Include="View\CrudEvento.xaml.cs">
       <DependentUpon>CrudEvento.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\detallesEvento.xaml.cs">
+      <DependentUpon>detallesEvento.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\editarPerfil.xaml.cs">
       <DependentUpon>editarPerfil.xaml</DependentUpon>
     </Compile>
@@ -246,7 +253,9 @@
     <Resource Include="Resources\fondo3.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\fondo4.jpg" />
+    <Resource Include="Resources\fondo4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\fondo.jpg" />

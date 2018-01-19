@@ -7,7 +7,7 @@
       <Diagram DiagramId="83646dad9509462c984eb65a7fd56c25" Name="Diagram1">
         <EntityTypeShape EntityType="eventosModel.Cliente" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="eventosModel.Direccion" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="eventosModel.Estilo" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eventosModel.Estilo" Width="1.5" PointX="0.5" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="eventosModel.Evento" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="eventosModel.Flyer" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="eventosModel.Local" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
@@ -16,7 +16,7 @@
         <EntityTypeShape EntityType="eventosModel.TipoLocal" Width="1.5" PointX="3.75" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="eventosModel.Usuario" Width="1.5" PointX="3.75" PointY="13" IsExpanded="true" />
         <EntityTypeShape EntityType="eventosModel.ListaEvento" Width="1.5" PointX="8.25" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="eventosModel.ListaFavoritos" Width="1.5" PointX="8.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eventosModel.ListaFavoritos" Width="1.5" PointX="10.625" PointY="3" IsExpanded="true" />
         <AssociationConnector Association="eventosModel.FK__Cliente__IdUsuar__5CD6CB2B" ManuallyRouted="false" />
         <AssociationConnector Association="eventosModel.FK__Cliente__IdUsuar__71D1E811" ManuallyRouted="false" />
         <AssociationConnector Association="eventosModel.FK__ListaEven__IdCli__5EBF139D" ManuallyRouted="false" />
