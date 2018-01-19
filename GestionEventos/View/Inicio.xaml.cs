@@ -28,7 +28,7 @@ namespace GestionEventos
         }        
         private void button_Copy1_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.Close();            
         }
     }
 }

@@ -92,7 +92,8 @@ namespace GestionEventos.ViewModel
         public System.Collections.ObjectModel.ObservableCollection<IDialogViewModel> Dialogs { get { return _Dialogs; } }
         public void LogIn()
         {
-            this.Dialogs.Add(new homeLocalViewModel {
+            this.Dialogs.Add(new homeLocalViewModel{
+
                 OnOk = (sender) => { sender.Close(); },
                 OnCancel = (sender) => { sender.Close(); },
                 OnCloseRequest = (sender) => { sender.Close(); },

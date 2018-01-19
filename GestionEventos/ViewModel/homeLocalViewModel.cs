@@ -6,7 +6,7 @@ using GalaSoft.MvvmLight;
 
 namespace GestionEventos.ViewModel
 {
-    class homeLocalViewModel : ViewModelBase , IDialogViewModel
+    class homeLocalViewModel : ViewModelBase , IUserDialogViewModel
     {
         //public event PropertyChangedEventHandler PropertyChanged;
 
@@ -17,9 +17,6 @@ namespace GestionEventos.ViewModel
         //        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         //    }
         //}
-
-
-
         #region PRUEBA DIALOGO
         public virtual bool IsModal { get { return true; } }
         public virtual void RequestClose() { this.DialogClosing(this, null); }
