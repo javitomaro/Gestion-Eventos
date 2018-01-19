@@ -11,46 +11,99 @@ using System.Collections.ObjectModel;
 using MvvmDialogs.ViewModels;
 using GalaSoft.MvvmLight.Command;
 using GestionEventos.ViewModel;
+using GestionEventos.Model;
+using GestionEventos.View;
+using System.Windows;
 
 namespace GestionEventos.ViewModel
 {
     class InicioViewModel : INotifyPropertyChanged
     {
-        //gestioneventosEntities ctx = new gestioneventosEntities();
-        //private List<evento> _eventos;
-        //private List<local> _locales;
-        //private List<cliente> _clientes;
-        //private List<direccion> _direcciones;
-        //private List<estilo> _estilos;
-        //private List<flyer> _flyer;
-        //private List<listaevento> _listaeventos;
-        //private List<listafavorito> _listafavoritos;
-        //private List<tipoevento> _tipoeventos;
-        //private List<tipolocal> _tipolocales;        
-        //private evento _selectedEvento;
-        //private local _selectedLocal;
+        eventosEntities ctx = new eventosEntities();
+        private List<Rol> _roles;
+        private List<Usuario> _usuarios;
+        private Rol _selectedRol;
+        private Usuario _selectedUsuario;
 
-        private ObservableCollection<IDialogViewModel> _Dialogs = new ObservableCollection<IDialogViewModel>();
-        public System.Collections.ObjectModel.ObservableCollection<IDialogViewModel> Dialogs { get { return _Dialogs; } }
-        
+        public List<Rol> Roles
+        {
+            get
+            {
+                return _roles;
+            }
+            set
+            {
+                _roles = value;
+                NotifyPropertyChanged();
+            }
+        }
+        public List<Usuario> Usuarios
+        {
+            get
+            {
+                return _usuarios;            
+            }
+            set
+            {
+                _usuarios = value;
+                NotifyPropertyChanged();
+            }
+        }
+        public Rol SelectedRol
+        {
+            get
+            {
+                return _selectedRol;
+            }
+            set
+            {
+                _selectedRol = value;
+                NotifyPropertyChanged();
+            }
+        }
+        public Usuario SelectedUsuario
+        {
+            get
+            {
+                return _selectedUsuario;
+            }
+            set
+            {
+                _selectedUsuario = value;        
+                NotifyPropertyChanged();
+            }
+        }
+      
+        public InicioViewModel()
+        {
+
+        }
+
+        //private ObservableCollection<IDialogViewModel> _Dialogs = new ObservableCollection<IDialogViewModel>();
+        //public System.Collections.ObjectModel.ObservableCollection<IDialogViewModel> Dialogs { get { return _Dialogs; } }
+        //public void LogIn()
+        //{
+        //    this.Dialogs.Add(new homeLocalViewModel
+        //    {
+        //        Title = "Afegir Contacte",
+        //        OkText = "Ok",
+        //        TextEnabled = true,
+        //        OnOk = (sender) => { sender.Close(); },
+        //        OnCancel = (sender) => { sender.Close(); },
+        //        OnCloseRequest = (sender) => { sender.Close(); }
+        //    });
+        //}
+
         public ICommand LogInCommand
         {
             get { return new RelayCommand(LogIn); }
         }
         public void LogIn()
         {
-            this.Dialogs.Add(new homeLocalViewModel
-            {
-                Title = "Afegir Contacte",                
-                OkText = "Ok",
-                TextEnabled = true,
-                OnOk = (sender) => { sender.Close(); },
-
-                OnCancel = (sender) => { sender.Close(); },
-                OnCloseRequest = (sender) => { sender.Close(); }
-            });
+            homeLocal hl = new homeLocal();
+            
         }
-        
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {

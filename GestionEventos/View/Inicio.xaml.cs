@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GestionEventos.View;
+using GestionEventos.ViewModel;
 
 namespace GestionEventos
 {
@@ -42,6 +43,11 @@ namespace GestionEventos
         private void button_Copy1_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void button_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

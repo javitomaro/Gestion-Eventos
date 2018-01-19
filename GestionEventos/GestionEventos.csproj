@@ -265,6 +265,9 @@
       <DependentUpon>ModeloEventos.edmx</DependentUpon>
       <LastGenOutput>ModeloEventos.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\FondoHomeLocal.jpg" />
+    <Resource Include="Resources\FondoHomeAdmin.jpg" />
+    <Resource Include="Resources\FondoLogIn.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\crear.png" />

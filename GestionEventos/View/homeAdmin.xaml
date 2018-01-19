@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestionEventos.View"
         mc:Ignorable="d"
-        Title="homeAdmin" Height="600" Width="800">
+        Title="homeAdmin" Height="600" Width="800" WindowStyle="None" ResizeMode="NoResize">
+    <Window.Background>
+        <ImageBrush ImageSource="/GestionEventos;component/Resources/FondoHomeAdmin.jpg"/>
+    </Window.Background>
     <Grid>
         
     </Grid>
