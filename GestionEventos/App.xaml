@@ -4,8 +4,7 @@
              xmlns:local="clr-namespace:GestionEventos"
              StartupUri="View/Inicio.xaml"
              xmlns:View="clr-namespace:GestionEventos.View"
-             xmlns:ViewModel="clr-namespace:GestionEventos.ViewModel">
-    
+             xmlns:ViewModel="clr-namespace:GestionEventos.ViewModel">    
     <Application.Resources>
         <View:homeLocal x:Key="{x:Type ViewModel:homeLocalViewModel}" x:Shared="False" />
     </Application.Resources>
