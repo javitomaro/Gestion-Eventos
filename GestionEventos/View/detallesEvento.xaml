@@ -6,7 +6,28 @@
         xmlns:local="clr-namespace:GestionEventos.View"
         mc:Ignorable="d"
         Title="detallesEvento" Height="600" Width="800" ResizeMode="NoResize" WindowStyle="None">
-    <Grid>
-        
+    <Grid Height="600" VerticalAlignment="Bottom">
+        <Label x:Name="labelTitelEvento" Content="Detalles del Evento" HorizontalAlignment="Left" Margin="142,74,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="81" Margin="142,137,0,0" TextWrapping="Wrap" Text="AQUI VA IMAGEN :(" VerticalAlignment="Top" Width="185">
+            <TextBox.Background>
+                <ImageBrush/>
+            </TextBox.Background>
+        </TextBox>
+        <Label x:Name="labelDescripcionEvento" Content="Descripcion del evento............." HorizontalAlignment="Left" Margin="142,251,0,0" VerticalAlignment="Top" Height="29" Width="143"/>
+        <Label x:Name="labelAforoDetalles" Content="90" HorizontalAlignment="Left" Margin="609,122,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelAux" Content="/" HorizontalAlignment="Left" Margin="594,122,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.602,0.393"/>
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="190" Margin="561,153,0,0" VerticalAlignment="Top" Width="100">
+            <Label x:Name="label" Content="Pepe"/>
+            <Label x:Name="label1" Content="Juanito"/>
+            <Label x:Name="label2" Content="Menganito"/>
+        </ListBox>
+        <Label x:Name="labelAux1" Content="Lista de asistentes" HorizontalAlignment="Left" Margin="554,96,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="labelCountAsistentes" Content="18" HorizontalAlignment="Left" Margin="561,122,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label3" Content="..." HorizontalAlignment="Left" Margin="566,243,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label4" Content="14/02/2018" HorizontalAlignment="Left" Margin="407,137,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelDireccionDetalle" Content="La comarca 001, 2º 4º - Granolles Barcelona" HorizontalAlignment="Left" Margin="142,317,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelTipoEventoDetalle" Content="Tipo de Evento" HorizontalAlignment="Left" Margin="142,373,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelEstiloDetalle" Content="Estilo del evento" HorizontalAlignment="Left" Margin="142,421,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>

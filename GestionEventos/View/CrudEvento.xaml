@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestionEventos.View"
         mc:Ignorable="d"
-        Title="CrudEvento" Height="800" Width="800" WindowStartupLocation="CenterScreen">
+        Title="CrudEvento" Height="800" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
     <Grid>
-        
+        <Label x:Name="labelCrudTileEvento" Content="CRUD EVENTO" HorizontalAlignment="Left" Margin="142,74,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxDescripcion" HorizontalAlignment="Left" Height="24" Margin="142,164,0,0" TextWrapping="Wrap" Text="Descripción" VerticalAlignment="Top" Width="483" SelectionOpacity="0"/>
+        <Calendar x:Name="CalendarFecha" HorizontalAlignment="Left" Margin="142,301,0,0" VerticalAlignment="Top" Cursor="No">
+            <Calendar.BindingGroup>
+                <BindingGroup/>
+            </Calendar.BindingGroup>
+        </Calendar>
+        <TextBox x:Name="textBoxAforo" HorizontalAlignment="Left" Height="24" Margin="142,227,0,0" TextWrapping="Wrap" Text="Aforo" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="comboBoxTipoEvento" HorizontalAlignment="Left" Margin="312,227,0,0" VerticalAlignment="Top" Width="153"/>
+        <ComboBox x:Name="comboBoxEstiloEvento" HorizontalAlignment="Left" Margin="505,227,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="369,301,0,0" VerticalAlignment="Top" Width="256"/>
+        <Button x:Name="buttonAñadirDireccion" Content="Añadir Dirección" HorizontalAlignment="Left" Margin="369,346,0,0" VerticalAlignment="Top" Width="110"/>
+        <Label x:Name="labelDescripcionEvento" Content="Descripcion" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="142,133,0,0" FontWeight="Bold"/>
+        <Label x:Name="labelAforo" Content="Aforo" HorizontalAlignment="Left" Margin="142,201,0,0" VerticalAlignment="Top" Width="62" FontWeight="Bold"/>
+        <Label x:Name="labelTipoEvento" Content="Tipo" HorizontalAlignment="Left" Margin="312,201,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="labelEstiloEvento" Content="Estilo" HorizontalAlignment="Left" Margin="505,201,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="labelFechaEvento" Content="Fecha" HorizontalAlignment="Left" Margin="142,275,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="labelDireccionEvento" Content="Dirección" HorizontalAlignment="Left" Margin="369,275,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Button x:Name="buttonSubirImagen" Content="Subir imagen" HorizontalAlignment="Left" Margin="142,512,0,0" VerticalAlignment="Top" Width="93"/>
+        <Label x:Name="labelSubirImagen" Content="Subir Imagen" HorizontalAlignment="Left" Margin="142,486,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="88"/>
+        <Button x:Name="buttonGuardarCrudEvento" Content="Guardar" HorizontalAlignment="Left" Margin="229,636,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="buttonCancelarCrudEvento" Content="Cancelar" HorizontalAlignment="Left" Margin="390,636,0,0" VerticalAlignment="Top" Width="75"/>
+
     </Grid>
 </Window>
