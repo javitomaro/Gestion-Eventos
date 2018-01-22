@@ -4,12 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestionEventos.View"
+        xmlns:ViewModel="clr-namespace:GestionEventos.ViewModel" 
         mc:Ignorable="d"
-        Title="homeAdmin" Height="600" Width="800" WindowStyle="None" ResizeMode="NoResize">
+        Title="homeAdmin" Height="626" Width="836" WindowStyle="None" ResizeMode="NoResize">
     <Window.Background>
-        <ImageBrush ImageSource="/GestionEventos;component/Resources/FondoHomeAdmin.jpg"/>
+        <ImageBrush ImageSource="/GestionEventos;component/Resources/FondoHomeAdmin.jpg" Stretch="UniformToFill" TileMode="Tile"/>
     </Window.Background>
-    <Grid>
-        
-    </Grid>
+    <Window.DataContext>
+        <ViewModel:homeLocalViewModel/>
+    </Window.DataContext>
+    <Grid/>
 </Window>

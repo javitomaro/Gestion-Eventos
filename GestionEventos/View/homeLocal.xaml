@@ -18,9 +18,8 @@
     </Window.DataContext>
     <Grid Margin="0,0,0,-2">
         <Grid.Background>
-            <ImageBrush/>
+            <ImageBrush Stretch="UniformToFill"/>
         </Grid.Background>
-        <ScrollBar x:Name="scrollBar" HorizontalAlignment="Left" Margin="512,203,0,0" VerticalAlignment="Top" Height="264" Width="23"/>
         <Button x:Name="button" HorizontalAlignment="Left" Margin="750,10,0,0" VerticalAlignment="Top" Width="30" Height="30" Command="{Binding LogOutCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" Cursor="Hand" ClickMode="Press" >
             <Button.OpacityMask>
                 <ImageBrush ImageSource="/GestionEventos;component/Resources/logout.png"/>
