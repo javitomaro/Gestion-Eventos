@@ -16,14 +16,14 @@ namespace GestionEventos.Model
     {
         public Rol()
         {
-            this.Usuario = new HashSet<Usuario>();
-            this.Usuario1 = new HashSet<Usuario>();
+            this.Usuarios = new HashSet<Usuario>();
+            this.Usuarios1 = new HashSet<Usuario>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
     
-        public virtual ICollection<Usuario> Usuario { get; set; }
-        public virtual ICollection<Usuario> Usuario1 { get; set; }
+        public virtual ICollection<Usuario> Usuarios { get; set; }
+        public virtual ICollection<Usuario> Usuarios1 { get; set; }
     }
 }

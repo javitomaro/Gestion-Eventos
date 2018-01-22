@@ -16,10 +16,10 @@ namespace GestionEventos.Model
     {
         public Evento()
         {
-            this.Flyer = new HashSet<Flyer>();
-            this.Flyer1 = new HashSet<Flyer>();
-            this.ListaEvento = new HashSet<ListaEvento>();
-            this.ListaEvento1 = new HashSet<ListaEvento>();
+            this.Flyers = new HashSet<Flyer>();
+            this.Flyers1 = new HashSet<Flyer>();
+            this.ListaEventoes = new HashSet<ListaEvento>();
+            this.ListaEventoes1 = new HashSet<ListaEvento>();
         }
     
         public int Id { get; set; }
@@ -35,9 +35,9 @@ namespace GestionEventos.Model
         public virtual Estilo Estilo { get; set; }
         public virtual Local Local { get; set; }
         public virtual TipoEvento TipoEvento { get; set; }
-        public virtual ICollection<Flyer> Flyer { get; set; }
-        public virtual ICollection<Flyer> Flyer1 { get; set; }
-        public virtual ICollection<ListaEvento> ListaEvento { get; set; }
-        public virtual ICollection<ListaEvento> ListaEvento1 { get; set; }
+        public virtual ICollection<Flyer> Flyers { get; set; }
+        public virtual ICollection<Flyer> Flyers1 { get; set; }
+        public virtual ICollection<ListaEvento> ListaEventoes { get; set; }
+        public virtual ICollection<ListaEvento> ListaEventoes1 { get; set; }
     }
 }

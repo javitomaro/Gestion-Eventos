@@ -12,7 +12,7 @@ namespace GestionEventos.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class ListaFavoritos
+    public partial class ListaFavorito
     {
         public int IdCliente { get; set; }
         public int IdLocal { get; set; }

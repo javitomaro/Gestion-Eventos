@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:GestionEventos"
         xmlns:ViewModel="clr-namespace:GestionEventos.ViewModel" x:Class="GestionEventos.MainWindow"
         mc:Ignorable="d"
-        Title="Log In" Height="262" Width="454" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Title="Log In" Height="323" Width="501" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Window.Background>
         <ImageBrush ImageSource="/GestionEventos;component/Resources/FondoLogIn.jpg"/>
     </Window.Background>
@@ -50,5 +50,6 @@
                 <ImageBrush ImageSource="/GestionEventos;component/Resources/exit.png"/>
             </Button.Background>
         </Button>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="144,167,0,0" VerticalAlignment="Top" Height="131" Width="260" ItemsSource="{Binding Usuarios/}"/>
     </Grid>
 </Window>

@@ -536,8 +536,8 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK__Cliente__IdUsuar__5CD6CB2B" FromRole="Cliente" ToRole="Usuario" />
           <NavigationProperty Name="Usuario1" Relationship="Self.FK__Cliente__IdUsuar__71D1E811" FromRole="Cliente" ToRole="Usuario" />
-          <NavigationProperty Name="ListaEvento" Relationship="Self.FK__ListaEven__IdCli__5EBF139D" FromRole="Cliente" ToRole="ListaEvento" />
-          <NavigationProperty Name="ListaEvento1" Relationship="Self.FK__ListaEven__IdCli__73BA3083" FromRole="Cliente" ToRole="ListaEvento" />
+          <NavigationProperty Name="ListaEventoes" Relationship="Self.FK__ListaEven__IdCli__5EBF139D" FromRole="Cliente" ToRole="ListaEvento" />
+          <NavigationProperty Name="ListaEventoes1" Relationship="Self.FK__ListaEven__IdCli__73BA3083" FromRole="Cliente" ToRole="ListaEvento" />
           <NavigationProperty Name="ListaFavoritos" Relationship="Self.FK__ListaFavo__IdCli__60A75C0F" FromRole="Cliente" ToRole="ListaFavoritos" />
           <NavigationProperty Name="ListaFavoritos1" Relationship="Self.FK__ListaFavo__IdCli__75A278F5" FromRole="Cliente" ToRole="ListaFavoritos" />
         </EntityType>
@@ -549,9 +549,9 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
           <Property Name="Calle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Población" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CodigoPostal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Evento" Relationship="Self.FK__Evento__IdDirecc__7B5B524B" FromRole="Direccion" ToRole="Evento" />
-          <NavigationProperty Name="Local" Relationship="Self.FK__Local__IdDirecci__628FA481" FromRole="Direccion" ToRole="Local" />
-          <NavigationProperty Name="Local1" Relationship="Self.FK__Local__IdDirecci__778AC167" FromRole="Direccion" ToRole="Local" />
+          <NavigationProperty Name="Eventoes" Relationship="Self.FK__Evento__IdDirecc__7B5B524B" FromRole="Direccion" ToRole="Evento" />
+          <NavigationProperty Name="Locals" Relationship="Self.FK__Local__IdDirecci__628FA481" FromRole="Direccion" ToRole="Local" />
+          <NavigationProperty Name="Locals1" Relationship="Self.FK__Local__IdDirecci__778AC167" FromRole="Direccion" ToRole="Local" />
         </EntityType>
         <EntityType Name="Estilo">
           <Key>
@@ -559,7 +559,7 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Evento" Relationship="Self.FK__Evento__IdEstilo__7D439ABD" FromRole="Estilo" ToRole="Evento" />
+          <NavigationProperty Name="Eventoes" Relationship="Self.FK__Evento__IdEstilo__7D439ABD" FromRole="Estilo" ToRole="Evento" />
         </EntityType>
         <EntityType Name="Evento">
           <Key>
@@ -577,10 +577,10 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
           <NavigationProperty Name="Estilo" Relationship="Self.FK__Evento__IdEstilo__7D439ABD" FromRole="Evento" ToRole="Estilo" />
           <NavigationProperty Name="Local" Relationship="Self.FK__Evento__IdLocal__7E37BEF6" FromRole="Evento" ToRole="Local" />
           <NavigationProperty Name="TipoEvento" Relationship="Self.FK__Evento__IdTipoEv__7C4F7684" FromRole="Evento" ToRole="TipoEvento" />
-          <NavigationProperty Name="Flyer" Relationship="Self.FK__Flyer__IdEvento__5DCAEF64" FromRole="Evento" ToRole="Flyer" />
-          <NavigationProperty Name="Flyer1" Relationship="Self.FK__Flyer__IdEvento__72C60C4A" FromRole="Evento" ToRole="Flyer" />
-          <NavigationProperty Name="ListaEvento" Relationship="Self.FK__ListaEven__IdEve__5FB337D6" FromRole="Evento" ToRole="ListaEvento" />
-          <NavigationProperty Name="ListaEvento1" Relationship="Self.FK__ListaEven__IdEve__74AE54BC" FromRole="Evento" ToRole="ListaEvento" />
+          <NavigationProperty Name="Flyers" Relationship="Self.FK__Flyer__IdEvento__5DCAEF64" FromRole="Evento" ToRole="Flyer" />
+          <NavigationProperty Name="Flyers1" Relationship="Self.FK__Flyer__IdEvento__72C60C4A" FromRole="Evento" ToRole="Flyer" />
+          <NavigationProperty Name="ListaEventoes" Relationship="Self.FK__ListaEven__IdEve__5FB337D6" FromRole="Evento" ToRole="ListaEvento" />
+          <NavigationProperty Name="ListaEventoes1" Relationship="Self.FK__ListaEven__IdEve__74AE54BC" FromRole="Evento" ToRole="ListaEvento" />
         </EntityType>
         <EntityType Name="Flyer">
           <Key>
@@ -605,7 +605,7 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
           <Property Name="IdUsuario" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Direccion" Relationship="Self.FK__Local__IdDirecci__628FA481" FromRole="Local" ToRole="Direccion" />
           <NavigationProperty Name="Direccion1" Relationship="Self.FK__Local__IdDirecci__778AC167" FromRole="Local" ToRole="Direccion" />
-          <NavigationProperty Name="Evento" Relationship="Self.FK__Evento__IdLocal__7E37BEF6" FromRole="Local" ToRole="Evento" />
+          <NavigationProperty Name="Eventoes" Relationship="Self.FK__Evento__IdLocal__7E37BEF6" FromRole="Local" ToRole="Evento" />
           <NavigationProperty Name="ListaFavoritos" Relationship="Self.FK__ListaFavo__IdLoc__619B8048" FromRole="Local" ToRole="ListaFavoritos" />
           <NavigationProperty Name="ListaFavoritos1" Relationship="Self.FK__ListaFavo__IdLoc__76969D2E" FromRole="Local" ToRole="ListaFavoritos" />
           <NavigationProperty Name="TipoLocal" Relationship="Self.FK__Local__IdTipoLoc__6383C8BA" FromRole="Local" ToRole="TipoLocal" />
@@ -619,8 +619,8 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__IdRol__656C112C" FromRole="Rol" ToRole="Usuario" />
-          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Usuario__IdRol__7A672E12" FromRole="Rol" ToRole="Usuario" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Usuario__IdRol__656C112C" FromRole="Rol" ToRole="Usuario" />
+          <NavigationProperty Name="Usuarios1" Relationship="Self.FK__Usuario__IdRol__7A672E12" FromRole="Rol" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="TipoEvento">
           <Key>
@@ -628,7 +628,7 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Evento" Relationship="Self.FK__Evento__IdTipoEv__7C4F7684" FromRole="TipoEvento" ToRole="Evento" />
+          <NavigationProperty Name="Eventoes" Relationship="Self.FK__Evento__IdTipoEv__7C4F7684" FromRole="TipoEvento" ToRole="Evento" />
         </EntityType>
         <EntityType Name="TipoLocal">
           <Key>
@@ -636,8 +636,8 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Local" Relationship="Self.FK__Local__IdTipoLoc__6383C8BA" FromRole="TipoLocal" ToRole="Local" />
-          <NavigationProperty Name="Local1" Relationship="Self.FK__Local__IdTipoLoc__787EE5A0" FromRole="TipoLocal" ToRole="Local" />
+          <NavigationProperty Name="Locals" Relationship="Self.FK__Local__IdTipoLoc__6383C8BA" FromRole="TipoLocal" ToRole="Local" />
+          <NavigationProperty Name="Locals1" Relationship="Self.FK__Local__IdTipoLoc__787EE5A0" FromRole="TipoLocal" ToRole="Local" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -649,8 +649,8 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
           <Property Name="IdRol" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__IdUsuar__5CD6CB2B" FromRole="Usuario" ToRole="Cliente" />
           <NavigationProperty Name="Cliente1" Relationship="Self.FK__Cliente__IdUsuar__71D1E811" FromRole="Usuario" ToRole="Cliente" />
-          <NavigationProperty Name="Local" Relationship="Self.FK__Local__IdUsuario__6477ECF3" FromRole="Usuario" ToRole="Local" />
-          <NavigationProperty Name="Local1" Relationship="Self.FK__Local__IdUsuario__797309D9" FromRole="Usuario" ToRole="Local" />
+          <NavigationProperty Name="Locals" Relationship="Self.FK__Local__IdUsuario__6477ECF3" FromRole="Usuario" ToRole="Local" />
+          <NavigationProperty Name="Locals1" Relationship="Self.FK__Local__IdUsuario__797309D9" FromRole="Usuario" ToRole="Local" />
           <NavigationProperty Name="Rol" Relationship="Self.FK__Usuario__IdRol__656C112C" FromRole="Usuario" ToRole="Rol" />
           <NavigationProperty Name="Rol1" Relationship="Self.FK__Usuario__IdRol__7A672E12" FromRole="Usuario" ToRole="Rol" />
         </EntityType>
@@ -666,7 +666,7 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
           <NavigationProperty Name="Evento" Relationship="Self.FK__ListaEven__IdEve__5FB337D6" FromRole="ListaEvento" ToRole="Evento" />
           <NavigationProperty Name="Evento1" Relationship="Self.FK__ListaEven__IdEve__74AE54BC" FromRole="ListaEvento" ToRole="Evento" />
         </EntityType>
-        <EntityType Name="ListaFavoritos">
+        <EntityType Name="ListaFavorito">
           <Key>
             <PropertyRef Name="IdCliente" />
             <PropertyRef Name="IdLocal" />
@@ -728,7 +728,7 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
         </Association>
         <Association Name="FK__ListaFavo__IdCli__60A75C0F">
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
-          <End Role="ListaFavoritos" Type="Self.ListaFavoritos" Multiplicity="*" />
+          <End Role="ListaFavoritos" Type="Self.ListaFavorito" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cliente">
               <PropertyRef Name="IdUsuario" />
@@ -740,7 +740,7 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
         </Association>
         <Association Name="FK__ListaFavo__IdCli__75A278F5">
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
-          <End Role="ListaFavoritos" Type="Self.ListaFavoritos" Multiplicity="*" />
+          <End Role="ListaFavoritos" Type="Self.ListaFavorito" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cliente">
               <PropertyRef Name="IdUsuario" />
@@ -872,7 +872,7 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
         </Association>
         <Association Name="FK__ListaFavo__IdLoc__619B8048">
           <End Role="Local" Type="Self.Local" Multiplicity="1" />
-          <End Role="ListaFavoritos" Type="Self.ListaFavoritos" Multiplicity="*" />
+          <End Role="ListaFavoritos" Type="Self.ListaFavorito" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Local">
               <PropertyRef Name="Id" />
@@ -884,7 +884,7 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
         </Association>
         <Association Name="FK__ListaFavo__IdLoc__76969D2E">
           <End Role="Local" Type="Self.Local" Multiplicity="1" />
-          <End Role="ListaFavoritos" Type="Self.ListaFavoritos" Multiplicity="*" />
+          <End Role="ListaFavoritos" Type="Self.ListaFavorito" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Local">
               <PropertyRef Name="Id" />
@@ -966,114 +966,114 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="eventosEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
-          <EntitySet Name="Direccion" EntityType="Self.Direccion" />
-          <EntitySet Name="Estilo" EntityType="Self.Estilo" />
-          <EntitySet Name="Evento" EntityType="Self.Evento" />
-          <EntitySet Name="Flyer" EntityType="Self.Flyer" />
-          <EntitySet Name="Local" EntityType="Self.Local" />
-          <EntitySet Name="Rol" EntityType="Self.Rol" />
-          <EntitySet Name="TipoEvento" EntityType="Self.TipoEvento" />
-          <EntitySet Name="TipoLocal" EntityType="Self.TipoLocal" />
-          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
-          <EntitySet Name="ListaEvento" EntityType="Self.ListaEvento" />
-          <EntitySet Name="ListaFavoritos" EntityType="Self.ListaFavoritos" />
+        <EntityContainer Name="eventosEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+          <EntitySet Name="Direccions" EntityType="Self.Direccion" />
+          <EntitySet Name="Estiloes" EntityType="Self.Estilo" />
+          <EntitySet Name="Eventoes" EntityType="Self.Evento" />
+          <EntitySet Name="Flyers" EntityType="Self.Flyer" />
+          <EntitySet Name="Locals" EntityType="Self.Local" />
+          <EntitySet Name="Rols" EntityType="Self.Rol" />
+          <EntitySet Name="TipoEventoes" EntityType="Self.TipoEvento" />
+          <EntitySet Name="TipoLocals" EntityType="Self.TipoLocal" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <EntitySet Name="ListaEventoes" EntityType="Self.ListaEvento" />
+          <EntitySet Name="ListaFavoritos" EntityType="Self.ListaFavorito" />
           <AssociationSet Name="FK__Cliente__IdUsuar__5CD6CB2B" Association="Self.FK__Cliente__IdUsuar__5CD6CB2B">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Cliente" EntitySet="Clientes" />
           </AssociationSet>
           <AssociationSet Name="FK__Cliente__IdUsuar__71D1E811" Association="Self.FK__Cliente__IdUsuar__71D1E811">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Cliente" EntitySet="Clientes" />
           </AssociationSet>
           <AssociationSet Name="FK__ListaEven__IdCli__5EBF139D" Association="Self.FK__ListaEven__IdCli__5EBF139D">
-            <End Role="Cliente" EntitySet="Cliente" />
-            <End Role="ListaEvento" EntitySet="ListaEvento" />
+            <End Role="Cliente" EntitySet="Clientes" />
+            <End Role="ListaEvento" EntitySet="ListaEventoes" />
           </AssociationSet>
           <AssociationSet Name="FK__ListaEven__IdCli__73BA3083" Association="Self.FK__ListaEven__IdCli__73BA3083">
-            <End Role="Cliente" EntitySet="Cliente" />
-            <End Role="ListaEvento" EntitySet="ListaEvento" />
+            <End Role="Cliente" EntitySet="Clientes" />
+            <End Role="ListaEvento" EntitySet="ListaEventoes" />
           </AssociationSet>
           <AssociationSet Name="FK__ListaFavo__IdCli__60A75C0F" Association="Self.FK__ListaFavo__IdCli__60A75C0F">
-            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Cliente" EntitySet="Clientes" />
             <End Role="ListaFavoritos" EntitySet="ListaFavoritos" />
           </AssociationSet>
           <AssociationSet Name="FK__ListaFavo__IdCli__75A278F5" Association="Self.FK__ListaFavo__IdCli__75A278F5">
-            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Cliente" EntitySet="Clientes" />
             <End Role="ListaFavoritos" EntitySet="ListaFavoritos" />
           </AssociationSet>
           <AssociationSet Name="FK__Evento__IdDirecc__7B5B524B" Association="Self.FK__Evento__IdDirecc__7B5B524B">
-            <End Role="Direccion" EntitySet="Direccion" />
-            <End Role="Evento" EntitySet="Evento" />
+            <End Role="Direccion" EntitySet="Direccions" />
+            <End Role="Evento" EntitySet="Eventoes" />
           </AssociationSet>
           <AssociationSet Name="FK__Local__IdDirecci__628FA481" Association="Self.FK__Local__IdDirecci__628FA481">
-            <End Role="Direccion" EntitySet="Direccion" />
-            <End Role="Local" EntitySet="Local" />
+            <End Role="Direccion" EntitySet="Direccions" />
+            <End Role="Local" EntitySet="Locals" />
           </AssociationSet>
           <AssociationSet Name="FK__Local__IdDirecci__778AC167" Association="Self.FK__Local__IdDirecci__778AC167">
-            <End Role="Direccion" EntitySet="Direccion" />
-            <End Role="Local" EntitySet="Local" />
+            <End Role="Direccion" EntitySet="Direccions" />
+            <End Role="Local" EntitySet="Locals" />
           </AssociationSet>
           <AssociationSet Name="FK__Evento__IdEstilo__7D439ABD" Association="Self.FK__Evento__IdEstilo__7D439ABD">
-            <End Role="Estilo" EntitySet="Estilo" />
-            <End Role="Evento" EntitySet="Evento" />
+            <End Role="Estilo" EntitySet="Estiloes" />
+            <End Role="Evento" EntitySet="Eventoes" />
           </AssociationSet>
           <AssociationSet Name="FK__Evento__IdLocal__7E37BEF6" Association="Self.FK__Evento__IdLocal__7E37BEF6">
-            <End Role="Local" EntitySet="Local" />
-            <End Role="Evento" EntitySet="Evento" />
+            <End Role="Local" EntitySet="Locals" />
+            <End Role="Evento" EntitySet="Eventoes" />
           </AssociationSet>
           <AssociationSet Name="FK__Evento__IdTipoEv__7C4F7684" Association="Self.FK__Evento__IdTipoEv__7C4F7684">
-            <End Role="TipoEvento" EntitySet="TipoEvento" />
-            <End Role="Evento" EntitySet="Evento" />
+            <End Role="TipoEvento" EntitySet="TipoEventoes" />
+            <End Role="Evento" EntitySet="Eventoes" />
           </AssociationSet>
           <AssociationSet Name="FK__Flyer__IdEvento__5DCAEF64" Association="Self.FK__Flyer__IdEvento__5DCAEF64">
-            <End Role="Evento" EntitySet="Evento" />
-            <End Role="Flyer" EntitySet="Flyer" />
+            <End Role="Evento" EntitySet="Eventoes" />
+            <End Role="Flyer" EntitySet="Flyers" />
           </AssociationSet>
           <AssociationSet Name="FK__Flyer__IdEvento__72C60C4A" Association="Self.FK__Flyer__IdEvento__72C60C4A">
-            <End Role="Evento" EntitySet="Evento" />
-            <End Role="Flyer" EntitySet="Flyer" />
+            <End Role="Evento" EntitySet="Eventoes" />
+            <End Role="Flyer" EntitySet="Flyers" />
           </AssociationSet>
           <AssociationSet Name="FK__ListaEven__IdEve__5FB337D6" Association="Self.FK__ListaEven__IdEve__5FB337D6">
-            <End Role="Evento" EntitySet="Evento" />
-            <End Role="ListaEvento" EntitySet="ListaEvento" />
+            <End Role="Evento" EntitySet="Eventoes" />
+            <End Role="ListaEvento" EntitySet="ListaEventoes" />
           </AssociationSet>
           <AssociationSet Name="FK__ListaEven__IdEve__74AE54BC" Association="Self.FK__ListaEven__IdEve__74AE54BC">
-            <End Role="Evento" EntitySet="Evento" />
-            <End Role="ListaEvento" EntitySet="ListaEvento" />
+            <End Role="Evento" EntitySet="Eventoes" />
+            <End Role="ListaEvento" EntitySet="ListaEventoes" />
           </AssociationSet>
           <AssociationSet Name="FK__ListaFavo__IdLoc__619B8048" Association="Self.FK__ListaFavo__IdLoc__619B8048">
-            <End Role="Local" EntitySet="Local" />
+            <End Role="Local" EntitySet="Locals" />
             <End Role="ListaFavoritos" EntitySet="ListaFavoritos" />
           </AssociationSet>
           <AssociationSet Name="FK__ListaFavo__IdLoc__76969D2E" Association="Self.FK__ListaFavo__IdLoc__76969D2E">
-            <End Role="Local" EntitySet="Local" />
+            <End Role="Local" EntitySet="Locals" />
             <End Role="ListaFavoritos" EntitySet="ListaFavoritos" />
           </AssociationSet>
           <AssociationSet Name="FK__Local__IdTipoLoc__6383C8BA" Association="Self.FK__Local__IdTipoLoc__6383C8BA">
-            <End Role="TipoLocal" EntitySet="TipoLocal" />
-            <End Role="Local" EntitySet="Local" />
+            <End Role="TipoLocal" EntitySet="TipoLocals" />
+            <End Role="Local" EntitySet="Locals" />
           </AssociationSet>
           <AssociationSet Name="FK__Local__IdTipoLoc__787EE5A0" Association="Self.FK__Local__IdTipoLoc__787EE5A0">
-            <End Role="TipoLocal" EntitySet="TipoLocal" />
-            <End Role="Local" EntitySet="Local" />
+            <End Role="TipoLocal" EntitySet="TipoLocals" />
+            <End Role="Local" EntitySet="Locals" />
           </AssociationSet>
           <AssociationSet Name="FK__Local__IdUsuario__6477ECF3" Association="Self.FK__Local__IdUsuario__6477ECF3">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Local" EntitySet="Local" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Local" EntitySet="Locals" />
           </AssociationSet>
           <AssociationSet Name="FK__Local__IdUsuario__797309D9" Association="Self.FK__Local__IdUsuario__797309D9">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Local" EntitySet="Local" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Local" EntitySet="Locals" />
           </AssociationSet>
           <AssociationSet Name="FK__Usuario__IdRol__656C112C" Association="Self.FK__Usuario__IdRol__656C112C">
-            <End Role="Rol" EntitySet="Rol" />
-            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Rol" EntitySet="Rols" />
+            <End Role="Usuario" EntitySet="Usuarios" />
           </AssociationSet>
           <AssociationSet Name="FK__Usuario__IdRol__7A672E12" Association="Self.FK__Usuario__IdRol__7A672E12">
-            <End Role="Rol" EntitySet="Rol" />
-            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Rol" EntitySet="Rols" />
+            <End Role="Usuario" EntitySet="Usuarios" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -1081,8 +1081,8 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="eventosModelStoreContainer" CdmEntityContainer="eventosEntities">
-          <EntitySetMapping Name="Cliente">
+        <EntityContainerMapping StorageEntityContainer="eventosModelStoreContainer" CdmEntityContainer="eventosEntities1">
+          <EntitySetMapping Name="Clientes">
             <EntityTypeMapping TypeName="eventosModel.Cliente">
               <MappingFragment StoreEntitySet="Cliente">
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
@@ -1092,7 +1092,7 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Direccion">
+          <EntitySetMapping Name="Direccions">
             <EntityTypeMapping TypeName="eventosModel.Direccion">
               <MappingFragment StoreEntitySet="Direccion">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1102,7 +1102,7 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Estilo">
+          <EntitySetMapping Name="Estiloes">
             <EntityTypeMapping TypeName="eventosModel.Estilo">
               <MappingFragment StoreEntitySet="Estilo">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1110,7 +1110,7 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Evento">
+          <EntitySetMapping Name="Eventoes">
             <EntityTypeMapping TypeName="eventosModel.Evento">
               <MappingFragment StoreEntitySet="Evento">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1124,7 +1124,7 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Flyer">
+          <EntitySetMapping Name="Flyers">
             <EntityTypeMapping TypeName="eventosModel.Flyer">
               <MappingFragment StoreEntitySet="Flyer">
                 <ScalarProperty Name="IdEvento" ColumnName="IdEvento" />
@@ -1133,7 +1133,7 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Local">
+          <EntitySetMapping Name="Locals">
             <EntityTypeMapping TypeName="eventosModel.Local">
               <MappingFragment StoreEntitySet="Local">
                 <ScalarProperty Name="IdTipoLocal" ColumnName="IdTipoLocal" />
@@ -1146,7 +1146,7 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Rol">
+          <EntitySetMapping Name="Rols">
             <EntityTypeMapping TypeName="eventosModel.Rol">
               <MappingFragment StoreEntitySet="Rol">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1154,7 +1154,7 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TipoEvento">
+          <EntitySetMapping Name="TipoEventoes">
             <EntityTypeMapping TypeName="eventosModel.TipoEvento">
               <MappingFragment StoreEntitySet="TipoEvento">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1162,7 +1162,7 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TipoLocal">
+          <EntitySetMapping Name="TipoLocals">
             <EntityTypeMapping TypeName="eventosModel.TipoLocal">
               <MappingFragment StoreEntitySet="TipoLocal">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1170,7 +1170,7 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Usuario">
+          <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="eventosModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1180,7 +1180,7 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ListaEvento">
+          <EntitySetMapping Name="ListaEventoes">
             <EntityTypeMapping TypeName="eventosModel.ListaEvento">
               <MappingFragment StoreEntitySet="ListaEvento">
                 <ScalarProperty Name="IdEvento" ColumnName="IdEvento" />
@@ -1189,7 +1189,7 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ListaFavoritos">
-            <EntityTypeMapping TypeName="eventosModel.ListaFavoritos">
+            <EntityTypeMapping TypeName="eventosModel.ListaFavorito">
               <MappingFragment StoreEntitySet="ListaFavoritos">
                 <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
                 <ScalarProperty Name="IdLocal" ColumnName="IdLocal" />
@@ -1210,7 +1210,7 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="true" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
