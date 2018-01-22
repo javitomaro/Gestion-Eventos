@@ -7,5 +7,6 @@
              xmlns:ViewModel="clr-namespace:GestionEventos.ViewModel">    
     <Application.Resources>
         <View:homeLocal x:Key="{x:Type ViewModel:homeLocalViewModel}" x:Shared="False" />
+        <View:CrudEvento x:Key="{x:Type ViewModel:crudEventoViewModel}" x:Shared="False" />
     </Application.Resources>
 </Application>

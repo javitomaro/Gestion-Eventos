@@ -3,6 +3,8 @@ using System.Windows.Input;
 using MvvmDialogs.ViewModels;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight;
+using GestionEventos.Model;
+using System.Collections.ObjectModel;
 
 namespace GestionEventos.ViewModel
 {
@@ -57,6 +59,22 @@ namespace GestionEventos.ViewModel
         public Action<homeLocalViewModel> OnCancel { get; set; }
         public Action<homeLocalViewModel> OnCloseRequest { get; set; }
         public Action<homeLocalViewModel> OnLogOut { get; set; }
+        #endregion
+        private ObservableCollection<IDialogViewModel> _Dialogs = new ObservableCollection<IDialogViewModel>();
+        public System.Collections.ObjectModel.ObservableCollection<IDialogViewModel> Dialogs { get { return _Dialogs; } }
+        #region Añadir Evento
+
+        public ICommand addEventCommand { get { return new RelayCommand(addEvent); } }
+
+        private void addEvent()
+        {
+            this.Dialogs.Add(new crudEventoViewModel()
+            {
+
+                
+            });   
+        }
+
         #endregion
     }
 }

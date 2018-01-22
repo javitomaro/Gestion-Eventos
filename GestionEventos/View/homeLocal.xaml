@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestionEventos.View"
+        xmlns:dlgs="clr-namespace:MvvmDialogs.Behaviors;assembly=MvvmDialogs"
+		dlgs:DialogBehavior.DialogViewModels="{Binding Dialogs}"
         xmlns:ViewModel="clr-namespace:GestionEventos.ViewModel" x:Class="GestionEventos.View.homeLocal"
         mc:Ignorable="d"
         Title="homeLocal" Height="600" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
@@ -20,7 +22,7 @@
         <Grid.Background>
             <ImageBrush/>
         </Grid.Background>
-        <ScrollBar x:Name="scrollBar" HorizontalAlignment="Left" Margin="512,203,0,0" VerticalAlignment="Top" Height="264" Width="23"/>
+        <ScrollBar x:Name="scrollBar" HorizontalAlignment="Left" Margin="674,190,0,0" VerticalAlignment="Top" Height="264" Width="23"/>
         <Button x:Name="button" HorizontalAlignment="Left" Margin="750,10,0,0" VerticalAlignment="Top" Width="30" Height="30" Command="{Binding LogOutCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" Cursor="Hand" ClickMode="Press" >
             <Button.OpacityMask>
                 <ImageBrush ImageSource="/GestionEventos;component/Resources/logout.png"/>
@@ -29,5 +31,6 @@
                 <ImageBrush ImageSource="/GestionEventos;component/Resources/logout.png"/>
             </Button.Background>
         </Button>
+        <Button x:Name="btnAddEvent" Content="+" HorizontalAlignment="Left" Margin="64,47,0,0" VerticalAlignment="Top" Width="75" FontSize="36" FontWeight="Bold" Command="{Binding addEventCommand}"/>
     </Grid>
 </Window>
