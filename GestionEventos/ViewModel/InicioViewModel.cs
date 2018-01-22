@@ -20,7 +20,7 @@ namespace GestionEventos.ViewModel
     class InicioViewModel : INotifyPropertyChanged
     {
         #region VIEWMODEL
-        eventosEntities ctx = new eventosEntities();
+        eventosEntities1 ctx = new eventosEntities1();
         private List<Rol> _roles;
         private List<Usuario> _usuarios;
         private Rol _selectedRol;
@@ -89,16 +89,19 @@ namespace GestionEventos.ViewModel
         #endregion
         public void LogIn()
         {
-            if (SelectedUsuario.IdRol==1)
-            {
-                homeAdmin homeA = new homeAdmin();
-                homeA.Show();
-            }
-            else if (SelectedUsuario.IdRol==2)
-            {
-                homeLocal homeL = new homeLocal();
-                homeL.Show();
-            }
+
+
+
+            //if (_selectedUsuario.IdRol==1)
+            //{
+            //    homeAdmin homeA = new homeAdmin();
+            //    homeA.Show();
+            //}
+            //else if (SelectedUsuario.IdRol==2)
+            //{
+            //    homeLocal homeL = new homeLocal();
+            //    homeL.Show();
+            //}
         }
 
         public ICommand LogInCommand

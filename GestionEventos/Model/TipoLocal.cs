@@ -16,14 +16,14 @@ namespace GestionEventos.Model
     {
         public TipoLocal()
         {
-            this.Local = new HashSet<Local>();
-            this.Local1 = new HashSet<Local>();
+            this.Locals = new HashSet<Local>();
+            this.Locals1 = new HashSet<Local>();
         }
     
         public int Id { get; set; }
         public string Nombre { get; set; }
     
-        public virtual ICollection<Local> Local { get; set; }
-        public virtual ICollection<Local> Local1 { get; set; }
+        public virtual ICollection<Local> Locals { get; set; }
+        public virtual ICollection<Local> Locals1 { get; set; }
     }
 }

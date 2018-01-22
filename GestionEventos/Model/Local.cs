@@ -16,9 +16,9 @@ namespace GestionEventos.Model
     {
         public Local()
         {
-            this.Evento = new HashSet<Evento>();
-            this.ListaFavoritos = new HashSet<ListaFavoritos>();
-            this.ListaFavoritos1 = new HashSet<ListaFavoritos>();
+            this.Eventoes = new HashSet<Evento>();
+            this.ListaFavoritos = new HashSet<ListaFavorito>();
+            this.ListaFavoritos1 = new HashSet<ListaFavorito>();
         }
     
         public int IdTipoLocal { get; set; }
@@ -31,9 +31,9 @@ namespace GestionEventos.Model
     
         public virtual Direccion Direccion { get; set; }
         public virtual Direccion Direccion1 { get; set; }
-        public virtual ICollection<Evento> Evento { get; set; }
-        public virtual ICollection<ListaFavoritos> ListaFavoritos { get; set; }
-        public virtual ICollection<ListaFavoritos> ListaFavoritos1 { get; set; }
+        public virtual ICollection<Evento> Eventoes { get; set; }
+        public virtual ICollection<ListaFavorito> ListaFavoritos { get; set; }
+        public virtual ICollection<ListaFavorito> ListaFavoritos1 { get; set; }
         public virtual TipoLocal TipoLocal { get; set; }
         public virtual TipoLocal TipoLocal1 { get; set; }
         public virtual Usuario Usuario { get; set; }

@@ -16,10 +16,10 @@ namespace GestionEventos.Model
     {
         public Cliente()
         {
-            this.ListaEvento = new HashSet<ListaEvento>();
-            this.ListaEvento1 = new HashSet<ListaEvento>();
-            this.ListaFavoritos = new HashSet<ListaFavoritos>();
-            this.ListaFavoritos1 = new HashSet<ListaFavoritos>();
+            this.ListaEventoes = new HashSet<ListaEvento>();
+            this.ListaEventoes1 = new HashSet<ListaEvento>();
+            this.ListaFavoritos = new HashSet<ListaFavorito>();
+            this.ListaFavoritos1 = new HashSet<ListaFavorito>();
         }
     
         public int IdUsuario { get; set; }
@@ -29,9 +29,9 @@ namespace GestionEventos.Model
     
         public virtual Usuario Usuario { get; set; }
         public virtual Usuario Usuario1 { get; set; }
-        public virtual ICollection<ListaEvento> ListaEvento { get; set; }
-        public virtual ICollection<ListaEvento> ListaEvento1 { get; set; }
-        public virtual ICollection<ListaFavoritos> ListaFavoritos { get; set; }
-        public virtual ICollection<ListaFavoritos> ListaFavoritos1 { get; set; }
+        public virtual ICollection<ListaEvento> ListaEventoes { get; set; }
+        public virtual ICollection<ListaEvento> ListaEventoes1 { get; set; }
+        public virtual ICollection<ListaFavorito> ListaFavoritos { get; set; }
+        public virtual ICollection<ListaFavorito> ListaFavoritos1 { get; set; }
     }
 }

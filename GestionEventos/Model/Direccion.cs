@@ -16,9 +16,9 @@ namespace GestionEventos.Model
     {
         public Direccion()
         {
-            this.Evento = new HashSet<Evento>();
-            this.Local = new HashSet<Local>();
-            this.Local1 = new HashSet<Local>();
+            this.Eventoes = new HashSet<Evento>();
+            this.Locals = new HashSet<Local>();
+            this.Locals1 = new HashSet<Local>();
         }
     
         public int Id { get; set; }
@@ -26,8 +26,8 @@ namespace GestionEventos.Model
         public string Población { get; set; }
         public string CodigoPostal { get; set; }
     
-        public virtual ICollection<Evento> Evento { get; set; }
-        public virtual ICollection<Local> Local { get; set; }
-        public virtual ICollection<Local> Local1 { get; set; }
+        public virtual ICollection<Evento> Eventoes { get; set; }
+        public virtual ICollection<Local> Locals { get; set; }
+        public virtual ICollection<Local> Locals1 { get; set; }
     }
 }

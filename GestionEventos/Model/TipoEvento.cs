@@ -16,12 +16,12 @@ namespace GestionEventos.Model
     {
         public TipoEvento()
         {
-            this.Evento = new HashSet<Evento>();
+            this.Eventoes = new HashSet<Evento>();
         }
     
         public int Id { get; set; }
         public string Nombre { get; set; }
     
-        public virtual ICollection<Evento> Evento { get; set; }
+        public virtual ICollection<Evento> Eventoes { get; set; }
     }
 }
