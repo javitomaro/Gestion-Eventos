@@ -13,10 +13,10 @@ namespace GestionEventos.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class eventosEntities1 : DbContext
+    public partial class eventosEntities : DbContext
     {
-        public eventosEntities1()
-            : base("name=eventosEntities1")
+        public eventosEntities()
+            : base("name=eventosEntities")
         {
         }
     

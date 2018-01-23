@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="eventosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="eventosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="IdUsuario" />
@@ -521,7 +521,8 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="eventosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -965,7 +966,7 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="eventosEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="eventosEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Clientes" EntityType="Self.Cliente" />
           <EntitySet Name="Direccions" EntityType="Self.Direccion" />
           <EntitySet Name="Estiloes" EntityType="Self.Estilo" />
@@ -1080,7 +1081,7 @@ FROM [dbo].[ListaFavoritos] AS [ListaFavoritos]</DefiningQuery>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="eventosModelStoreContainer" CdmEntityContainer="eventosEntities1">
+        <EntityContainerMapping StorageEntityContainer="eventosModelStoreContainer" CdmEntityContainer="eventosEntities">
           <EntitySetMapping Name="Clientes">
             <EntityTypeMapping TypeName="eventosModel.Cliente">
               <MappingFragment StoreEntitySet="Cliente">

@@ -20,7 +20,7 @@ namespace GestionEventos.ViewModel
     class InicioViewModel : INotifyPropertyChanged
     {
         #region VIEWMODEL
-        eventosEntities1 ctx = new eventosEntities1();
+        eventosEntities ctx = new eventosEntities();
         private List<Rol> _roles;
         private List<Usuario> _usuarios;
         private Rol _selectedRol;

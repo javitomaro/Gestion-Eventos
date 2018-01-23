@@ -122,55 +122,55 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\Cliente.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelNou.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Direccion.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelNou.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Estilo.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelNou.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Evento.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelNou.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Flyer.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelNou.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ListaEvento.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelNou.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ListaFavorito.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelNou.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Local.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelNou.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Model1.Context.cs">
+    <Compile Include="Model\ModelNou.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+      <DependentUpon>ModelNou.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Model1.cs">
+    <Compile Include="Model\ModelNou.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelNou.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Model1.Designer.cs">
+    <Compile Include="Model\ModelNou.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>ModelNou.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\Rol.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelNou.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TipoEvento.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelNou.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TipoLocal.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelNou.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Usuario.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelNou.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\crudEventoViewModel.cs" />
     <Compile Include="ViewModel\homeLocalViewModel.cs" />
@@ -213,12 +213,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model\Model1.edmx">
+    <EntityDeploy Include="Model\ModelNou.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelNou.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <None Include="Model\ModelNou.edmx.diagram">
+      <DependentUpon>ModelNou.edmx</DependentUpon>
     </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -283,17 +283,16 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Model\Model1.Context.tt">
+    <Content Include="Model\ModelNou.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>ModelNou.edmx</DependentUpon>
+      <LastGenOutput>ModelNou.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model\Model1.tt">
+    <Content Include="Model\ModelNou.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>ModelNou.edmx</DependentUpon>
+      <LastGenOutput>ModelNou.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
