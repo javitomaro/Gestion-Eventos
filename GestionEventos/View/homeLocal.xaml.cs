@@ -29,5 +29,10 @@ namespace GestionEventos.View
         {            
             this.Close();
         }
+
+        private void button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

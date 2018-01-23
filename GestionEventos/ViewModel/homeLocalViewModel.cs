@@ -5,23 +5,95 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight;
 using GestionEventos.Model;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Collections.Generic;
 
 namespace GestionEventos.ViewModel
 {
-    class homeLocalViewModel : ViewModelBase
+    class homeLocalViewModel : ViewModelBase , INotifyPropertyChanged
     {
-        //public event PropertyChangedEventHandler PropertyChanged;
+        private List<Evento> _eventos;
+        private Evento _selectedEvento;
+        private List<Local> _locales;
+        private Local _selectedLocal;
+        private Usuario _actualUsuario;
 
-        //private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        //{
-        //    if (PropertyChanged != null)
-        //    {
-        //        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        //    }
-        //}
+        public List<Evento> Eventos
+        {
+            get
+            {
+                return _eventos;
+            }
+            set
+            {
+                _eventos = value;
+                NotifyPropertyChanged();          
+            }
+        }
+        public Evento SelectedEvento
+        {
+            get
+            {
+                return _selectedEvento;
+            }
+            set
+            {
+                _selectedEvento = value;
+                NotifyPropertyChanged();
+            }
+        }
+        public List<Local> Locales
+        {
+            get
+            {
+                return _locales;
+            }
+            set
+            {
+                _locales = value;
+                NotifyPropertyChanged();
+            }
+        }
+        public Local SelectedLocal
+        {
+            get
+            {
+                return _selectedLocal;
+            }
+            set
+            {
+                _selectedLocal = value;
+                NotifyPropertyChanged();
+            }
+        }
+        public Usuario ActualUsuario
+        {
+            get
+            {
+                return _actualUsuario;
+            }
+            set
+            {
+                _actualUsuario = value;
+                NotifyPropertyChanged();
+            }
+        }
+        public homeLocalViewModel(Usuario u)
+        {
+            ActualUsuario = u;
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
 
 
-
+        #region DIALOG
         //#region PRUEBA DIALOGO
         //public virtual bool IsModal { get { return true; } }
         //public virtual void RequestClose() { this.DialogClosing(this, null); }
@@ -49,7 +121,7 @@ namespace GestionEventos.ViewModel
         //{
         //    if (this.DialogClosing != null)
         //        this.DialogClosing(this, new EventArgs());
-        //}
+        ////}
         //public ICommand LogOutCommand { get { return new RelayCommand(LogOut); } }
         //protected virtual void LogOut()
         //{
@@ -57,27 +129,26 @@ namespace GestionEventos.ViewModel
         //        this.OnLogOut(this);
         //    Close();
         //}
-#region DIALOG
+        //
 
-        public Action<homeLocalViewModel> OnOk { get; set; }
-        public Action<homeLocalViewModel> OnCancel { get; set; }
-        public Action<homeLocalViewModel> OnCloseRequest { get; set; }
-        public Action<homeLocalViewModel> OnLogOut { get; set; }
-        private ObservableCollection<IDialogViewModel> _Dialogs = new ObservableCollection<IDialogViewModel>();
-         public System.Collections.ObjectModel.ObservableCollection<IDialogViewModel> Dialogs { get { return _Dialogs; } }
+        //public Action<homeLocalViewModel> OnOk { get; set; }
+        //public Action<homeLocalViewModel> OnCancel { get; set; }
+        //public Action<homeLocalViewModel> OnCloseRequest { get; set; }
+        //public Action<homeLocalViewModel> OnLogOut { get; set; }
+        //private ObservableCollection<IDialogViewModel> _Dialogs = new ObservableCollection<IDialogViewModel>();
+        // public System.Collections.ObjectModel.ObservableCollection<IDialogViewModel> Dialogs { get { return _Dialogs; } }
+        //#endregion
+        //#region Añadir Evento
+
+        //public ICommand addEventCommand { get { return new RelayCommand(addEvent); } }
+        //  private void addEvent()
+        //{
+        //     this.Dialogs.Add(new crudEventoViewModel()
+        //   {
+
+
+        //     });   
+        // }
         #endregion
-        #region Añadir Evento
-
-        public ICommand addEventCommand { get { return new RelayCommand(addEvent); } }
-          private void addEvent()
-        {
-             this.Dialogs.Add(new crudEventoViewModel()
-           {
-
-                
-             });   
-         }
- 
-         #endregion
-      }
     }
+}

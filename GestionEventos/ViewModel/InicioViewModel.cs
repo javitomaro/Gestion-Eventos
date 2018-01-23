@@ -21,7 +21,7 @@ namespace GestionEventos.ViewModel
     {
         #region VIEWMODEL
         eventosEntities ctx = new eventosEntities();
-              
+
         private List<Rol> _roles;
         private List<Usuario> _usuarios;
         private Rol _selectedRol;
@@ -43,12 +43,12 @@ namespace GestionEventos.ViewModel
         {
             get
             {
-                return _usuarios;            
+                return _usuarios;
             }
             set
             {
                 _usuarios = value;
-               
+
                 NotifyPropertyChanged();
             }
         }
@@ -72,17 +72,15 @@ namespace GestionEventos.ViewModel
             }
             set
             {
-                _selectedUsuario = value;        
+                _selectedUsuario = value;
                 NotifyPropertyChanged();
             }
-        }      
+        }
         public InicioViewModel()
         {
-            FillUsuarios();
+            SelectedUsuario = new Usuario();
         }
-        public void FillUsuarios()
-        {
-        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
@@ -93,23 +91,37 @@ namespace GestionEventos.ViewModel
         }
         #endregion
         public void LogIn()
-        { 
-            
-
-
-
-            //if (_selectedUsuario.IdRol==1)
-            //{
-            //    homeAdmin homeA = new homeAdmin();
-            //    homeA.Show();
-            //}
-            //else if (SelectedUsuario.IdRol==2)
-            //{
-            //    homeLocal homeL = new homeLocal();
-            //    homeL.Show();
-            //}
+        {
+            if (ctx.Usuarios.Select(x => x.Usuario1).ToList().Contains(SelectedUsuario.Usuario1) && SelectedUsuario.Usuario1 != null)
+            {
+                Usuario u = ctx.Usuarios.Where(x => x.Usuario1.Equals(SelectedUsuario.Usuario1)).FirstOrDefault();
+                if (u.Password.Equals(SelectedUsuario.Password))
+                {
+                    if (u.IdRol.Equals(1))
+                    {
+                        homeAdmin ha = new homeAdmin();
+                        ha.Show();
+                    }
+                    else if (u.IdRol.Equals(2))
+                    {
+                        homeLocal hl = new homeLocal();
+                        hl.Show();
+                    }
+                    else {
+                        MessageBox.Show("Este usuario no tiene permiso para usar la aplicacion desktop");
+                    }
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Password incorrecto");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Usuario incorrecto");
+            }
         }
-
         public ICommand LogInCommand
         {
             get { return new RelayCommand(LogIn); }

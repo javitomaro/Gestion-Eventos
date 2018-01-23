@@ -14,16 +14,12 @@
     </Window.Resources>
     <Window.Background>
         <ImageBrush ImageSource="/GestionEventos;component/Resources/FondoHomeLocal.jpg"/>
-    </Window.Background>
-    <Window.DataContext>
-        <ViewModel:homeLocalViewModel/>
-    </Window.DataContext>
+    </Window.Background>    
     <Grid Margin="0,0,0,-2">
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill"/>
         </Grid.Background>
-        <ScrollBar x:Name="scrollBar" HorizontalAlignment="Left" Margin="512,203,0,0" VerticalAlignment="Top" Height="264" Width="23"/>
-        <Button x:Name="button" HorizontalAlignment="Left" Margin="750,10,0,0" VerticalAlignment="Top" Width="30" Height="30" Command="{Binding LogOutCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" Cursor="Hand" ClickMode="Press" >
+        <Button x:Name="button" HorizontalAlignment="Left" Margin="750,10,0,0" VerticalAlignment="Top" Width="30" Height="30" Command="{Binding LogOutCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" Cursor="Hand" ClickMode="Press" Click="button_Click_1" >
             <Button.OpacityMask>
                 <ImageBrush ImageSource="/GestionEventos;component/Resources/logout.png"/>
             </Button.OpacityMask>
@@ -32,5 +28,7 @@
             </Button.Background>
         </Button>
         <Button x:Name="btnAddEvent" Content="+" HorizontalAlignment="Left" Margin="64,47,0,0" VerticalAlignment="Top" Width="75" FontSize="36" FontWeight="Bold" Command="{Binding addEventCommand}"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="210,163,0,0" VerticalAlignment="Top" Width="139" Height="24" ItemsSource="{Binding Mode=OneWay}"/>
     </Grid>
 </Window>

@@ -33,12 +33,8 @@
                 </LinearGradientBrush>
             </Label.Foreground>
         </Label>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="22" Margin="144,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" BorderBrush="#FF96A01E" BorderThickness="2" Background="#FFCDCDCD" FontFamily="Open Sans" Cursor="IBeam" Text="{Binding SelectedUsuario.Usuario1}">
-            <TextBox.DataContext>
-                <ViewModel:InicioViewModel/>
-            </TextBox.DataContext>
-        </TextBox>
-         <Button x:Name="button" Content=""  HorizontalAlignment="Left" Margin="379,10,0,0" VerticalAlignment="Top" Width="30" FontFamily="Open Sans" FontWeight="Bold" TextOptions.TextHintingMode="Animated" Foreground="#FF090A0A" Cursor="Hand" Height="30" FontSize="14" BorderBrush="{x:Null}" Command="{Binding LogInCommand}">
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="22" Margin="144,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" BorderBrush="#FF96A01E" BorderThickness="2" Background="#FFCDCDCD" FontFamily="Open Sans" Cursor="IBeam" Text="{Binding SelectedUsuario.Usuario1}"/>
+        <Button x:Name="button" Content=""  HorizontalAlignment="Left" Margin="379,10,0,0" VerticalAlignment="Top" Width="30" FontFamily="Open Sans" FontWeight="Bold" TextOptions.TextHintingMode="Animated" Foreground="#FF090A0A" Cursor="Hand" Height="30" FontSize="14" BorderBrush="{x:Null}" Command="{Binding LogInCommand}">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="/GestionEventos;component/Resources/login.png"/>
             </Button.OpacityMask>
@@ -54,10 +50,6 @@
                 <ImageBrush ImageSource="/GestionEventos;component/Resources/exit.png"/>
             </Button.Background>
         </Button>
-        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="22" Margin="144,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" BorderBrush="#FF96A01E" BorderThickness="2" Background="#FFCDCDCD" Cursor="IBeam" Text="{Binding SelectedUsuario.Usuario1}" FontFamily="CSD16">
-            <TextBox.DataContext>
-                <ViewModel:InicioViewModel/>
-            </TextBox.DataContext>
-        </TextBox>
+        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="22" Margin="144,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" BorderBrush="#FF96A01E" BorderThickness="2" Background="#FFCDCDCD" Cursor="IBeam" FontFamily="Open Sans" Text="{Binding SelectedUsuario.Password}"/>
     </Grid>
 </Window>

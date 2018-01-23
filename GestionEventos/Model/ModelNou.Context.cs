@@ -18,6 +18,7 @@ namespace GestionEventos.Model
         public eventosEntities()
             : base("name=eventosEntities")
         {
+
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
