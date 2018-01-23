@@ -43,7 +43,8 @@ namespace GestionEventos.ViewModel
         }
         public void ListaEvento()
         {
-            TipoEventoss = ctx.Select(x => x).ToList();
+            TipoEventoss = ctx.TipoEventos.Select(x => x).ToList();
+            
         }
         public virtual bool IsModal { get { return true; } }
         public virtual void RequestClose() { this.DialogClosing(this, null); }

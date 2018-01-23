@@ -4,17 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:dlgs="clr-namespace:MvvmDialogs.Behaviors;assembly=MvvmDialogs"
-		dlgs:DialogBehavior.DialogViewModels="{Binding Dialogs}"
         xmlns:local="clr-namespace:GestionEventos"
-        xmlns:ViewModel="clr-namespace:GestionEventos.ViewModel" x:Class="GestionEventos.MainWindow"
+        xmlns:ViewModel="clr-namespace:GestionEventos.ViewModel" xmlns:System="clr-namespace:System;assembly=mscorlib"
+		dlgs:DialogBehavior.DialogViewModels="{Binding Dialogs}"
+        x:Class="GestionEventos.MainWindow"
         mc:Ignorable="d"
-        Title="Log In" Height="323" Width="501" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
-    <Window.Background>
-        <ImageBrush ImageSource="/GestionEventos;component/Resources/FondoLogIn.jpg"/>
-    </Window.Background>
+        Title="Log In" Height="240" Width="498" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Window.DataContext>
         <ViewModel:InicioViewModel/>
     </Window.DataContext>
+    <Window.Background>
+        <ImageBrush ImageSource="/GestionEventos;component/Resources/FondoLogIn.jpg"/>
+    </Window.Background>
     <Grid>
         <Label x:Name="label" Content="USER" HorizontalAlignment="Left" Margin="94,90,0,0" VerticalAlignment="Top" FontFamily="Open Sans" FontSize="14" FontWeight="Bold">
             <Label.Foreground>
@@ -32,9 +33,12 @@
                 </LinearGradientBrush>
             </Label.Foreground>
         </Label>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="22" Margin="144,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" BorderBrush="#FF96A01E" BorderThickness="2" Background="#FFCDCDCD" FontFamily="Open Sans" Cursor="IBeam" DataContext="{Binding SelectedUsuario.Usuario1}"/>
-        <PasswordBox x:Name="passBox1" HorizontalAlignment="Left" Height="22" Margin="144,140,0,0" VerticalAlignment="Top" Width="260" Background="#FFCDCDCD" BorderBrush="#FF96A01E" BorderThickness="2" FontFamily="Open Sans" Cursor="IBeam" DataContext="{Binding SelectedUsuario.Password}"/>
-        <Button x:Name="button" Content=""  HorizontalAlignment="Left" Margin="379,10,0,0" VerticalAlignment="Top" Width="30" FontFamily="Open Sans" FontWeight="Bold" TextOptions.TextHintingMode="Animated" Foreground="#FF090A0A" Cursor="Hand" Height="30" FontSize="14" BorderBrush="{x:Null}" Command="{Binding LogInCommand}">
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="22" Margin="144,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" BorderBrush="#FF96A01E" BorderThickness="2" Background="#FFCDCDCD" FontFamily="Open Sans" Cursor="IBeam" Text="{Binding SelectedUsuario.Usuario1}">
+            <TextBox.DataContext>
+                <ViewModel:InicioViewModel/>
+            </TextBox.DataContext>
+        </TextBox>
+         <Button x:Name="button" Content=""  HorizontalAlignment="Left" Margin="379,10,0,0" VerticalAlignment="Top" Width="30" FontFamily="Open Sans" FontWeight="Bold" TextOptions.TextHintingMode="Animated" Foreground="#FF090A0A" Cursor="Hand" Height="30" FontSize="14" BorderBrush="{x:Null}" Command="{Binding LogInCommand}">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="/GestionEventos;component/Resources/login.png"/>
             </Button.OpacityMask>
@@ -50,7 +54,10 @@
                 <ImageBrush ImageSource="/GestionEventos;component/Resources/exit.png"/>
             </Button.Background>
         </Button>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="144,167,0,0" VerticalAlignment="Top" Height="131" Width="260" ItemsSource="{Binding Usuarios/}"/>
-        <ComboBox x:Name="comboBoxTipoEvento" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="153" ItemsSource="{Binding TipoEventos}"/>
+        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="22" Margin="144,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" BorderBrush="#FF96A01E" BorderThickness="2" Background="#FFCDCDCD" Cursor="IBeam" Text="{Binding SelectedUsuario.Usuario1}" FontFamily="CSD16">
+            <TextBox.DataContext>
+                <ViewModel:InicioViewModel/>
+            </TextBox.DataContext>
+        </TextBox>
     </Grid>
 </Window>
