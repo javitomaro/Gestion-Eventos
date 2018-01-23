@@ -173,6 +173,7 @@
       <DependentUpon>ModelNou.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\crudEventoViewModel.cs" />
+    <Compile Include="ViewModel\eventosEntities.cs" />
     <Compile Include="ViewModel\homeLocalViewModel.cs" />
     <Compile Include="ViewModel\InicioViewModel.cs" />
     <Compile Include="View\CrudEvento.xaml.cs">
