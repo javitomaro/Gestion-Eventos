@@ -26,7 +26,7 @@ namespace GestionEventos.ViewModel
         //public virtual bool IsModal { get { return true; } }
         //public virtual void RequestClose() { this.DialogClosing(this, null); }
         //public virtual event EventHandler DialogClosing;
-        
+
         //public ICommand OkCommand { get { return new RelayCommand(Ok); } }
         //protected virtual void Ok()
         //{
@@ -57,6 +57,7 @@ namespace GestionEventos.ViewModel
         //        this.OnLogOut(this);
         //    Close();
         //}
+#region DIALOG
 
         public Action<homeLocalViewModel> OnOk { get; set; }
         public Action<homeLocalViewModel> OnCancel { get; set; }
