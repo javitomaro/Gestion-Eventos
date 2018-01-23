@@ -93,7 +93,8 @@ namespace GestionEventos.ViewModel
         }
         #endregion
         public void LogIn()
-        {
+        { 
+            
 
 
 
