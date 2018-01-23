@@ -109,7 +109,21 @@ namespace GestionEventos.ViewModel
             get { return new RelayCommand(LogIn); }
         }
 
+        private List<TipoEvento> _TipoEvento;
 
+
+        public List<TipoEvento> TipoEvento
+        {
+            get
+            {
+                return _TipoEvento;
+            }
+            set
+            {
+                _TipoEvento = value;
+                NotifyPropertyChanged();
+            }
+        }
 
 
         //#region DIALOGS

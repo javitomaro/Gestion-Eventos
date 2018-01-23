@@ -13,12 +13,12 @@ namespace GestionEventos.ViewModel
 {
     class crudEventoViewModel : ViewModelBase, IUserDialogViewModel
     {
-        eventosEntities ctx = new eventosEntities();
+        eventosEntities1 ctx = new eventosEntities1();
 
         private List<TipoEvento> _TipoEvento;
 
 
-        public List<TipoEvento> TipoEvento
+        public List<TipoEvento> TipoEventoss
         {
             get
             {
@@ -30,6 +30,9 @@ namespace GestionEventos.ViewModel
                 NotifyPropertyChanged();
             }
         }
+        public crudEventoViewModel(){
+            ListaEvento();
+            }
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
@@ -37,6 +40,10 @@ namespace GestionEventos.ViewModel
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+        public void ListaEvento()
+        {
+            TipoEventoss = ctx.TipoEventoes.Select(x => x).ToList();
         }
         public virtual bool IsModal { get { return true; } }
         public virtual void RequestClose() { this.DialogClosing(this, null); }

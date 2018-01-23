@@ -22,7 +22,7 @@
             </Calendar.BindingGroup>
         </Calendar>
         <TextBox x:Name="textBoxAforo" HorizontalAlignment="Left" Height="24" Margin="142,227,0,0" TextWrapping="Wrap" Text="Aforo" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="comboBoxTipoEvento" HorizontalAlignment="Left" Margin="312,227,0,0" VerticalAlignment="Top" Width="153" ItemsSource="{Binding TipoEvento}"/>
+        <ComboBox x:Name="comboBoxTipoEvento" HorizontalAlignment="Left" Margin="312,227,0,0" VerticalAlignment="Top" Width="153" ItemsSource="{Binding TipoEventoss}"/>
         <ComboBox x:Name="comboBoxEstiloEvento" HorizontalAlignment="Left" Margin="505,227,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="369,301,0,0" VerticalAlignment="Top" Width="256"/>
         <Button x:Name="buttonAñadirDireccion" Content="Añadir Dirección" HorizontalAlignment="Left" Margin="369,346,0,0" VerticalAlignment="Top" Width="110"/>

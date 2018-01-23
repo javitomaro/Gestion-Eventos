@@ -51,5 +51,6 @@
             </Button.Background>
         </Button>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="144,167,0,0" VerticalAlignment="Top" Height="131" Width="260" ItemsSource="{Binding Usuarios/}"/>
+        <ComboBox x:Name="comboBoxTipoEvento" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="153" ItemsSource="{Binding TipoEventos}"/>
     </Grid>
 </Window>
