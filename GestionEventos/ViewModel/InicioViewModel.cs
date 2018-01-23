@@ -21,6 +21,7 @@ namespace GestionEventos.ViewModel
     {
         #region VIEWMODEL
         eventosEntities ctx = new eventosEntities();
+              
         private List<Rol> _roles;
         private List<Usuario> _usuarios;
         private Rol _selectedRol;
@@ -81,8 +82,6 @@ namespace GestionEventos.ViewModel
         }
         public void FillUsuarios()
         {
-            Usuarios =  ctx.Usuario
-                .Select(x => x).ToList();
         }
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
