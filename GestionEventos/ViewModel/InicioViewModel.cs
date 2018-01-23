@@ -47,7 +47,7 @@ namespace GestionEventos.ViewModel
             set
             {
                 _usuarios = value;
-                
+               
                 NotifyPropertyChanged();
             }
         }
@@ -81,7 +81,8 @@ namespace GestionEventos.ViewModel
         }
         public void FillUsuarios()
         {
-            Usuarios = ctx.Usuarios.Select(x => x).ToList();
+            Usuarios =  ctx.Usuario
+                .Select(x => x).ToList();
         }
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
@@ -117,7 +118,7 @@ namespace GestionEventos.ViewModel
         private List<TipoEvento> _TipoEvento;
 
 
-        public List<TipoEvento> TipoEvento
+        public List<TipoEvento> TipoEventos
         {
             get
             {
