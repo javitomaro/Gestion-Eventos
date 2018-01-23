@@ -65,9 +65,10 @@ namespace GestionEventos.ViewModel
         public Action<homeLocalViewModel> OnLogOut { get; set; }
         private ObservableCollection<IDialogViewModel> _Dialogs = new ObservableCollection<IDialogViewModel>();
          public System.Collections.ObjectModel.ObservableCollection<IDialogViewModel> Dialogs { get { return _Dialogs; } }
-         #region Añadir Evento
- 
-         public ICommand addEventCommand { get { return new RelayCommand(addEvent); } }
+        #endregion
+        #region Añadir Evento
+
+        public ICommand addEventCommand { get { return new RelayCommand(addEvent); } }
           private void addEvent()
         {
              this.Dialogs.Add(new crudEventoViewModel()

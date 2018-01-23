@@ -13,7 +13,7 @@ namespace GestionEventos.ViewModel
 {
     class crudEventoViewModel : ViewModelBase, IUserDialogViewModel
     {
-        eventosEntities ctx = new eventosEntities();
+        eventosEntities1 ctx = new eventosEntities1();
 
         private List<TipoEvento> _TipoEvento;
 
