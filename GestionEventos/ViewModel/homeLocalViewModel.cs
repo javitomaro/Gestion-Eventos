@@ -1,18 +1,19 @@
 ﻿using System;
-using System.Windows.Input;
-using MvvmDialogs.ViewModels;
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight;
-using GestionEventos.Model;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Windows.Input;
+using GalaSoft.MvvmLight.Command;
+using GestionEventos.Model;
+using GestionEventos.View;
+using System.Windows;
 
 namespace GestionEventos.ViewModel
 {
-    class homeLocalViewModel : ViewModelBase , INotifyPropertyChanged
+    class homeLocalViewModel : INotifyPropertyChanged
     {
+        eventosEntities ctx = new eventosEntities();
         private List<Evento> _eventos;
         private Evento _selectedEvento;
         private List<Local> _locales;
@@ -79,10 +80,11 @@ namespace GestionEventos.ViewModel
                 NotifyPropertyChanged();
             }
         }
-        public homeLocalViewModel(Usuario u)
+        public homeLocalViewModel()
         {
-            ActualUsuario = u;
-        }
+            MessageBox.Show("1");
+            Locales = ctx.Locals.ToList();
+        }        
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
@@ -91,8 +93,15 @@ namespace GestionEventos.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
-
+        public void CargarLocales() {
+            MessageBox.Show("3");
+            Locales = ctx.Locals.Select(x => x).ToList();
+            foreach (Local l in Locales)
+            {
+                MessageBox.Show("4");
+                MessageBox.Show(l.Nombre);
+            }
+        }
         #region DIALOG
         //#region PRUEBA DIALOGO
         //public virtual bool IsModal { get { return true; } }
