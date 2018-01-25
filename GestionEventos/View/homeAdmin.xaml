@@ -6,12 +6,82 @@
         xmlns:local="clr-namespace:GestionEventos.View"
         xmlns:ViewModel="clr-namespace:GestionEventos.ViewModel" 
         mc:Ignorable="d"
-        Title="homeAdmin" Height="626" Width="836" WindowStyle="None" ResizeMode="NoResize">
+        Title="homeAdmin" Height="626" Width="836" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Background>
         <ImageBrush ImageSource="/GestionEventos;component/Resources/FondoHomeAdmin.jpg" Stretch="UniformToFill" TileMode="Tile"/>
     </Window.Background>
     <Window.DataContext>
-        <ViewModel:homeLocalViewModel/>
+        <ViewModel:homeAdminViewModel/>
     </Window.DataContext>
-    <Grid/>
+    <Grid>
+        <DataGrid x:Name="dgLocal" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" Height="177" Width="816" ItemsSource="{Binding Locales}" AutoGenerateColumns="False" BorderBrush="{x:Null}" Cursor="Hand" CanUserResizeColumns="False" CanUserReorderColumns="False" GridLinesVisibility="None" HorizontalGridLinesBrush="#FF817F7F" VerticalGridLinesBrush="{x:Null}" AlternatingRowBackground="#FFC6C9C7" CanUserResizeRows="False" FontSize="14">
+            <DataGrid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF640505" Offset="1"/>
+                    <GradientStop Color="#FFFFC7C7"/>
+                </LinearGradientBrush>
+            </DataGrid.Background>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Usuario.Id}" ClipboardContentBinding="{x:Null}" Header="Id User"/>
+                <DataGridTextColumn Binding="{Binding Usuario.Usuario1}" ClipboardContentBinding="{x:Null}" Header="User Name"/>
+                <DataGridTextColumn Binding="{Binding Usuario.Password}" ClipboardContentBinding="{x:Null}" Header="Password"/>
+                <DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="Id Local"/>
+                <DataGridTextColumn Binding="{Binding Nombre}" ClipboardContentBinding="{x:Null}" Header="Nombre"/>
+                <DataGridTextColumn Binding="{Binding TipoLocal.Nombre}" ClipboardContentBinding="{x:Null}" Header="Tipo Local"/>
+                <DataGridTextColumn Binding="{Binding Direccion.Calle}" ClipboardContentBinding="{x:Null}" Header="Direccion"/>
+                <DataGridTextColumn Binding="{Binding Direccion.Población}" ClipboardContentBinding="{x:Null}" Header="Poblacion"/>
+                <DataGridTextColumn Binding="{Binding Email}" ClipboardContentBinding="{x:Null}" Header="Email"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label x:Name="label" Content="Locales" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top" Height="33" Width="113" Foreground="#FFF9F4F4" FontFamily="Manga Temple" FontSize="20"/>
+        <Label x:Name="label_Copy" Content="Clientes" HorizontalAlignment="Left" Margin="10,348,0,0" VerticalAlignment="Top" Height="33" Width="113" Foreground="#FFF9F4F4" FontFamily="Manga Temple" FontSize="20"/>
+        <Button x:Name="button" Content="" HorizontalAlignment="Left" Margin="796,10,0,0" VerticalAlignment="Top" Width="30" Height="30" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="button_Click" Cursor="Hand">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/logout.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/logout.png"/>
+            </Button.Background>
+        </Button>
+        <DataGrid x:Name="dgCliente" HorizontalAlignment="Left" Margin="10,381,0,0" VerticalAlignment="Top" Height="177" Width="816" ItemsSource="{Binding Clientes}" AutoGenerateColumns="False" BorderBrush="{x:Null}" Cursor="Hand" CanUserResizeColumns="False" CanUserReorderColumns="False" GridLinesVisibility="None" HorizontalGridLinesBrush="#FF817F7F" VerticalGridLinesBrush="{x:Null}" AlternatingRowBackground="#FFC6C9C7" CanUserResizeRows="False" FontSize="14">
+            <DataGrid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF053564" Offset="1"/>
+                    <GradientStop Color="#FFC7E8FF"/>
+                </LinearGradientBrush>
+            </DataGrid.Background>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Usuario.Id}" ClipboardContentBinding="{x:Null}" Header="Id User"/>
+                <DataGridTextColumn Binding="{Binding Usuario.Usuario1}" ClipboardContentBinding="{x:Null}" Header="User Name"/>
+                <DataGridTextColumn Binding="{Binding Usuario.Password}" ClipboardContentBinding="{x:Null}" Header="Password"/>
+                <DataGridTextColumn Binding="{Binding Nombre}" ClipboardContentBinding="{x:Null}" Header="Nombre"/>
+                <DataGridTextColumn Binding="{Binding Telefono.Value, Mode=OneWay}" ClipboardContentBinding="{x:Null}" Header="Telefono"/>
+                <DataGridTextColumn Binding="{Binding Email}" ClipboardContentBinding="{x:Null}" Header="Email"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="button1" Content="Añadir" HorizontalAlignment="Left" Margin="10,286,0,0" VerticalAlignment="Top" Width="74" FontFamily="Trebuchet MS" FontSize="14">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF116327" Offset="0"/>
+                    <GradientStop Color="#FF54E47C" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="button2" Content="Modificar" HorizontalAlignment="Left" Margin="112,286,0,0" VerticalAlignment="Top" Width="74">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF1F425F" Offset="0"/>
+                    <GradientStop Color="#FF53ACF5" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="button3" Content="Eliminar" HorizontalAlignment="Left" Margin="212,286,0,0" VerticalAlignment="Top" Width="74">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF593A1B" Offset="0"/>
+                    <GradientStop Color="#FFFD9C4C" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+    </Grid>
 </Window>

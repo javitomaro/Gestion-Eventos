@@ -19,6 +19,7 @@ namespace GestionEventos.ViewModel
         private List<Local> _locales;
         private Local _selectedLocal;
         private Usuario _actualUsuario;
+        
 
         public List<Evento> Eventos
         {
@@ -77,14 +78,15 @@ namespace GestionEventos.ViewModel
             set
             {
                 _actualUsuario = value;
+                CargarLocales(value.Id);
                 NotifyPropertyChanged();
             }
         }
-        public homeLocalViewModel()
+        public homeLocalViewModel(Usuario u)
         {
-            MessageBox.Show("1");
-            Locales = ctx.Locals.ToList();
-        }        
+            ActualUsuario = u;            
+        }       
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
@@ -93,13 +95,10 @@ namespace GestionEventos.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-        public void CargarLocales() {
-            MessageBox.Show("3");
+        public void CargarLocales(int id) {
             Locales = ctx.Locals.Select(x => x).ToList();
             foreach (Local l in Locales)
-            {
-                MessageBox.Show("4");
-                MessageBox.Show(l.Nombre);
+            {                
             }
         }
         #region DIALOG

@@ -9,9 +9,6 @@
         xmlns:ViewModel="clr-namespace:GestionEventos.ViewModel" x:Class="GestionEventos.View.homeLocal"
         mc:Ignorable="d"
         Title="homeLocal" Height="600" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
-    <Window.DataContext>
-        <ViewModel:homeLocalViewModel/>
-    </Window.DataContext>
     <Window.Background>
         <ImageBrush ImageSource="/GestionEventos;component/Resources/FondoHomeLocal.jpg"/>
     </Window.Background>    

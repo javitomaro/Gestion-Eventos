@@ -98,7 +98,7 @@ namespace GestionEventos.ViewModel
                     }
                     else if (u.IdRol.Equals(2))
                     {
-                        homeLocal hl = new homeLocal();
+                        homeLocal hl = new homeLocal(){ DataContext = new homeLocalViewModel(u) };
                         hl.Show();
                     }
                     else {
