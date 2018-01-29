@@ -1,0 +1,39 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestionEventos.View"
+        xmlns:dlgs="clr-namespace:MvvmDialogs.Behaviors;assembly=MvvmDialogs"     
+        dlgs:DialogBehavior.DialogViewModels="{Binding Dialogs}"
+        xmlns:ViewModel="clr-namespace:GestionEventos.ViewModel"  x:Class="GestionEventos.View.crudLocal"
+        mc:Ignorable="d"
+        Title="crudLocal" Height="400" Width="400" WindowStartupLocation="CenterScreen" WindowStyle="None" BorderBrush="Black" OpacityMask="Black">
+    <Window.Background>
+        <ImageBrush ImageSource="/GestionEventos;component/Resources/crearEvento.png"/>
+    </Window.Background>
+    <Window.DataContext>
+        <ViewModel:crudLocalViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Label x:Name="lbl" Content="Id Usuario:" HorizontalAlignment="Left" Margin="41,80,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="User Name:" HorizontalAlignment="Left" Margin="151,77,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy" Content="Password:" HorizontalAlignment="Left" Margin="156,103,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy1" Content="Id Local:" HorizontalAlignment="Left" Margin="41,142,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbUserName" HorizontalAlignment="Left" Height="19" Margin="218,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" Background="#FFA8A7A7" BorderBrush="{x:Null}" Text="{Binding SelectedUsuario.Usuario1}" IsEnabled="False"/>
+        <TextBox x:Name="tbPassword" HorizontalAlignment="Left" Height="18" Margin="218,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" Background="#FFA8A7A7" BorderBrush="{x:Null}" Text="{Binding SelectedUsuario.Password}" IsEnabled="False"/>
+        <TextBox x:Name="tbIdLocal" HorizontalAlignment="Left" Height="19" Margin="94,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="22" Background="#FFA8A7A7" BorderBrush="{x:Null}"/>
+        <Label x:Name="label1_Copy2" Content="Nombre Local:" HorizontalAlignment="Left" Margin="131,142,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbNombreLocal" HorizontalAlignment="Left" Height="19" Margin="218,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" Background="#FFA8A7A7" BorderBrush="{x:Null}"/>
+        <Label x:Name="label" Content="{Binding Titol}" HorizontalAlignment="Left" Margin="157,42,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" FontStyle="Italic" Background="{x:Null}"/>
+        <Label x:Name="label1_Copy3" Content="Tipo Local" HorizontalAlignment="Left" Margin="41,187,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="105,187,0,0" VerticalAlignment="Top" Width="113" Height="21" RenderTransformOrigin="0.575,2.588" ItemsSource="{Binding TipoLocal}" DisplayMemberPath="Nombre"/>
+        <Label x:Name="label1_Copy4" Content="Direccion: " HorizontalAlignment="Left" Margin="41,218,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbNombreLocal_Copy" HorizontalAlignment="Left" Height="20" Margin="105,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" Background="#FFA8A7A7" BorderBrush="{x:Null}"/>
+        <Label x:Name="label1_Copy5" Content="Codigo Postal:" HorizontalAlignment="Left" Margin="41,249,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbPassword_Copy" HorizontalAlignment="Left" Height="21" Margin="122,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="52" Background="#FFA8A7A7" BorderBrush="{x:Null}"/>
+        <Label x:Name="label1_Copy6" Content="Poblacion:" HorizontalAlignment="Left" Margin="174,249,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbPassword_Copy1" HorizontalAlignment="Left" Height="21" Margin="238,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Background="#FFA8A7A7" BorderBrush="{x:Null}"/>
+        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="107,77,0,0" VerticalAlignment="Top" Width="45" ItemsSource="{Binding Usuarios}" DisplayMemberPath="Id" SelectedItem="{Binding SelectedUsuario}"/>
+    </Grid>
+</Window>
