@@ -183,6 +183,7 @@
     <Compile Include="ViewModel\crudEventoViewModel.cs" />
     <Compile Include="ViewModel\crudLocalViewModel.cs" />
     <Compile Include="ViewModel\crudUsersViewModel.cs" />
+    <Compile Include="ViewModel\DetalleEventoViewModel.cs" />
     <Compile Include="ViewModel\homeAdminViewModel.cs" />
     <Compile Include="ViewModel\homeLocalViewModel.cs" />
     <Compile Include="ViewModel\InicioViewModel.cs" />

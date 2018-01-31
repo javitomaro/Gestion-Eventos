@@ -3,34 +3,35 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GestionEventos.View"
-        mc:Ignorable="d"
+        xmlns:local="clr-namespace:GestionEventos"
+        xmlns:ViewModel="clr-namespace:GestionEventos.ViewModel" xmlns:System="clr-namespace:System;assembly=mscorlib"
+	    mc:Ignorable="d"
         Title="detallesEvento" Height="600" Width="800" ResizeMode="NoResize" WindowStyle="None">
+    <Window.DataContext>
+        <ViewModel:DetalleEventoViewModel/>
+    </Window.DataContext>
     <Window.Background>
         <ImageBrush ImageSource="/GestionEventos;component/Resources/DetalleEventoFondo.jpg"/>
     </Window.Background>
     <Grid Height="600" VerticalAlignment="Bottom">
-        <Label x:Name="labelTitelEvento" Content="Detalles del Evento" HorizontalAlignment="Left" Margin="142,74,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="81" Margin="142,137,0,0" TextWrapping="Wrap" Text="AQUI VA IMAGEN :(" VerticalAlignment="Top" Width="185">
-            <TextBox.Background>
-                <ImageBrush/>
-            </TextBox.Background>
-        </TextBox>
-        <Label x:Name="labelDescripcionEvento" Content="Descripcion del evento............." HorizontalAlignment="Left" Margin="142,251,0,0" VerticalAlignment="Top" Height="29" Width="143"/>
-        <Label x:Name="labelAforoDetalles" Content="90" HorizontalAlignment="Left" Margin="609,122,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelAux" Content="/" HorizontalAlignment="Left" Margin="594,122,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.602,0.393"/>
-        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="190" Margin="561,153,0,0" VerticalAlignment="Top" Width="100">
-            <Label x:Name="label" Content="Pepe"/>
-            <Label x:Name="label1" Content="Juanito"/>
-            <Label x:Name="label2" Content="Menganito"/>
-        </ListBox>
-        <Label x:Name="labelAux1" Content="Lista de asistentes" HorizontalAlignment="Left" Margin="554,96,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label x:Name="labelCountAsistentes" Content="18" HorizontalAlignment="Left" Margin="561,122,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label3" Content="..." HorizontalAlignment="Left" Margin="566,243,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label4" Content="14/02/2018" HorizontalAlignment="Left" Margin="407,137,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelDireccionDetalle" Content="La comarca 001, 2º 4º - Granolles Barcelona" HorizontalAlignment="Left" Margin="142,317,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelTipoEventoDetalle" Content="Tipo de Evento" HorizontalAlignment="Left" Margin="142,373,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelEstiloDetalle" Content="Estilo del evento" HorizontalAlignment="Left" Margin="142,421,0,0" VerticalAlignment="Top"/>
-
+        <Label x:Name="labelTitelEvento" Content="Detalles del Evento" HorizontalAlignment="Left" Margin="542,70,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="19"/>
+        <Label x:Name="labelDescripcionEvento" HorizontalAlignment="Left" Margin="357,135,0,0" VerticalAlignment="Top" Height="29" Width="126" Content="Descripcion" FontSize="15" FontWeight="Bold"/>
+        <Label x:Name="label4" Content="{Binding eventoguay.Fecha.Date, Mode=OneWay}" HorizontalAlignment="Left" Margin="488,195,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" Width="219" Height="30"/>
+        <Label x:Name="labelDireccionDetalle" Content="{Binding eventoguay.Direccion.Calle}" HorizontalAlignment="Left" Margin="183,443,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="15" Width="323" Height="30"/>
+        <Label x:Name="labelTipoEventoDetalle" Content="Tipo de Evento" HorizontalAlignment="Left" Margin="357,251,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" Width="126"/>
+        <Label x:Name="labelEstiloDetalle" Content="Estilo del evento" HorizontalAlignment="Left" Margin="357,302,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+        <Label x:Name="label" Content="Fecha" HorizontalAlignment="Left" Margin="357,195,0,0" VerticalAlignment="Top" Width="126" FontSize="15" FontWeight="Bold"/>
+        <Label x:Name="label1" Content="{Binding eventoguay.Descripcion}" HorizontalAlignment="Left" Margin="488,135,0,0" VerticalAlignment="Top" Width="219" FontSize="15" FontWeight="Bold" Height="26"/>
+        <Label x:Name="label2" Content="{Binding eventoguay.TipoEvento.Nombre}" HorizontalAlignment="Left" Margin="488,251,0,0" VerticalAlignment="Top" Width="219" FontSize="15" FontWeight="Bold" Height="30"/>
+        <Label x:Name="label3" Content="{Binding eventoguay.Estilo.Nombre}" HorizontalAlignment="Left" Margin="488,302,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.738,0.507" Width="219" FontSize="15" FontWeight="Bold" Height="30"/>
+        <Label x:Name="label5" Content="Aforo" HorizontalAlignment="Left" Margin="357,358,0,0" VerticalAlignment="Top" Width="126" FontSize="15" FontWeight="Bold"/>
+        <Label x:Name="label3_Copy" Content="{Binding eventoguay.Aforo}" HorizontalAlignment="Left" Margin="488,358,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.738,0.507" Width="219" FontSize="15" FontWeight="Bold" Height="30"/>
+        <Label x:Name="label5_Copy" Content="Dirección" HorizontalAlignment="Left" Margin="85,408,0,0" VerticalAlignment="Top" Width="126" FontSize="15" FontWeight="Bold"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="85,62,0,0" VerticalAlignment="Top" Width="87" Height="43"/>
+        <Label x:Name="label6" Content="Calle" HorizontalAlignment="Left" Margin="85,443,0,0" VerticalAlignment="Top" Width="76" FontSize="15" FontWeight="Bold"/>
+        <Label x:Name="label7" Content="CP" HorizontalAlignment="Left" Margin="528,443,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.185,0.198" FontSize="15" FontWeight="Bold" Width="52"/>
+        <Label x:Name="label8" Content="Población" HorizontalAlignment="Left" Margin="85,478,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.226,1.274" Width="87" FontSize="15" FontWeight="Bold"/>
+        <Label x:Name="label2_Copy" Content="{Binding eventoguay.Direccion.CodigoPostal}" HorizontalAlignment="Left" Margin="585,443,0,0" VerticalAlignment="Top" Width="112" FontSize="15" FontWeight="Bold" Height="30"/>
+        <Label x:Name="labelDireccionDetalle_Copy" Content="{Binding eventoguay.Direccion.Población}" HorizontalAlignment="Left" Margin="183,478,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="15" Width="323" Height="30"/>
     </Grid>
 </Window>

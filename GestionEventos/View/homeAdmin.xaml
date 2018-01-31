@@ -40,16 +40,25 @@
             </Button.Background>
         </Button>
         <Button x:Name="btnAddLocal" Content="" HorizontalAlignment="Left" Margin="319,524,0,0" VerticalAlignment="Top" Width="30" FontFamily="Trebuchet MS" FontSize="14" Height="30" BorderBrush="{x:Null}" Command="{Binding AddCommand}">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/crear.png"/>
+            </Button.OpacityMask>
             <Button.Background>
                 <ImageBrush ImageSource="/GestionEventos;component/Resources/crear.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="btnUpdateLocal" Content="" HorizontalAlignment="Left" Margin="382,524,0,0" VerticalAlignment="Top" Width="30" Height="30" BorderBrush="{x:Null}" Command="{Binding UpdCommand, Mode=OneWay}">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/edit.png"/>
+            </Button.OpacityMask>
             <Button.Background>
                 <ImageBrush ImageSource="/GestionEventos;component/Resources/edit.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnDelteLocal" Content="" HorizontalAlignment="Left" Margin="442,524,0,0" VerticalAlignment="Top" Width="30" Height="30" BorderBrush="{x:Null}" Command="{Binding DelLocalCommand, Mode=OneWay}">
+        <Button x:Name="btnDelteLocal" Content="" HorizontalAlignment="Left" Margin="442,524,0,0" VerticalAlignment="Top" Width="30" Height="30" BorderBrush="{x:Null}" Command="{Binding DelCommand, Mode=OneWay}">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/Papelera.png"/>
+            </Button.OpacityMask>
             <Button.Background>
                 <ImageBrush ImageSource="/GestionEventos;component/Resources/Papelera.png"/>
             </Button.Background>

@@ -16,6 +16,7 @@ namespace GestionEventos.ViewModel
 {
     class homeAdminViewModel : INotifyPropertyChanged
     {
+
         eventosEntities ctx = new eventosEntities();
         private List<Usuario> _usuarios;
         private List<Local> _locales;
@@ -23,7 +24,19 @@ namespace GestionEventos.ViewModel
         private Usuario _selectedUsuario;
         private Local _selectedLocal;
         private Cliente _selectedCliente;
+        private Evento _event;
 
+        public Evento Event
+        {
+            get
+            {
+                return _event;
+            }
+            set
+            {
+                _event = value;
+            }
+        }
         public List<Usuario> Usuarios
         {
             get
@@ -122,11 +135,9 @@ namespace GestionEventos.ViewModel
         {
             get { return new RelayCommand(Add); }
         }
-
         public void Add()
         {
             Usuario user_aux = new Usuario();
-            user_aux.Id = ((int)ctx.Usuarios.Select(x => x.Id).Max())+1;
             this.Dialogs.Add(new crudUsersViewModel
             {
                 Titol = "Añadir Usuario",
@@ -159,18 +170,17 @@ namespace GestionEventos.ViewModel
             CargarUsuarios();
         }
 
-
         public ICommand UpdCommand
         {
             get { return new RelayCommand(Upd); }
         }
-
         public void Upd()
         {
             if (SelectedUser != null)
             {
                 Usuario user_aux = new Usuario();
                 user_aux = SelectedUser;
+                string nombre = SelectedUser.Usuario1;
                 this.Dialogs.Add(new crudUsersViewModel
                 {
                     Titol = "Modificar Usuario",
@@ -179,131 +189,69 @@ namespace GestionEventos.ViewModel
                     TextEnabled = true,
                     OnOk = (sender) =>
                     {
-                        SelectedUser = user_aux;
                         try
                         {
-                            ctx.SaveChanges();
-                            CargarUsuarios();
+                            if (ctx.Usuarios.Where(x => x.Usuario1.Equals(user_aux.Usuario1)).Count() > 0 && !user_aux.Usuario1.Equals(nombre))
+                            {
+                                MessageBox.Show("Aquest nom d'usuari ja existeix posa un altre");
+                            }
+                            else if (user_aux.Password.Equals(""))
+                            {
+                                MessageBox.Show("Password incorrecte");
+                            }
+                            else
+                            {
+                                ctx.SaveChanges();
+                                sender.Close();
+                            }
                         }
                         catch (Exception e)
                         {
-                            MessageBox.Show(e.ToString());
+                            MessageBox.Show(e.StackTrace);
                         }
+                    },
+                    OnCancel = (sender) => { sender.Close(); },
+                    OnCloseRequest = (sender) => { sender.Close(); }
+                });
+            }
+        }
+        
+        public ICommand DelCommand
+        {
+            get { return new RelayCommand(Del); }
+        }
+        public void Del()
+        {
+            if (SelectedUser != null)
+            {
+                Usuario user_aux = new Usuario();
+                user_aux = SelectedUser;
+                MessageBox.Show("Vas eliminar un usuario y todo lo que contiene el usuario (locales,eventos...)","Cuidado", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                this.Dialogs.Add(new crudUsersViewModel
+                {
+                    Titol = "Borrar Usuario",
+                    Usuario = user_aux,
+                    OkText = "Borrar",
+                    TextEnabled = false,                    
+                    OnOk = (sender) =>
+                    {
+                        try
+                        {  
+                            ctx.Usuarios.Remove(user_aux);
+                            ctx.SaveChanges();                            
+                        }
+                        catch (Exception e) {
+                            MessageBox.Show(e.StackTrace);
+                        }
+                        CargarUsuarios();
                         sender.Close();
                     },
                     OnCancel = (sender) => { sender.Close(); },
                     OnCloseRequest = (sender) => { sender.Close(); }
                 });
             }
-            //}
-            #region CRUD LOCAL
-            //public ICommand AddLocalCommand
-            //{
-            //    get { return new RelayCommand(AddLocal); }
-            //}
-
-            //public void AddLocal()
-            //{
-            //    Local local_aux = new Local();
-            //    this.Dialogs.Add(new crudLocalViewModel
-            //    {
-            //        Titol = "Añadir Local",
-            //        Local = local_aux,
-            //        OkText = "Añadir",
-            //        TextEnabled = true,
-            //        SelectedUsuario = ctx.Usuarios.Where(x => x.Id == local_aux.IdUsuario).Select(x=> x).SingleOrDefault(),
-            //        OnOk = (sender) =>
-            //        {
-            //            ctx.Locals.Add(local_aux);
-            //            try
-            //            {
-            //                ctx.SaveChanges();
-            //                CargarLocales();
-            //            }
-            //            catch (Exception e)
-            //            {
-            //                MessageBox.Show(e.ToString());
-            //            }
-            //            sender.Close();
-            //        },
-            //        OnCancel = (sender) => { sender.Close(); },
-            //        OnCloseRequest = (sender) => { sender.Close(); }
-            //    });
-            //}
-
-            //public ICommand UpdLocalCommand
-            //{
-            //    get { return new RelayCommand(UpdLocal); }
-            //}
-
-            //public void UpdLocal()
-            //{
-            //    if (SelectedLocal != null)
-            //    {
-            //        Local local_aux = new Local();
-            //        local_aux = SelectedLocal;
-            //        this.Dialogs.Add(new crudLocalViewModel
-            //        {
-            //            Titol = "Modificar Local",
-            //            Local = local_aux,
-            //            OkText = "Modificar",
-            //            TextEnabled = true,
-            //            OnOk = (sender) =>
-            //            {
-            //                SelectedLocal = local_aux;
-            //                try
-            //                {
-            //                    ctx.SaveChanges();
-            //                    CargarLocales();
-            //                }
-            //                catch (Exception e)
-            //                {
-            //                    MessageBox.Show(e.ToString());
-            //                }
-            //                sender.Close();
-            //            },
-            //            OnCancel = (sender) => { sender.Close(); },
-            //            OnCloseRequest = (sender) => { sender.Close(); }
-            //        });
-            //    }
-            //}
-
-            //public ICommand DelLocalCommand
-            //{
-            //    get { return new RelayCommand(DelLocal); }
-            //}
-
-            //public void DelLocal()
-            //{
-            //    if (SelectedLocal != null)
-            //    {
-            //        Local local_aux = new Local();
-            //        local_aux = SelectedLocal;
-            //        this.Dialogs.Add(new crudLocalViewModel
-            //        {
-            //            Titol = "Borrar Local",
-            //            Local = local_aux,
-            //            OkText = "Borrar",
-            //            TextEnabled = false,
-            //            OnOk = (sender) =>
-            //            {
-            //                try
-            //                {
-            //                    ctx.Locals.Remove(SelectedLocal);
-            //                    ctx.SaveChanges();
-            //                    CargarLocales();
-            //                }
-            //                catch (Exception e) { MessageBox.Show(e.ToString()); }
-
-            //                sender.Close();
-            //            },
-            //            OnCancel = (sender) => { sender.Close(); },
-            //            OnCloseRequest = (sender) => { sender.Close(); }
-            //        });
-            //    }
-            //}
-            #endregion
         }
     }
 }
+
 

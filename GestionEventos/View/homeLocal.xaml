@@ -11,7 +11,10 @@
         Title="homeLocal" Height="600" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
     <Window.Background>
         <ImageBrush ImageSource="/GestionEventos;component/Resources/FondoHomeLocal.jpg"/>
-    </Window.Background>    
+    </Window.Background>
+    <Window.DataContext>
+        <ViewModel:homeLocalViewModel/>
+    </Window.DataContext>
     <Grid Margin="0,0,0,-2">
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill"/>
@@ -25,17 +28,9 @@
             </Button.Background>
         </Button>
         <Button x:Name="btnAddEvent" Content="+" HorizontalAlignment="Left" Margin="64,47,0,0" VerticalAlignment="Top" Width="75" FontSize="36" FontWeight="Bold" Command="{Binding addEventCommand}"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="210,163,0,0" VerticalAlignment="Top" Width="139" Height="24" ItemsSource="{Binding Locales/Nombre}"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="210,218,0,0" VerticalAlignment="Top" Height="142" Width="381" AutoGenerateColumns="False" ItemsSource="{Binding Locales}">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="Id"/>
-                <DataGridTextColumn Binding="{Binding Nombre}" ClipboardContentBinding="{x:Null}" Header="Nombre"/>
-                <DataGridTextColumn Binding="{Binding Telefono}" ClipboardContentBinding="{x:Null}" Header="Telefono"/>
-                <DataGridTextColumn Binding="{Binding Email}" ClipboardContentBinding="{x:Null}" Header="Email"/>
-                <DataGridTextColumn Binding="{Binding Direccion.Calle}" ClipboardContentBinding="{x:Null}" Header="Direccion"/>
-                <DataGridTextColumn Binding="{Binding Direccion.Población}" ClipboardContentBinding="{x:Null}" Header="Poblacion"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="210,163,0,0" VerticalAlignment="Top" Width="139" Height="24" ItemsSource="{Binding Locales}" DisplayMemberPath="Nombre" SelectedItem="{Binding SelectedLocal}"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="210,218,0,0" VerticalAlignment="Top" Height="72" Width="376" ItemsSource="{Binding Eventos}" SelectedItem="{Binding SelectedEvento}"/>
+        <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" Margin="538,339,0,0" VerticalAlignment="Top" Width="75" Click="Detail"/>
     </Grid>
 </Window>
+
