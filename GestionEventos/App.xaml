@@ -6,6 +6,9 @@
              xmlns:View="clr-namespace:GestionEventos.View"
              xmlns:ViewModel="clr-namespace:GestionEventos.ViewModel">    
     <Application.Resources>
+        <View:crudLocal x:Key="{x:Type ViewModel:crudLocalViewModel}" x:Shared="False" />
         <View:CrudEvento x:Key="{x:Type ViewModel:crudEventoViewModel}" x:Shared="False" />
+        <View:crudUsers x:Key="{x:Type ViewModel:crudUsersViewModel}" x:Shared ="False" />
+        <View:detallesEvento x:Key="{x:Type ViewModel:DetalleEventoViewModel}" x:Shared ="False" />
     </Application.Resources>
 </Application>
