@@ -27,7 +27,7 @@
                 <ImageBrush ImageSource="/GestionEventos;component/Resources/logout.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnAddEvent" Content="" HorizontalAlignment="Left" Margin="58,494,0,0" VerticalAlignment="Top" Width="30" FontSize="36" FontWeight="Bold" Command="{Binding addEventCommand}" Height="30" BorderBrush="{x:Null}">
+        <Button x:Name="btnAddEvent" Content="" HorizontalAlignment="Left" Margin="58,494,0,0" VerticalAlignment="Top" Width="30" FontSize="36" FontWeight="Bold" Command="{Binding AddEventCommand, Mode=OneWay}" Height="30" BorderBrush="{x:Null}">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="/GestionEventos;component/Resources/crear.png"/>
             </Button.OpacityMask>
@@ -119,7 +119,7 @@
                 <ImageBrush ImageSource="/GestionEventos;component/Resources/Papelera.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="button1_Copy2" Content="" HorizontalAlignment="Left" Margin="93,494,0,0" VerticalAlignment="Top" Width="30" BorderBrush="{x:Null}" Height="30">
+        <Button x:Name="button1_Copy2" Content="" HorizontalAlignment="Left" Margin="93,494,0,0" VerticalAlignment="Top" Width="30" BorderBrush="{x:Null}" Height="30" Command="{Binding EditEventCommand, Mode=OneWay}">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="/GestionEventos;component/Resources/edit.png"/>
             </Button.OpacityMask>

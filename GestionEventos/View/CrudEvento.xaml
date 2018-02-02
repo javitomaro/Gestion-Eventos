@@ -4,40 +4,49 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestionEventos.View"
+        xmlns:dlgs="clr-namespace:MvvmDialogs.Behaviors;assembly=MvvmDialogs"
+		dlgs:DialogBehavior.DialogViewModels="{Binding Dialogs}"
         xmlns:ViewModel="clr-namespace:GestionEventos.ViewModel" x:Class="GestionEventos.View.CrudEvento"
         mc:Ignorable="d"
         Title="CrudEvento" Height="600" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" Foreground="{x:Null}">
+
     <Window.Background>
         <ImageBrush ImageSource="/GestionEventos;component/Resources/crearEvento.png"/>
     </Window.Background>
     <Window.DataContext>
         <ViewModel:crudEventoViewModel/>
     </Window.DataContext>
-    <Grid>
-        <Label x:Name="labelCrudTileEvento" Content="CRUD EVENTO" HorizontalAlignment="Left" Margin="130,102,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBoxDescripcion" HorizontalAlignment="Left" Height="24" Margin="142,164,0,0" TextWrapping="Wrap" Text="Descripción" VerticalAlignment="Top" Width="483" SelectionOpacity="0"/>
-        <Calendar x:Name="CalendarFecha" HorizontalAlignment="Left" Margin="142,301,0,0" VerticalAlignment="Top" Cursor="No">
-            <Calendar.BindingGroup>
-                <BindingGroup/>
-            </Calendar.BindingGroup>
-        </Calendar>
-        <TextBox x:Name="textBoxAforo" HorizontalAlignment="Left" Height="24" Margin="142,227,0,0" TextWrapping="Wrap" Text="Aforo" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="comboBoxTipoEvento" HorizontalAlignment="Left" Margin="312,227,0,0" VerticalAlignment="Top" Width="153" ItemsSource="{Binding TipoEventoss}"/>
-        <ComboBox x:Name="comboBoxEstiloEvento" HorizontalAlignment="Left" Margin="505,227,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="369,301,0,0" VerticalAlignment="Top" Width="256"/>
-        <Button x:Name="buttonAñadirDireccion" Content="Añadir Dirección" HorizontalAlignment="Left" Margin="369,346,0,0" VerticalAlignment="Top" Width="110"/>
-        <Label x:Name="labelDescripcionEvento" Content="Descripcion" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="142,133,0,0" FontWeight="Bold"/>
-        <Label x:Name="labelAforo" Content="Aforo" HorizontalAlignment="Left" Margin="142,201,0,0" VerticalAlignment="Top" Width="62" FontWeight="Bold"/>
-        <Label x:Name="labelTipoEvento" Content="Tipo" HorizontalAlignment="Left" Margin="312,201,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label x:Name="labelEstiloEvento" Content="Estilo" HorizontalAlignment="Left" Margin="505,201,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label x:Name="labelFechaEvento" Content="Fecha" HorizontalAlignment="Left" Margin="142,275,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label x:Name="labelDireccionEvento" Content="Dirección" HorizontalAlignment="Left" Margin="369,275,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Button x:Name="buttonSubirImagen" Content="Subir imagen" HorizontalAlignment="Left" Margin="142,512,0,0" VerticalAlignment="Top" Width="93"/>
-        <Label x:Name="labelSubirImagen" Content="Subir Imagen" HorizontalAlignment="Left" Margin="142,486,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="88"/>
+    <Grid Background="#FF94A1B4" Margin="0,2,0,-2">
+        <Label x:Name="labelCrudLocal" Content="{Binding local.Nombre}" HorizontalAlignment="Left" Margin="468,52,0,0" VerticalAlignment="Top" FontSize="30"/>
+        <Label x:Name="labelCrudTileEvento" Content="{Binding Title}" HorizontalAlignment="Left" Margin="144,52,0,0" VerticalAlignment="Top" FontSize="30"/>
+        <TextBox x:Name="textBoxDescripcion" HorizontalAlignment="Left" Height="24" Margin="144,164,0,0" TextWrapping="Wrap"  Text="{Binding evento.Descripcion}" VerticalAlignment="Top" Width="530" SelectionOpacity="0" IsEnabled="{Binding TextEnabled}" />
+        <TextBox x:Name="textBoxAforo" HorizontalAlignment="Left" Height="24" Margin="144,227,0,0" TextWrapping="Wrap" Text="{Binding evento.Aforo}" VerticalAlignment="Top" Width="120" IsEnabled="{Binding TextEnabled}" />
+        <ComboBox x:Name="comboBoxTipoEvento" HorizontalAlignment="Left" Margin="314,227,0,0" VerticalAlignment="Top" Width="153"  DisplayMemberPath="Nombre" ItemsSource="{Binding TipoEventos}" SelectedValuePath="Id" SelectedValue="{Binding evento.IdTipoEvento}"/>
+        <ComboBox x:Name="comboBoxEstiloEvento" HorizontalAlignment="Left" Margin="507,227,0,0" VerticalAlignment="Top" Width="167" ItemsSource="{Binding EstiloEventos}" DisplayMemberPath="Nombre" SelectedValuePath="Id" SelectedValue="{Binding evento.IdEstilo}" />
+        <ComboBox x:Name="comboBoxPoblación" HorizontalAlignment="Left" Margin="147,332,0,0" VerticalAlignment="Top" Width="178" ItemsSource="{Binding listPoblacion}" SelectedValue="{Binding evento.Direccion.Población}"/>
+        <ComboBox x:Name="comboBoxCalle" HorizontalAlignment="Left" Margin="361,332,0,0" VerticalAlignment="Top" Width="186" ItemsSource="{Binding listCalle}" SelectedValuePath="Id" SelectedValue="{Binding evento.Direccion.Calle}" DisplayMemberPath="Calle" />
+        <Label x:Name="labelDescripcionEvento" Content="Descripcion" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="144,133,0,0" FontWeight="Bold"/>
+        <Label x:Name="labelAforo" Content="Aforo" HorizontalAlignment="Left" Margin="144,201,0,0" VerticalAlignment="Top" Width="62" FontWeight="Bold"/>
+        <Label x:Name="labelTipoEvento" Content="Tipo" HorizontalAlignment="Left" Margin="314,201,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="labelEstiloEvento" Content="Estilo" HorizontalAlignment="Left" Margin="507,201,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="labelFechaEvento" Content="Fecha" HorizontalAlignment="Left" Margin="424,375,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="labelDireccionEvento" Content="Dirección" HorizontalAlignment="Left" Margin="144,272,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="labelSubirImagen" Content="Enlace de la imagen" HorizontalAlignment="Left" Margin="144,376,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="120"/>
         <Button x:Name="buttonGuardarCrudEvento" Content="Guardar" HorizontalAlignment="Left" Margin="229,636,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="buttonCancelarCrudEvento" Content="Cancelar" HorizontalAlignment="Left" Margin="390,636,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="buttonSaveEvent" Content="Guardar" HorizontalAlignment="Left" Margin="312,552,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="buttonCancelarCrudEvento1" Content="Cancelar" HorizontalAlignment="Left" Margin="432,552,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="buttonSaveEvent" Content="Guardar" HorizontalAlignment="Left" Margin="289,499,0,0" VerticalAlignment="Top" Width="75" Command="{Binding OkCommand}"/>
+        <Button x:Name="buttonCancelarCrudEvento1" Content="Cancelar" HorizontalAlignment="Left" Margin="424,499,0,0" VerticalAlignment="Top" Width="76"  Command="{Binding CancelCommand}"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <DatePicker HorizontalAlignment="Left" Margin="424,406,0,0" VerticalAlignment="Top" Width="250" SelectedDateFormat="{Binding evento.Fecha}" SelectedDate="{Binding evento.Fecha}" />
+        <Label x:Name="label" Content="Población:" HorizontalAlignment="Left" Margin="147,306,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Calle:" HorizontalAlignment="Left" Margin="361,306,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="144,407,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="259" Text="{Binding selectedFlyer}" />
+        <Label x:Name="labelPostal" Content="Codigo Postal" HorizontalAlignment="Left" Margin="572,306,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxCP" HorizontalAlignment="Left" Height="23" Margin="572,332,0,0" TextWrapping="Wrap" Text="{Binding direccion.CodigoPostal }" VerticalAlignment="Top" Width="102"/>
+        <TextBox x:Name="textBoxPoblacion" HorizontalAlignment="Left" Height="23" Margin="147,332,0,0" TextWrapping="Wrap" Text="{Binding NuevaDireccion.Población }" VerticalAlignment="Top" Width="178"/>
+        <TextBox x:Name="textBoxCalle" HorizontalAlignment="Left" Height="23" Margin="361,332,0,0" TextWrapping="Wrap" Text="{Binding NuevaDireccion.Calle }" VerticalAlignment="Top" Width="186"/>
+        <RadioButton x:Name="radioButtonSelectAddress" Content="Seleccionar Dirección" HorizontalAlignment="Left" Margin="320,278,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.376,-0.667" Checked="radioButtonSelectAddress_Checked" IsChecked="True"/>
+        <RadioButton x:Name="rButonAddAddress" Content="Añadir Local" HorizontalAlignment="Left" Margin="220,278,0,0" VerticalAlignment="Top"  Checked="rButonAddress_Checked" />
 
     </Grid>
 </Window>

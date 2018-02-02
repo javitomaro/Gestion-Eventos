@@ -21,7 +21,6 @@ namespace GestionEventos.ViewModel
         private List<Local> _locales;
         private Local _selectedLocal;
         private Usuario _actualUsuario;
-
         public homeLocalViewModel()
         {
             CargarLocales(4);
@@ -56,7 +55,6 @@ namespace GestionEventos.ViewModel
                 //RaisePropertyChanged("SelectedEvento");
             }
         }
-
         public List<Local> Locales
         {
             get
@@ -96,7 +94,6 @@ namespace GestionEventos.ViewModel
                 NotifyPropertyChanged();
             }
         }
-
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
@@ -121,7 +118,7 @@ namespace GestionEventos.ViewModel
 
             Eventos = ctx.Eventoes.Where(x => x.IdLocal == id).Select(x => x).ToList();
         }
-
+        #region User
         public ICommand EditUserCommand { get { return new RelayCommand(EditUser); } }
         private void EditUser()
         {
@@ -165,6 +162,10 @@ namespace GestionEventos.ViewModel
                 });
             }
         }
+        #endregion
+
+
+        #region Evento
         public ICommand VerEventoCommand { get { return new RelayCommand(VerEvento); } }
         private void VerEvento()
         {
@@ -172,12 +173,124 @@ namespace GestionEventos.ViewModel
             {
                 this.Dialogs.Add(new DetalleEventoViewModel
                 {
-                    eventoguay = SelectedEvento,               
+                    eventoguay = SelectedEvento,
                     OnOk = (sender) => { sender.Close(); },
                     OnCancel = (sender) => { sender.Close(); },
                     OnCloseRequest = (sender) => { sender.Close(); }
                 });
             }
         }
+        public ICommand AddEventCommand { get { return new RelayCommand(AddEvent); } }
+        private void AddEvent()
+        {
+            Evento evento_aux = new Evento();
+            Flyer flyer_aux = new Flyer();
+            Direccion direccion_aux = new Direccion();
+            Direccion nuevaDir_aux = new Direccion();
+            Local local_aux = SelectedLocal;
+            evento_aux.IdLocal = SelectedLocal.Id;
+            bool correcto = false;
+            this.Dialogs.Add(new crudEventoViewModel()
+            {
+                Title = "Añadir un Evento",
+                evento = evento_aux,
+                flyer = flyer_aux,
+                local = local_aux,
+                direccion = direccion_aux,
+                NuevaDireccion = nuevaDir_aux,
+                OkText = "Añadir",
+                TextEnabled = true,
+                OnOk = (sender) =>
+                {
+                    try
+                    {
+                        if (nuevaDir_aux.Población != null && nuevaDir_aux.Calle != null && nuevaDir_aux.CodigoPostal != null)
+                        {
+                            ctx.Direccions.Add(nuevaDir_aux);
+                            ctx.SaveChanges();
+                            evento_aux.IdDireccion = nuevaDir_aux.Id;
+                            correcto = true;
+                        }
+                        else if (evento_aux.IdDireccion > 0)
+                        {
+                            evento_aux.IdDireccion = direccion_aux.Id;
+                            correcto = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Direccion erronea");
+                            correcto = false;
+                        }
+
+                        if (correcto)
+                        {
+                            evento_aux.IdLocal = local_aux.Id;
+                            ctx.Eventoes.Add(evento_aux);
+                            ctx.SaveChanges();
+                            CargarEventos(SelectedLocal.Id);
+                            sender.Close();
+                        }
+                        //flyer_aux.IdEvento = evento_aux.Id;
+                        //ctx.Flyers.Add(flyer_aux);
+                        //ctx.SaveChanges();                                           
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(e.StackTrace);
+                    }
+                },
+
+                OnCancel = (sender) => { sender.Close(); },
+            });
+        }
+
+        public ICommand EditEventCommand { get { return new RelayCommand(EditEvent); } }
+        private void EditEvent()
+
+        {
+            if (SelectedEvento != null)
+            {
+                Local local_aux = SelectedLocal;
+                //Flyer flyer_aux = new Flyer();
+                Evento evento_aux = SelectedEvento;
+                evento_aux.Id = SelectedEvento.Id;
+                evento_aux.Descripcion = SelectedEvento.Descripcion;
+                evento_aux.Aforo = SelectedEvento.Aforo;
+                evento_aux.TipoEvento = SelectedEvento.TipoEvento;
+                evento_aux.Estilo = SelectedEvento.Estilo;                
+                evento_aux.Direccion = SelectedEvento.Direccion;
+                //Flyer axFlyer = ctx.Flyers.Where(x => x.IdEvento == SelectedEvento.Id).FirstOrDefault();
+                //String seletedFlyer = axFlyer.Flyer1;
+                evento_aux.Fecha = SelectedEvento.Fecha;
+                evento_aux.Local = SelectedEvento.Local;
+                String title = "Editar Evento";
+                this.Dialogs.Add(new crudEventoViewModel(title, evento_aux)
+                {
+                    //selectedFlyer = seletedFlyer,
+                    evento = evento_aux,
+                    //flyer = flyer_aux,
+                    OkText = "Guardar",
+                    Title = title,
+                    TextEnabled = true,
+                    OnOk = (sender) =>
+                    {
+                        try
+                        {
+                            ctx.SaveChanges();
+                            //flyer_aux.IdEvento = evento_aux.Id;
+                            //ctx.Flyers.Add(flyer_aux);
+
+                        }
+                        catch (Exception e)
+                        {
+                            MessageBox.Show(e.ToString());
+                        }
+                        sender.Close();
+                    },
+                    OnCancel = (sender) => { sender.Close(); },
+                });
+            }
+        }
+        #endregion
     }
 }

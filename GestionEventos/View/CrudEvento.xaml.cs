@@ -23,5 +23,35 @@ namespace GestionEventos.View
         {
             InitializeComponent();
         }
+
+        private void radioButtonSelectAddress_Checked(object sender, RoutedEventArgs e)
+        {
+
+            this.textBoxCalle.Visibility = Visibility.Hidden;
+            this.textBoxPoblacion.Visibility = Visibility.Hidden;
+            this.textBoxCP.Visibility = Visibility.Hidden;
+            this.labelPostal.Visibility = Visibility.Hidden;
+
+            this.textBoxCalle.Text = null;
+            this.textBoxPoblacion.Text = null;
+            this.textBoxCP.Text = null;
+
+            this.comboBoxPoblación.Visibility = Visibility.Visible;
+            this.comboBoxCalle.Visibility = Visibility.Visible;
+
+        }
+
+        private void rButonAddress_Checked(object sender, RoutedEventArgs e)
+        {
+            this.textBoxCalle.Visibility = Visibility.Visible;
+            this.textBoxPoblacion.Visibility = Visibility.Visible;
+            this.textBoxCP.Visibility = Visibility.Visible;
+            this.labelPostal.Visibility = Visibility.Visible;
+
+            this.comboBoxPoblación.Visibility = Visibility.Hidden;
+            this.comboBoxCalle.Visibility = Visibility.Hidden;
+            this.comboBoxPoblación.SelectedValue = false;
+            this.comboBoxCalle.SelectedValue = false;
+        }
     }
 }
