@@ -27,10 +27,10 @@
                 <DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="Id User"/>
                 <DataGridTextColumn Binding="{Binding Usuario1}" ClipboardContentBinding="{x:Null}" Header="User Name"/>
                 <DataGridTextColumn Binding="{Binding Password}" ClipboardContentBinding="{x:Null}" Header="Password"/>
-                <DataGridTextColumn Binding="{Binding Rol.Name}" ClipboardContentBinding="{x:Null}" Header="Tipo Usuario"/>
+                <DataGridTextColumn Binding="{Binding Rol.Name}" ClipboardContentBinding="{x:Null}" Header="Tipus Usuari"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label x:Name="label" Content="Usuarios" HorizontalAlignment="Left" Margin="294,0,0,505" VerticalAlignment="Bottom" Height="64" Width="244" Foreground="#FFF9F4F4" FontFamily="Manga Temple" FontSize="40"/>
+        <Label x:Name="label" Content="Usuaris" HorizontalAlignment="Left" Margin="300,0,0,505" VerticalAlignment="Bottom" Height="64" Width="244" Foreground="#FFF9F4F4" FontFamily="Open Sans" FontSize="40" FontWeight="Bold"/>
         <Button x:Name="button" Content="" HorizontalAlignment="Left" Margin="760,10,0,0" VerticalAlignment="Top" Width="30" Height="30" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="button_Click" Cursor="Hand">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="/GestionEventos;component/Resources/logout.png"/>

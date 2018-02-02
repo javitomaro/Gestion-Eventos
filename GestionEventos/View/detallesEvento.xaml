@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestionEventos"
         xmlns:ViewModel="clr-namespace:GestionEventos.ViewModel" xmlns:System="clr-namespace:System;assembly=mscorlib"
-	    mc:Ignorable="d"
-        Title="detallesEvento" Height="600" Width="800" ResizeMode="NoResize" WindowStyle="None">
+	    xmlns:dlgs="clr-namespace:MvvmDialogs.Behaviors;assembly=MvvmDialogs"
+		dlgs:DialogBehavior.DialogViewModels="{Binding Dialogs}"
+        mc:Ignorable="d"
+        Title="detallesEvento" Height="600" Width="800" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <ViewModel:DetalleEventoViewModel/>
     </Window.DataContext>
@@ -14,24 +16,86 @@
         <ImageBrush ImageSource="/GestionEventos;component/Resources/DetalleEventoFondo.jpg"/>
     </Window.Background>
     <Grid Height="600" VerticalAlignment="Bottom">
-        <Label x:Name="labelTitelEvento" Content="Detalles del Evento" HorizontalAlignment="Left" Margin="542,70,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="19"/>
-        <Label x:Name="labelDescripcionEvento" HorizontalAlignment="Left" Margin="357,135,0,0" VerticalAlignment="Top" Height="29" Width="126" Content="Descripcion" FontSize="15" FontWeight="Bold"/>
-        <Label x:Name="label4" Content="{Binding eventoguay.Fecha.Date, Mode=OneWay}" HorizontalAlignment="Left" Margin="488,195,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" Width="219" Height="30"/>
-        <Label x:Name="labelDireccionDetalle" Content="{Binding eventoguay.Direccion.Calle}" HorizontalAlignment="Left" Margin="183,443,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="15" Width="323" Height="30"/>
-        <Label x:Name="labelTipoEventoDetalle" Content="Tipo de Evento" HorizontalAlignment="Left" Margin="357,251,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" Width="126"/>
-        <Label x:Name="labelEstiloDetalle" Content="Estilo del evento" HorizontalAlignment="Left" Margin="357,302,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
-        <Label x:Name="label" Content="Fecha" HorizontalAlignment="Left" Margin="357,195,0,0" VerticalAlignment="Top" Width="126" FontSize="15" FontWeight="Bold"/>
-        <Label x:Name="label1" Content="{Binding eventoguay.Descripcion}" HorizontalAlignment="Left" Margin="488,135,0,0" VerticalAlignment="Top" Width="219" FontSize="15" FontWeight="Bold" Height="26"/>
-        <Label x:Name="label2" Content="{Binding eventoguay.TipoEvento.Nombre}" HorizontalAlignment="Left" Margin="488,251,0,0" VerticalAlignment="Top" Width="219" FontSize="15" FontWeight="Bold" Height="30"/>
-        <Label x:Name="label3" Content="{Binding eventoguay.Estilo.Nombre}" HorizontalAlignment="Left" Margin="488,302,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.738,0.507" Width="219" FontSize="15" FontWeight="Bold" Height="30"/>
-        <Label x:Name="label5" Content="Aforo" HorizontalAlignment="Left" Margin="357,358,0,0" VerticalAlignment="Top" Width="126" FontSize="15" FontWeight="Bold"/>
-        <Label x:Name="label3_Copy" Content="{Binding eventoguay.Aforo}" HorizontalAlignment="Left" Margin="488,358,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.738,0.507" Width="219" FontSize="15" FontWeight="Bold" Height="30"/>
-        <Label x:Name="label5_Copy" Content="Dirección" HorizontalAlignment="Left" Margin="85,408,0,0" VerticalAlignment="Top" Width="126" FontSize="15" FontWeight="Bold"/>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="85,62,0,0" VerticalAlignment="Top" Width="87" Height="43"/>
-        <Label x:Name="label6" Content="Calle" HorizontalAlignment="Left" Margin="85,443,0,0" VerticalAlignment="Top" Width="76" FontSize="15" FontWeight="Bold"/>
-        <Label x:Name="label7" Content="CP" HorizontalAlignment="Left" Margin="528,443,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.185,0.198" FontSize="15" FontWeight="Bold" Width="52"/>
-        <Label x:Name="label8" Content="Población" HorizontalAlignment="Left" Margin="85,478,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.226,1.274" Width="87" FontSize="15" FontWeight="Bold"/>
-        <Label x:Name="label2_Copy" Content="{Binding eventoguay.Direccion.CodigoPostal}" HorizontalAlignment="Left" Margin="585,443,0,0" VerticalAlignment="Top" Width="112" FontSize="15" FontWeight="Bold" Height="30"/>
-        <Label x:Name="labelDireccionDetalle_Copy" Content="{Binding eventoguay.Direccion.Población}" HorizontalAlignment="Left" Margin="183,478,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="15" Width="323" Height="30"/>
+        <Label x:Name="labelTitelEvento" Content="DETALLS EVENT" HorizontalAlignment="Left" Margin="267,60,0,0" VerticalAlignment="Top" FontSize="36" FontFamily="Open Sans" FontWeight="Bold" Width="296"/>
+        <Label x:Name="labelDescripcionEvento" HorizontalAlignment="Left" Margin="357,135,0,0" VerticalAlignment="Top" Height="29" Width="126" Content="Descripció" FontSize="15" FontWeight="Bold"/>
+        <Label x:Name="label4" Content="{Binding eventoguay.Fecha.Date, Mode=OneWay}" HorizontalAlignment="Left" Margin="488,195,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" Width="219" Height="30">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA6A6A6" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+        <Label x:Name="labelDireccionDetalle" Content="{Binding eventoguay.Direccion.Calle}" HorizontalAlignment="Left" Margin="183,422,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="15" Width="323" Height="30">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA6A6A6" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+        <Label x:Name="labelTipoEventoDetalle" Content="Tipus de Event" HorizontalAlignment="Left" Margin="357,251,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" Width="126"/>
+        <Label x:Name="labelEstiloDetalle" Content="Estil del event" HorizontalAlignment="Left" Margin="357,302,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+        <Label x:Name="label" Content="Data" HorizontalAlignment="Left" Margin="357,195,0,0" VerticalAlignment="Top" Width="126" FontSize="15" FontWeight="Bold"/>
+        <Label x:Name="label1" Content="{Binding eventoguay.Descripcion}" HorizontalAlignment="Left" Margin="488,135,0,0" VerticalAlignment="Top" Width="219" FontSize="15" FontWeight="Bold" Height="26">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA6A6A6" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+        <Label x:Name="label2" Content="{Binding eventoguay.TipoEvento.Nombre}" HorizontalAlignment="Left" Margin="488,251,0,0" VerticalAlignment="Top" Width="219" FontSize="15" FontWeight="Bold" Height="30">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA6A6A6" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+        <Label x:Name="label3" Content="{Binding eventoguay.Estilo.Nombre}" HorizontalAlignment="Left" Margin="488,302,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.738,0.507" Width="219" FontSize="15" FontWeight="Bold" Height="30">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA6A6A6" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+        <Label x:Name="label5" Content="Aforament" HorizontalAlignment="Left" Margin="357,358,0,0" VerticalAlignment="Top" Width="126" FontSize="15" FontWeight="Bold"/>
+        <Label x:Name="label3_Copy" Content="{Binding eventoguay.Aforo}" HorizontalAlignment="Left" Margin="488,358,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.738,0.507" Width="219" FontSize="15" FontWeight="Bold" Height="30">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA6A6A6" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+        <Button x:Name="button" Content="" HorizontalAlignment="Left" Margin="60,73,0,0" VerticalAlignment="Top" Width="30" Height="30" Command="{Binding OkCommand, Mode=OneWay}">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/logout.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/logout.png"/>
+            </Button.Background>
+        </Button>
+        <Label x:Name="label6" Content="Carrer" HorizontalAlignment="Left" Margin="85,422,0,0" VerticalAlignment="Top" Width="76" FontSize="15" FontWeight="Bold"/>
+        <Label x:Name="label7" Content="CP" HorizontalAlignment="Left" Margin="511,457,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.185,0.198" FontSize="15" FontWeight="Bold" Width="52"/>
+        <Label x:Name="label8" Content="Població" HorizontalAlignment="Left" Margin="85,457,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.226,1.274" Width="87" FontSize="15" FontWeight="Bold"/>
+        <Label x:Name="label2_Copy" Content="{Binding eventoguay.Direccion.CodigoPostal}" HorizontalAlignment="Left" Margin="563,457,0,0" VerticalAlignment="Top" Width="112" FontSize="15" FontWeight="Bold" Height="30">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA6A6A6" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+        <Label x:Name="labelDireccionDetalle_Copy" Content="{Binding eventoguay.Direccion.Población}" HorizontalAlignment="Left" Margin="183,457,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="15" Width="323" Height="30">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA6A6A6" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
     </Grid>
 </Window>

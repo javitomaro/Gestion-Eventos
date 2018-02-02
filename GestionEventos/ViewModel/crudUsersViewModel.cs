@@ -17,8 +17,20 @@ namespace GestionEventos.ViewModel
         private string _titol;
         private string _okText;
         private bool _textEnabled;
+        private bool _rolEnabled;
         private Usuario _usuario;
         private List<Rol> _roles;
+        public bool RolEnabled
+        {
+            get
+            {
+                return _rolEnabled;
+            }
+            set
+            {
+                _rolEnabled = value;
+            }
+        }
         public string Titol
         {
             get

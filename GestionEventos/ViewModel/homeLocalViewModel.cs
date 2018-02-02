@@ -9,6 +9,7 @@ using GestionEventos.Model;
 using GestionEventos.View;
 using System.Windows;
 using System.Collections.ObjectModel;
+using MvvmDialogs.ViewModels;
 
 namespace GestionEventos.ViewModel
 {
@@ -25,11 +26,11 @@ namespace GestionEventos.ViewModel
         {
             CargarLocales(4);
         }
-        //public homeLocalViewModel(Usuario u)
-        //{
-        //    ActualUsuario = u;
+        public homeLocalViewModel(Usuario u)
+        {
+            ActualUsuario = u;
 
-        //}       
+        }
         public List<Evento> Eventos
         {
             get
@@ -96,8 +97,6 @@ namespace GestionEventos.ViewModel
             }
         }
 
-
-
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
@@ -114,69 +113,71 @@ namespace GestionEventos.ViewModel
         {
             public string Name { get; set; } = "";
         }
+        private ObservableCollection<IDialogViewModel> _Dialogs = new ObservableCollection<IDialogViewModel>();
+        public System.Collections.ObjectModel.ObservableCollection<IDialogViewModel> Dialogs { get { return _Dialogs; } }
         public ObservableCollection<object> ViewList { get; set; } = new ObservableCollection<object>();
         public void CargarEventos(int id)
         {
 
-            Eventos = ctx.Eventoes.Where(x => x.IdLocal == id).Select(x => x).ToList();            
+            Eventos = ctx.Eventoes.Where(x => x.IdLocal == id).Select(x => x).ToList();
         }
 
-        #region DIALOG
-        //#region PRUEBA DIALOGO
-        //public virtual bool IsModal { get { return true; } }
-        //public virtual void RequestClose() { this.DialogClosing(this, null); }
-        //public virtual event EventHandler DialogClosing;
-
-        //public ICommand OkCommand { get { return new RelayCommand(Ok); } }
-        //protected virtual void Ok()
-        //{
-        //    if (this.OnOk != null)
-        //        this.OnOk(this);
-        //    else
-        //        Close();
-        //}
-
-        //public ICommand CancelCommand { get { return new RelayCommand(Cancel); } }
-        //protected virtual void Cancel()
-        //{
-        //    if (this.OnCancel != null)
-        //        this.OnCancel(this);
-        //    else
-        //        Close();
-        //}
-
-        //public void Close()
-        //{
-        //    if (this.DialogClosing != null)
-        //        this.DialogClosing(this, new EventArgs());
-        ////}
-        //public ICommand LogOutCommand { get { return new RelayCommand(LogOut); } }
-        //protected virtual void LogOut()
-        //{
-        //    if (this.OnLogOut != null)
-        //        this.OnLogOut(this);
-        //    Close();
-        //}
-        //
-
-        //public Action<homeLocalViewModel> OnOk { get; set; }
-        //public Action<homeLocalViewModel> OnCancel { get; set; }
-        //public Action<homeLocalViewModel> OnCloseRequest { get; set; }
-        //public Action<homeLocalViewModel> OnLogOut { get; set; }
-        //private ObservableCollection<IDialogViewModel> _Dialogs = new ObservableCollection<IDialogViewModel>();
-        // public System.Collections.ObjectModel.ObservableCollection<IDialogViewModel> Dialogs { get { return _Dialogs; } }
-        //#endregion
-        //#region Añadir Evento
-
-        //public ICommand addEventCommand { get { return new RelayCommand(addEvent); } }
-        //  private void addEvent()
-        //{
-        //     this.Dialogs.Add(new crudEventoViewModel()
-        //   {
-
-
-        //     });   
-        // }
-        #endregion
+        public ICommand EditUserCommand { get { return new RelayCommand(EditUser); } }
+        private void EditUser()
+        {
+            if (ActualUsuario != null)
+            {
+                Usuario user_aux = new Usuario();
+                user_aux = ActualUsuario;
+                string nombre = ActualUsuario.Usuario1;
+                this.Dialogs.Add(new crudUsersViewModel
+                {
+                    Titol = "Modificar Usuari",
+                    Usuario = user_aux,
+                    OkText = "Modificar",
+                    TextEnabled = true,
+                    RolEnabled = false,
+                    OnOk = (sender) =>
+                    {
+                        try
+                        {
+                            if (ctx.Usuarios.Where(x => x.Usuario1.Equals(user_aux.Usuario1)).Count() > 0 && !user_aux.Usuario1.Equals(nombre))
+                            {
+                                MessageBox.Show("Aquest nom d'usuari ja existeix posa un altre");
+                            }
+                            else if (user_aux.Password.Equals(""))
+                            {
+                                MessageBox.Show("Password incorrecte");
+                            }
+                            else
+                            {
+                                ctx.SaveChanges();
+                                sender.Close();
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            MessageBox.Show(e.StackTrace);
+                        }
+                    },
+                    OnCancel = (sender) => { sender.Close(); },
+                    OnCloseRequest = (sender) => { sender.Close(); }
+                });
+            }
+        }
+        public ICommand VerEventoCommand { get { return new RelayCommand(VerEvento); } }
+        private void VerEvento()
+        {
+            if (SelectedEvento != null)
+            {
+                this.Dialogs.Add(new DetalleEventoViewModel
+                {
+                    eventoguay = SelectedEvento,               
+                    OnOk = (sender) => { sender.Close(); },
+                    OnCancel = (sender) => { sender.Close(); },
+                    OnCloseRequest = (sender) => { sender.Close(); }
+                });
+            }
+        }
     }
 }

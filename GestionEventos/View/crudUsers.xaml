@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="crudUsers" Height="250" Width="262.406" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Background>
-        <ImageBrush ImageSource="/GestionEventos;component/Resources/DetalleEventoFondo.jpg"/>
+        <ImageBrush ImageSource="/GestionEventos;component/Resources/crearEvento.png"/>
     </Window.Background>
     <Window.DataContext>
         <ViewModel:crudUsersViewModel/>
@@ -16,14 +16,14 @@
     <Grid>
         <Label x:Name="label" Content="{Binding Titol}" HorizontalAlignment="Left" Margin="38,27,0,0" VerticalAlignment="Top" FontFamily="Manga Temple" FontSize="20"/>
         <Label x:Name="label1" Content="ID" HorizontalAlignment="Left" Margin="38,59,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label2" Content="Nombre" HorizontalAlignment="Left" Margin="38,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.182,1.185"/>
+        <Label x:Name="label2" Content="Nom" HorizontalAlignment="Left" Margin="38,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.182,1.185"/>
         <Label x:Name="label3" Content="Password" HorizontalAlignment="Left" Margin="38,121,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1_Copy" Content="Rol" HorizontalAlignment="Left" Margin="38,152,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.703,3.953"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="102,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" Text="{Binding Usuario.Id}"/>
         <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="23" Margin="102,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Usuario.Usuario1}" IsEnabled="{Binding TextEnabled}"/>
         <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="23" Margin="102,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Usuario.Password}" IsEnabled="{Binding TextEnabled}"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="102,152,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Roles}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding Usuario.IdRol}" IsEnabled="{Binding TextEnabled}"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="102,152,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Roles}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding Usuario.IdRol}" IsEnabled="{Binding RolEnabled}"/>
         <Button x:Name="btnOk" Content="{Binding OkText}" HorizontalAlignment="Left" Margin="38,192,0,0" VerticalAlignment="Top" Width="75" Command="{Binding OkCommand, Mode=OneWay}"/>
-        <Button x:Name="btnCancel" Content="Cancelar" HorizontalAlignment="Left" Margin="147,192,0,0" VerticalAlignment="Top" Width="75" Command="{Binding CancelCommand, Mode=OneWay}"/>
+        <Button x:Name="btnCancel" Content="Cancel·lar" HorizontalAlignment="Left" Margin="147,192,0,0" VerticalAlignment="Top" Width="75" Command="{Binding CancelCommand, Mode=OneWay}"/>
     </Grid>
 </Window>

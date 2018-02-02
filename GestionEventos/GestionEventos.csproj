@@ -314,6 +314,7 @@
       <DependentUpon>ModelNou.edmx</DependentUpon>
       <LastGenOutput>ModelNou.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\view.png" />
     <Resource Include="Resources\Papelera.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

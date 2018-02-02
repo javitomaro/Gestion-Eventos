@@ -140,10 +140,11 @@ namespace GestionEventos.ViewModel
             Usuario user_aux = new Usuario();
             this.Dialogs.Add(new crudUsersViewModel
             {
-                Titol = "Añadir Usuario",
+                Titol = "Afegir Usuari",
                 Usuario = user_aux,
-                OkText = "Añadir",
+                OkText = "Afegir",
                 TextEnabled = true,
+                RolEnabled = true,
                 OnOk = (sender) =>
                 {
                     try
@@ -183,10 +184,11 @@ namespace GestionEventos.ViewModel
                 string nombre = SelectedUser.Usuario1;
                 this.Dialogs.Add(new crudUsersViewModel
                 {
-                    Titol = "Modificar Usuario",
+                    Titol = "Modificar Usuari",
                     Usuario = user_aux,
                     OkText = "Modificar",
                     TextEnabled = true,
+                    RolEnabled = true,
                     OnOk = (sender) =>
                     {
                         try
@@ -226,13 +228,14 @@ namespace GestionEventos.ViewModel
             {
                 Usuario user_aux = new Usuario();
                 user_aux = SelectedUser;
-                MessageBox.Show("Vas eliminar un usuario y todo lo que contiene el usuario (locales,eventos...)","Cuidado", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                MessageBox.Show("Eliminaras un usuari i tot el que conté aquest usuari (locals,events...)","VIGILA", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 this.Dialogs.Add(new crudUsersViewModel
                 {
-                    Titol = "Borrar Usuario",
+                    Titol = "Esborrar Usuari",
                     Usuario = user_aux,
-                    OkText = "Borrar",
-                    TextEnabled = false,                    
+                    OkText = "Esborrar",
+                    TextEnabled = false,
+                    RolEnabled = false,
                     OnOk = (sender) =>
                     {
                         try

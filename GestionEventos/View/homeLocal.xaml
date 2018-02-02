@@ -19,7 +19,7 @@
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill"/>
         </Grid.Background>
-        <Button x:Name="button" HorizontalAlignment="Left" Margin="750,10,0,0" VerticalAlignment="Top" Width="30" Height="30" Command="{Binding LogOutCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" Cursor="Hand" ClickMode="Press" Click="button_Click_1" >
+        <Button x:Name="button" HorizontalAlignment="Left" Margin="750,22,0,0" VerticalAlignment="Top" Width="30" Height="30" Command="{Binding LogOutCommand}" BorderBrush="{x:Null}" Foreground="{x:Null}" Cursor="Hand" ClickMode="Press" Click="button_Click_1" >
             <Button.OpacityMask>
                 <ImageBrush ImageSource="/GestionEventos;component/Resources/logout.png"/>
             </Button.OpacityMask>
@@ -27,10 +27,114 @@
                 <ImageBrush ImageSource="/GestionEventos;component/Resources/logout.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnAddEvent" Content="+" HorizontalAlignment="Left" Margin="64,47,0,0" VerticalAlignment="Top" Width="75" FontSize="36" FontWeight="Bold" Command="{Binding addEventCommand}"/>
-        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="210,163,0,0" VerticalAlignment="Top" Width="139" Height="24" ItemsSource="{Binding Locales}" DisplayMemberPath="Nombre" SelectedItem="{Binding SelectedLocal}"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="210,218,0,0" VerticalAlignment="Top" Height="72" Width="376" ItemsSource="{Binding Eventos}" SelectedItem="{Binding SelectedEvento}"/>
-        <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" Margin="538,339,0,0" VerticalAlignment="Top" Width="75" Click="Detail"/>
+        <Button x:Name="btnAddEvent" Content="" HorizontalAlignment="Left" Margin="58,494,0,0" VerticalAlignment="Top" Width="30" FontSize="36" FontWeight="Bold" Command="{Binding addEventCommand}" Height="30" BorderBrush="{x:Null}">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/crear.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/crear.png"/>
+            </Button.Background>
+        </Button>
+        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="23,145,0,0" VerticalAlignment="Top" Width="153" Height="30" ItemsSource="{Binding Locales}" DisplayMemberPath="Nombre" SelectedItem="{Binding SelectedLocal}"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="23,269,0,0" VerticalAlignment="Top" Height="220" Width="757" ItemsSource="{Binding Eventos}" SelectedItem="{Binding SelectedEvento}" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="Id Event"/>
+                <DataGridTextColumn Binding="{Binding TipoEvento.Nombre}" ClipboardContentBinding="{x:Null}" Header="Tipus"/>
+                <DataGridTextColumn Binding="{Binding Estilo.Nombre}" ClipboardContentBinding="{x:Null}" Header="Estil"/>
+                <DataGridTextColumn Binding="{Binding Descripcion}" ClipboardContentBinding="{x:Null}" Header="Descripció"/>
+                <DataGridTextColumn Binding="{Binding Direccion.Calle}" ClipboardContentBinding="{x:Null}" Header="Direcció"/>
+                <DataGridTextColumn Binding="{Binding Direccion.Población}" ClipboardContentBinding="{x:Null}" Header="Població"/>
+                <DataGridTextColumn Binding="{Binding Fecha.Date, Mode=OneWay}" ClipboardContentBinding="{x:Null}" Header="Data"/>
+                <DataGridTextColumn Binding="{Binding Aforo}" ClipboardContentBinding="{x:Null}" Header="Aforament"/>
+            </DataGrid.Columns>
+            <DataGrid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF156444" Offset="0"/>
+                    <GradientStop Color="#FF6DFBC1" Offset="1"/>
+                </LinearGradientBrush>
+            </DataGrid.Background>
+        </DataGrid>
+        <Button x:Name="btnDetalle" Content="" HorizontalAlignment="Left" Margin="23,494,0,0" VerticalAlignment="Top" Width="30" BorderBrush="{x:Null}" Height="30" RenderTransformOrigin="-0.667,2.65" Command="{Binding VerEventoCommand, Mode=OneWay}">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/view.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/view.png"/>
+            </Button.Background>
+        </Button>
+        <Label x:Name="label" Content="USUARI" HorizontalAlignment="Left" Margin="23,22,0,0" VerticalAlignment="Top" Width="92" FontSize="16" FontFamily="Open Sans" FontWeight="Bold">
+            <Label.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF701717" Offset="0"/>
+                    <GradientStop Color="#FFD84F4F" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Foreground>
+        </Label>
+        <Label x:Name="label_Copy" Content="{Binding ActualUsuario.Usuario1}" HorizontalAlignment="Left" Margin="93,26,0,0" VerticalAlignment="Top" Width="245" Foreground="#FFF5EB19" FontFamily="Open Sans" Background="{x:Null}" RenderTransformOrigin="0.846,0.5" Height="26"/>
+        <Label x:Name="label_Copy1" Content="LOCALS" HorizontalAlignment="Left" Margin="23,108,0,0" VerticalAlignment="Top" Width="92" FontSize="16" FontFamily="Open Sans" FontWeight="Bold">
+            <Label.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF206C70" Offset="0"/>
+                    <GradientStop Color="#FF3ED3DA" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Foreground>
+        </Label>
+        <Label x:Name="label_Copy2" Content="EVENTS" HorizontalAlignment="Left" Margin="23,236,0,0" VerticalAlignment="Top" Width="92" FontSize="16" FontFamily="Open Sans" FontWeight="Bold" Background="{x:Null}">
+            <Label.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF518022" Offset="0.005"/>
+                    <GradientStop Color="#FF7CD141" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Foreground>
+        </Label>
+        <Button x:Name="button1" Content="" HorizontalAlignment="Left" Margin="23,59,0,0" VerticalAlignment="Top" Width="30" BorderBrush="{x:Null}" Height="30" Command="{Binding EditUserCommand, Mode=OneWay}">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/edit.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/edit.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnAddEvent_Copy" Content="" HorizontalAlignment="Left" Margin="23,180,0,0" VerticalAlignment="Top" Width="30" FontSize="36" FontWeight="Bold" Command="{Binding addEventCommand}" Height="30" BorderBrush="{x:Null}">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/crear.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/crear.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="button1_Copy" Content="" HorizontalAlignment="Left" Margin="58,180,0,0" VerticalAlignment="Top" Width="30" BorderBrush="{x:Null}" Height="30">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/edit.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/edit.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="button1_Copy1" Content="" HorizontalAlignment="Left" Margin="93,180,0,0" VerticalAlignment="Top" Width="30" BorderBrush="{x:Null}" Height="30">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/Papelera.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/Papelera.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="button1_Copy2" Content="" HorizontalAlignment="Left" Margin="93,494,0,0" VerticalAlignment="Top" Width="30" BorderBrush="{x:Null}" Height="30">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/edit.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/edit.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="button1_Copy3" Content="" HorizontalAlignment="Left" Margin="128,494,0,0" VerticalAlignment="Top" Width="30" BorderBrush="{x:Null}" Height="30">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/Papelera.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="/GestionEventos;component/Resources/Papelera.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
 

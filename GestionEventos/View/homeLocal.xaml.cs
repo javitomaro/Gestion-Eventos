@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using GestionEventos.View;
+using GestionEventos.ViewModel;
 
 namespace GestionEventos.View
 {
@@ -26,13 +27,13 @@ namespace GestionEventos.View
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
-        {            
+        {
             this.Close();
         }
 
         private void button_Click_1(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
+        }                
     }
 }
