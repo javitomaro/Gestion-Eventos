@@ -62,7 +62,10 @@ namespace GestionEventos.ViewModel
         public Direccion direccion
         {
             get { return _direccion; }
-            set { _direccion = value; }
+            set { _direccion = value;
+                loadCalle(value.Población);
+                NotifyPropertyChanged();
+                   }
         }
         #endregion
 

@@ -23,8 +23,8 @@
         <TextBox x:Name="textBoxAforo" HorizontalAlignment="Left" Height="24" Margin="144,227,0,0" TextWrapping="Wrap" Text="{Binding evento.Aforo}" VerticalAlignment="Top" Width="120" IsEnabled="{Binding TextEnabled}" />
         <ComboBox x:Name="comboBoxTipoEvento" HorizontalAlignment="Left" Margin="314,227,0,0" VerticalAlignment="Top" Width="153"  DisplayMemberPath="Nombre" ItemsSource="{Binding TipoEventos}" SelectedValuePath="Id" SelectedValue="{Binding evento.IdTipoEvento}"/>
         <ComboBox x:Name="comboBoxEstiloEvento" HorizontalAlignment="Left" Margin="507,227,0,0" VerticalAlignment="Top" Width="167" ItemsSource="{Binding EstiloEventos}" DisplayMemberPath="Nombre" SelectedValuePath="Id" SelectedValue="{Binding evento.IdEstilo}" />
-        <ComboBox x:Name="comboBoxPoblación" HorizontalAlignment="Left" Margin="147,332,0,0" VerticalAlignment="Top" Width="178" ItemsSource="{Binding listPoblacion}" SelectedValue="{Binding evento.Direccion.Población}"/>
-        <ComboBox x:Name="comboBoxCalle" HorizontalAlignment="Left" Margin="361,332,0,0" VerticalAlignment="Top" Width="186" ItemsSource="{Binding listCalle}" SelectedValuePath="Id" SelectedValue="{Binding evento.Direccion.Calle}" DisplayMemberPath="Calle" />
+        <ComboBox x:Name="comboBoxPoblación" HorizontalAlignment="Left" Margin="147,332,0,0" VerticalAlignment="Top" Width="178" ItemsSource="{Binding listPoblacion}" SelectedValue="{Binding selectedPoblacion}"/>
+        <ComboBox x:Name="comboBoxCalle" HorizontalAlignment="Left" Margin="361,332,0,0" VerticalAlignment="Top" Width="186" ItemsSource="{Binding listCalle}" SelectedValuePath="Id" SelectedValue="{Binding SelectedCalle}" DisplayMemberPath="Calle" />
         <Label x:Name="labelDescripcionEvento" Content="Descripcion" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="144,133,0,0" FontWeight="Bold"/>
         <Label x:Name="labelAforo" Content="Aforo" HorizontalAlignment="Left" Margin="144,201,0,0" VerticalAlignment="Top" Width="62" FontWeight="Bold"/>
         <Label x:Name="labelTipoEvento" Content="Tipo" HorizontalAlignment="Left" Margin="314,201,0,0" VerticalAlignment="Top" FontWeight="Bold"/>

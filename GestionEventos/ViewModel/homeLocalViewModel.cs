@@ -196,6 +196,7 @@ namespace GestionEventos.ViewModel
                 evento = evento_aux,
                 flyer = flyer_aux,
                 local = local_aux,
+                selectedDireccion = direccion_aux,
                 direccion = direccion_aux,
                 NuevaDireccion = nuevaDir_aux,
                 OkText = "Añadir",
@@ -211,7 +212,7 @@ namespace GestionEventos.ViewModel
                             evento_aux.IdDireccion = nuevaDir_aux.Id;
                             correcto = true;
                         }
-                        else if (evento_aux.IdDireccion > 0)
+                        else if (direccion_aux != null)
                         {
                             evento_aux.IdDireccion = direccion_aux.Id;
                             correcto = true;
