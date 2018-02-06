@@ -22,7 +22,7 @@ namespace GestionEventos.ViewModel
         private bool _textEnabled;
         private Local _local;
         private List<TipoLocal> _tipoLocal;
-        private List<Usuario> _usuarios;
+        private List<string> _poblaciones;
         private Usuario _selectedUsuario;
         public Usuario SelectedUsuario
         {
@@ -88,21 +88,21 @@ namespace GestionEventos.ViewModel
                 _tipoLocal = value;
             }
         }
-                public List<Usuario> Usuarios
+        public List<string> Poblaciones
         {
             get
             {
-                return _usuarios;
+                return _poblaciones;
             }
             set
             {
-                _usuarios = value;
+                _poblaciones = value;            
             }
         }
         public crudLocalViewModel()
         {          
             TipoLocal = ctx.TipoLocals.ToList();
-            Usuarios = ctx.Usuarios.ToList();
+            Poblaciones = ctx.Direccions.Select(x => x.Población).Distinct().ToList();
         }
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")

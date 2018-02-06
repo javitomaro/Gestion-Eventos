@@ -163,8 +163,34 @@ namespace GestionEventos.ViewModel
             }
         }
         #endregion
+        #region Local
+        public ICommand AddLocalCommand { get { return new RelayCommand(AddLocal); } }
+        private void AddLocal()
+        {
+            Local local_aux = new Local();
+            this.Dialogs.Add(new crudLocalViewModel()
+            {
+                Titol = "Añadir un Evento",
+                OkText = "Añadir",
+                TextEnabled = true,
+                Local = local_aux,
+                OnOk = (sender) =>
+                {
+                    try
+                    {
 
+                        sender.Close();                                          
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(e.StackTrace);
+                    }
+                },
 
+                OnCancel = (sender) => { sender.Close(); },
+            });
+        }
+        #endregion
         #region Evento
         public ICommand VerEventoCommand { get { return new RelayCommand(VerEvento); } }
         private void VerEvento()
